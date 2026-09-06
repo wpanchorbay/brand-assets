@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/tubebay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "tubebay",
+    "name": "TubeBay",
+    "kind": "plugin",
+    "tagline": "YouTube product videos for WooCommerce.",
+    "color": "#DD0000",
+    "onColor": "#FFFFFF",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/",
+      "site": "https://wpanchorbay.com/plugins/tubebay/",
+      "docs": "https://docs.wpanchorbay.com/tubebay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/logo.png",
+            "path": "/brand/tubebay/logo.png",
+            "type": "image/png",
+            "bytes": 13275,
+            "width": 888,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/logo.svg",
+            "path": "/brand/tubebay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 7637,
+            "width": 444,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon.png",
+            "path": "/brand/tubebay/icon.png",
+            "type": "image/png",
+            "bytes": 2327,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon.svg",
+            "path": "/brand/tubebay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 596,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

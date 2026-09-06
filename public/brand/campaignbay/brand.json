@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/campaignbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "campaignbay",
+    "name": "CampaignBay",
+    "kind": "plugin",
+    "tagline": "Automated discount campaigns and flash sales for WooCommerce.",
+    "color": "#F02A74",
+    "onColor": "#FFFFFF",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/",
+      "site": "https://wpanchorbay.com/plugins/campaignbay/",
+      "docs": "https://docs.wpanchorbay.com/campaignbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo.png",
+            "path": "/brand/campaignbay/logo.png",
+            "type": "image/png",
+            "bytes": 20272,
+            "width": 1290,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo.svg",
+            "path": "/brand/campaignbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 13529,
+            "width": 645,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon.png",
+            "path": "/brand/campaignbay/icon.png",
+            "type": "image/png",
+            "bytes": 2774,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon.svg",
+            "path": "/brand/campaignbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 1163,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

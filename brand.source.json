@@ -13,14 +13,14 @@
   },
   "usage": {
     "allowed": [
-      "Hotlink these URLs directly — they are stable and versionless.",
+      "Hotlink these URLs directly; they are stable and versionless.",
       "Use the SVG wherever the surface supports it; fall back to PNG only when it does not.",
       "Keep clear space around the logo equal to the height of the icon's corner radius.",
       "Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast."
     ],
     "notAllowed": [
       "Do not recolour, rotate, skew, outline or add effects to the marks.",
-      "Do not stretch — scale proportionally only.",
+      "Do not stretch; scale proportionally only.",
       "Do not rebuild the wordmark in another typeface.",
       "Do not place the logo on a busy photograph or a low-contrast background.",
       "Do not use the marks to imply partnership or endorsement without written permission."

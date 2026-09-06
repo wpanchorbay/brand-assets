@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/pointbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "pointbay",
+    "name": "PointBay",
+    "kind": "plugin",
+    "tagline": "Loyalty points and referral rewards for WooCommerce.",
+    "color": "#22CF95",
+    "onColor": "#001F3F",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/",
+      "site": "https://wpanchorbay.com/plugins/pointbay/",
+      "docs": "https://docs.wpanchorbay.com/pointbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.png",
+            "path": "/brand/pointbay/logo.png",
+            "type": "image/png",
+            "bytes": 16645,
+            "width": 1044,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.svg",
+            "path": "/brand/pointbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 8638,
+            "width": 522,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/pointbay/icon.png",
+            "path": "/brand/pointbay/icon.png",
+            "type": "image/png",
+            "bytes": 2441,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/pointbay/icon.svg",
+            "path": "/brand/pointbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 698,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

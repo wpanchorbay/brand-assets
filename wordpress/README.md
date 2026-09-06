@@ -43,11 +43,17 @@ Useful on a product page: `[wpanchorbay_brand_assets products="cartbay"]`.
   from that instead of going blank.
 - If the origin fails *and* there is no stale copy, visitors see nothing; users who can
   `edit_posts` see an explanatory notice.
-- CSS is registered on every front-end request but only *enqueued* when the shortcode actually
-  runs, so other pages carry no extra weight.
+- CSS and JS are registered on every front-end request but only *enqueued* when the shortcode
+  actually runs, so other pages carry no extra weight.
 - The manifest is first-party but still arrives over the network, so it is treated as untrusted:
   colours go through `sanitize_hex_color()` before touching a `style` attribute, and asset URLs are
   rejected unless they are http(s) on the manifest's own host.
+- Each format gets a Copy / Download / Open-in-new-tab button group, matching the public
+  brand-assets page. **The Download button can't force a save** here the way it does on that page:
+  assets live on `assets.wpanchorbay.com`, a different origin from the WordPress site, and browsers
+  only honour HTML's `download` attribute for same-origin URLs. Clicking it opens the file instead;
+  visitors can still right-click it and choose Save As. Fixing this for real needs a same-origin
+  proxy endpoint, which is out of scope for a plugin this small.
 
 ## Pointing at a different origin
 

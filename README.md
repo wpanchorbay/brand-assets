@@ -9,7 +9,8 @@ emails, partner decks — updates. No more re-uploading the same PNG into the me
 
 ```
 https://assets.wpanchorbay.com/brand/<product>/<asset>.<ext>
-https://assets.wpanchorbay.com/brand.json      ← machine-readable index of everything
+https://assets.wpanchorbay.com/brand.json                ← every product, in one file
+https://assets.wpanchorbay.com/brand/<product>/brand.json ← just that one product
 ```
 
 ## Layout
@@ -18,11 +19,12 @@ https://assets.wpanchorbay.com/brand.json      ← machine-readable index of eve
 brand.source.json      Product metadata: names, taglines, colours, links. THE source of truth.
 public/
   brand/<slug>/        The asset files themselves. One folder per product.
-  brand.json           Generated — do not edit.
+  brand/<slug>/brand.json  Generated — do not edit. That product's own manifest entry.
+  brand.json           Generated — do not edit. Every product, in one file.
   index.html           Generated — the public asset browser.
   404.html             Generated.
   _headers             Cache and CORS rules. Hand-written.
-scripts/build.mjs      Regenerates the three generated files.
+scripts/build.mjs      Regenerates every generated file above.
 wordpress/             The plugin that renders wpanchorbay.com/brand from brand.json.
 ```
 

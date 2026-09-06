@@ -1,0 +1,66 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/wpanchorbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "wpanchorbay",
+    "name": "WPAnchorBay",
+    "kind": "brand",
+    "tagline": "WooCommerce plugins that pull their weight.",
+    "color": "#39CCCC",
+    "onColor": "#001F3F",
+    "links": {
+      "site": "https://wpanchorbay.com/",
+      "docs": "https://docs.wpanchorbay.com/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png",
+            "path": "/brand/wpanchorbay/logo.png",
+            "type": "image/png",
+            "bytes": 18803,
+            "width": 1238,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg",
+            "path": "/brand/wpanchorbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 10236,
+            "width": 619,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png",
+            "path": "/brand/wpanchorbay/icon.png",
+            "type": "image/png",
+            "bytes": 4547,
+            "width": 240,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg",
+            "path": "/brand/wpanchorbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 928,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

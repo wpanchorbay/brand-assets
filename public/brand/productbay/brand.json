@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/productbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "productbay",
+    "name": "ProductBay",
+    "kind": "plugin",
+    "tagline": "High-performance product tables and order forms for WooCommerce.",
+    "color": "#F05C2A",
+    "onColor": "#FFFFFF",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/",
+      "site": "https://wpanchorbay.com/plugins/productbay/",
+      "docs": "https://docs.wpanchorbay.com/productbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/productbay/logo.png",
+            "path": "/brand/productbay/logo.png",
+            "type": "image/png",
+            "bytes": 15641,
+            "width": 1089,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/productbay/logo.svg",
+            "path": "/brand/productbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 10495,
+            "width": 545,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/productbay/icon.png",
+            "path": "/brand/productbay/icon.png",
+            "type": "image/png",
+            "bytes": 2182,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/productbay/icon.svg",
+            "path": "/brand/productbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 840,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

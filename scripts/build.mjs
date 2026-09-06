@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Generates public/brand.json and public/index.html.
+ * Generates public/brand.json, public/brand/<slug>/brand.json and public/index.html.
  *
  * Assets are DISCOVERED from public/brand/<slug>/ rather than listed in
  * brand.source.json, so the manifest can never advertise a file that is not
@@ -76,7 +76,10 @@ function discover(slug) {
   const assets = {};
   for (const file of entries.sort()) {
     const full = join(dir, file);
-    if (!statSync(full).isFile() || file.startsWith('.')) continue;
+    // brand.json here is OUR OWN generated per-product manifest, written after
+    // discovery runs — never treat it as a discoverable asset, or it becomes a
+    // self-referential file whose size changes on every build.
+    if (!statSync(full).isFile() || file.startsWith('.') || file === 'brand.json') continue;
     const ext = extname(file).toLowerCase();
     const name = basename(file, ext);
     const buf = readFileSync(full);
@@ -124,6 +127,28 @@ const manifest = {
 
 writeFileSync(join(ROOT, 'public', 'brand.json'), JSON.stringify(manifest, null, 2) + '\n');
 
+// Per-product manifest, colocated with that product's own files
+// (/brand/<slug>/brand.json) — so a consumer that only cares about one
+// product never has to fetch and filter the whole catalogue.
+let perProductCount = 0;
+for (const [slug, product] of Object.entries(products)) {
+  if (!Object.keys(product.assets).length) continue; // no folder, nothing to write into
+  writeFileSync(
+    join(BRAND_DIR, slug, 'brand.json'),
+    JSON.stringify(
+      {
+        self: `${ORIGIN}/brand/${slug}/brand.json`,
+        origin: ORIGIN,
+        organization: src.organization,
+        product,
+      },
+      null,
+      2
+    ) + '\n'
+  );
+  perProductCount += 1;
+}
+
 /* ---------- page ---------- */
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
@@ -133,28 +158,84 @@ const kb = (n) => n < 1024 ? `${n} B` : `${(n / 1024).toFixed(n < 10240 ? 1 : 0)
 
 const dims = (f) => f.width && f.height ? `${f.width}×${f.height}` : '';
 
+// Generic, feather-style glyphs — no third-party marks, currentColor so they
+// inherit the button's hover/focus colour for free.
+const ICONS = {
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+  download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+  open: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
+  info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+  // The official WordPress "W" mark (source: WordPress Foundation, via
+  // commons.wikimedia.org/wiki/File:Wordpress-Logo.svg), recoloured to
+  // currentColor so it inherits the badge's state. Used only to identify a
+  // link to the product's own WordPress.org listing — nominative use, the
+  // same as any "on WordPress.org" badge — not a claim of endorsement.
+  wordpress: '<svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+};
+
+const LINK_META = {
+  wordpress: { label: 'WordPress.org', icon: ICONS.wordpress },
+  site: { label: 'Product page', icon: ICONS.globe },
+  docs: { label: 'Docs', icon: ICONS.book },
+};
+
 function assetRow(a) {
   const formats = Object.entries(a.formats)
     .sort(([x], [y]) => (x === 'svg' ? -1 : y === 'svg' ? 1 : x.localeCompare(y)));
   return `
         <div class="asset">
           <div class="asset-name">${esc(a.label)}</div>
-          <div class="asset-formats">${formats.map(([ext, f]) => `
-            <span class="fmt">
-              <button class="copy" data-url="${esc(f.url)}" title="Copy URL">${esc(ext.toUpperCase())}</button>
-              <a class="dl" href="${esc(f.path)}" download title="Download">↓</a>
-              <span class="meta">${esc([dims(f), kb(f.bytes)].filter(Boolean).join(' · '))}</span>
-            </span>`).join('')}
+          <div class="fmt-list">${formats.map(([ext, f]) => {
+            const EXT = ext.toUpperCase();
+            const info = esc([dims(f), kb(f.bytes)].filter(Boolean).join(' · '));
+            return `
+            <div class="fmt-row">
+              <span class="fmt-label">${esc(EXT)}</span>
+              <button type="button" class="info-btn" title="${info}" aria-label="${info}">${ICONS.info}</button>
+              <span class="btn-group" role="group" aria-label="${esc(EXT)} actions">
+                <button type="button" class="act js-copy" data-copy="${esc(f.url)}" title="Copy URL" aria-label="Copy ${esc(EXT)} URL">${ICONS.copy}</button>
+                <a class="act" href="${esc(f.path)}" download title="Download ${esc(EXT)}" aria-label="Download ${esc(EXT)}">${ICONS.download}</a>
+                <a class="act" href="${esc(f.url)}" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open ${esc(EXT)} in new tab">${ICONS.open}</a>
+              </span>
+            </div>`;
+          }).join('')}
           </div>
         </div>`;
+}
+
+/**
+ * Colour chips for a card. WPAnchorBay the brand carries two identity
+ * colours (teal + navy); a plugin's `onColor` is only ever a text-contrast
+ * helper for its badge, never a second mark, so plugins show one chip.
+ */
+function swatches(p) {
+  return p.kind === 'brand'
+    ? [
+        { hex: p.color, name: 'primary' },
+        { hex: p.onColor, name: 'secondary' },
+      ]
+    : [{ hex: p.color, name: '' }];
+}
+
+function linkBadges(p) {
+  const entries = Object.entries(p.links ?? {}).filter(([k]) => LINK_META[k]);
+  if (!entries.length) return '';
+  return `<nav class="card-links" style="grid-template-columns:repeat(${entries.length},1fr)">${entries
+    .map(([k, v]) => {
+      const meta = LINK_META[k];
+      // The brand's own "site" link goes to the company homepage, not a
+      // per-product page — label it accordingly.
+      const label = k === 'site' && p.kind === 'brand' ? 'Visit Website' : meta.label;
+      return `<a class="badge" href="${esc(v)}" rel="noopener" title="${esc(label)}">${meta.icon}<span>${esc(label)}</span></a>`;
+    })
+    .join('')}</nav>`;
 }
 
 function card(p) {
   const icon = p.assets.icon?.formats.svg ?? p.assets.icon?.formats.png;
   const logo = p.assets.logo?.formats.svg ?? p.assets.logo?.formats.png;
-  const links = Object.entries(p.links ?? {})
-    .map(([k, v]) => `<a href="${esc(v)}" rel="noopener">${esc({ wordpress: 'WordPress.org', site: 'Product page', docs: 'Docs' }[k] ?? k)}</a>`)
-    .join('');
   return `
       <article class="card" id="${esc(p.slug)}" style="--brand:${esc(p.color)};--on-brand:${esc(p.onColor)}">
         <header class="card-head">
@@ -166,10 +247,16 @@ function card(p) {
         </header>
         ${logo ? `<div class="logo-plate"><img src="${esc(logo.path)}" alt="${esc(p.name)} logo" loading="lazy"></div>` : ''}
         <div class="assets">${Object.values(p.assets).map(assetRow).join('')}</div>
-        <button class="swatch copy" data-url="${esc(p.color)}" title="Copy hex">
-          <span class="chip"></span>${esc(p.color)}
-        </button>
-        ${links ? `<nav class="card-links">${links}</nav>` : ''}
+        <div class="swatches">${swatches(p)
+          .map(
+            (s) => `
+          <button type="button" class="swatch js-copy" data-copy="${esc(s.hex)}" title="Copy ${esc(s.name ? s.name + ' ' : '')}hex (${esc(s.hex)})">
+            <span class="chip" style="background:${esc(s.hex)}"></span>${esc(s.hex)}
+          </button>`
+          )
+          .join('')}
+        </div>
+        ${linkBadges(p)}
       </article>`;
 }
 
@@ -178,35 +265,35 @@ const brand = list.find((p) => p.kind === 'brand');
 const plugins = list.filter((p) => p.kind !== 'brand');
 const sample = plugins[0] ?? brand;
 const sampleUrl = sample?.assets.logo?.formats.svg?.url ?? `${ORIGIN}/brand/…/logo.svg`;
+const sampleSnippet = `<img src="${sampleUrl}" alt="${sample?.name ?? ''}" height="40">`;
 
 const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Brand Assets — ${esc(src.organization.name)}</title>
-<meta name="description" content="Official logos, icons and colours for ${esc(src.organization.name)} and its WooCommerce plugins. Stable, permanent URLs — safe to hotlink.">
+<title>Brand Assets: ${esc(src.organization.name)}</title>
+<meta name="description" content="Official logos, icons and colours for ${esc(src.organization.name)} and its WooCommerce plugins. Stable, permanent URLs. Safe to hotlink.">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/brand/${esc(brand?.slug ?? 'wpanchorbay')}/icon.svg" type="image/svg+xml">
-<meta property="og:title" content="Brand Assets — ${esc(src.organization.name)}">
+<meta property="og:title" content="Brand Assets: ${esc(src.organization.name)}">
 <meta property="og:description" content="Official logos, icons and colours. Stable URLs, safe to hotlink.">
 <meta property="og:url" content="${esc(ORIGIN)}/">
 <style>
 :root{
   --ink:${esc(src.palette.ink)}; --anchor:${esc(src.palette.anchor)};
-  --bg:#fbfcfd; --surface:#fff; --line:#e3e8ee; --text:#0e1b2a; --muted:#5b6b7d;
-  --radius:14px; --shadow:0 1px 2px rgba(0,31,63,.06),0 8px 24px -12px rgba(0,31,63,.14);
-  color-scheme:light dark;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#0a1420;--surface:#101f31;--line:#1e3247;--text:#e6eef7;--muted:#93a7bb;
-        --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);}
+  --bg:#f5f7fa; --surface:#ffffff; --surface-2:#fbfcfe;
+  --line:#e2e7ee; --line-strong:#cdd5e0;
+  --text:#101828; --muted:#5b6472;
+  --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16);
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
   font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased}
 a{color:inherit}
+:focus-visible{outline:2px solid var(--anchor);outline-offset:2px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 header.top{padding:56px 0 32px;border-bottom:1px solid var(--line)}
 .brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);
@@ -218,54 +305,74 @@ h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacin
   border-radius:var(--radius);box-shadow:var(--shadow)}
 .panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
 .panel p{margin:0 0 12px;color:var(--muted)}
-pre{margin:0;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+.code-row{display:flex;align-items:stretch;gap:8px}
+pre{flex:1;margin:0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
   overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+.code-row .act{width:36px;height:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
+  color:var(--muted)}
+.code-row .act:hover,.code-row .act:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
 section{padding:44px 0}
 h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .sub{margin:0 0 24px;color:var(--muted);font-size:14px}
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
-.card.solo{grid-column:1/-1;max-width:520px}
+  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+.card.solo{grid-column:1/-1;max-width:560px;width:100%;margin:0 auto}
 .card-head{display:flex;gap:14px;align-items:center}
 .card-icon{border-radius:14px;flex:none}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
-.tagline{margin:2px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
-/* Always light: the wordmarks are dark-ink only and would disappear on the
-   dark theme's ground. A logo is previewed on the background it is made for. */
+.tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
+/* Always light: the wordmarks are dark-ink only and would disappear on a
+   tinted or dark plate. A logo is previewed on the background it is made for. */
 .logo-plate{display:flex;align-items:center;justify-content:center;padding:22px 18px;
   background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 8%,transparent),color-mix(in srgb,var(--brand) 8%,transparent)),#fff;
   border:1px solid var(--line);border-radius:10px;min-height:96px}
 .logo-plate img{max-width:100%;max-height:44px;width:auto;height:auto}
-.assets{display:flex;flex-direction:column;gap:10px}
-.asset{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;justify-content:space-between}
-.asset-name{font-size:13px;font-weight:600}
-.asset-formats{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.fmt{display:inline-flex;align-items:center;gap:5px}
-button{font:inherit;cursor:pointer}
-.copy{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:6px;
-  padding:2px 8px;font-size:11.5px;font-weight:700;letter-spacing:.04em;transition:.14s}
-.copy:hover{border-color:var(--brand,var(--anchor));color:var(--brand,var(--anchor))}
-.copy.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
-.dl{text-decoration:none;color:var(--muted);font-size:13px;line-height:1;padding:2px 4px;border-radius:5px}
-.dl:hover{color:var(--brand,var(--anchor));background:var(--bg)}
-.meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.swatch{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;border:1px solid var(--line);
-  background:var(--bg);color:var(--text);border-radius:7px;padding:5px 10px;
-  font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;transition:.14s}
+/* Stacked on small screens; side by side (Logo | Icon) once a card has room. */
+.assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
+@media (min-width:721px){.assets{grid-template-columns:1fr 1fr}}
+/* Same bordered, rounded treatment as .logo-plate, so each section (Logo,
+   Icon, …) reads as its own block; most visible once they sit side by side. */
+.asset{border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px}
+.asset-name{font-size:13px;font-weight:700;margin-bottom:8px}
+.fmt-list{display:flex;flex-direction:column;gap:7px}
+.fmt-row{display:flex;align-items:center}
+.fmt-label{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
+  color:var(--muted);min-width:32px;margin-right:6px}
+/* No outer border: the tinted background, inner dividers and rounded corners
+   already read as one grouped control. */
+.btn-group{display:inline-flex;border-radius:8px;overflow:hidden;background:var(--surface-2)}
+.act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:0;
+  background:transparent;color:var(--muted);cursor:pointer;text-decoration:none}
+.act+.act{border-left:1px solid var(--line)}
+.act svg{width:14px;height:14px;display:block}
+.act:hover,.act:focus-visible{background:#fff;color:var(--brand,var(--anchor))}
+.act.done{color:#0d8a5f;background:#eafbf3}
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  flex:none;margin-right:auto;cursor:default;padding:0}
+.info-btn svg{width:12px;height:12px;display:block}
+.info-btn:hover,.info-btn:focus-visible{color:var(--brand,var(--anchor));border-color:var(--brand,var(--anchor))}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.swatch{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+  background:var(--surface-2);color:var(--text);border-radius:7px;padding:5px 10px;
+  font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;cursor:pointer;transition:.14s}
 .swatch:hover{border-color:var(--brand)}
 .swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
-.chip{width:13px;height:13px;border-radius:4px;background:var(--brand);
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);flex:none}
-.card-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
-.card-links a{font-size:12.5px;color:var(--muted);text-decoration:none}
-.card-links a:hover{color:var(--brand);text-decoration:underline}
+.chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
+.card-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--muted);
+  text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;transition:.14s}
+.badge svg{width:14px;height:14px;flex:none}
+.badge:hover,.badge:focus-visible{border-color:var(--brand);color:var(--brand);background:#fff}
 .rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .rules ul{margin:0;padding-left:20px}
 .rules li{margin:0 0 7px;color:var(--muted);font-size:14px}
 .rules h3{margin:0 0 10px;font-size:14px}
 .yes h3{color:#0d8a5f}.no h3{color:#c2374a}
-@media (prefers-color-scheme:dark){.yes h3{color:#3ecf9a}.no h3{color:#ff7a8a}}
 footer{border-top:1px solid var(--line);padding:28px 0 56px;color:var(--muted);font-size:13px}
 footer a{color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:var(--ink);color:#fff;
@@ -278,28 +385,34 @@ footer a{color:var(--muted)}
 <header class="top"><div class="wrap">
   ${brand?.assets.logo ? `<div class="brandplate"><img class="brandmark" src="${esc((brand.assets.logo.formats.svg ?? brand.assets.logo.formats.png).path)}" alt="${esc(src.organization.name)}" height="32"></div>` : ''}
   <h1>Brand assets</h1>
-  <p class="lede">Official logos, icons and colours for ${esc(src.organization.name)} and its WooCommerce plugins. Every URL below is permanent — we update the file behind it, never the address — so you can hotlink these directly and always get the current mark.</p>
+  <p class="lede">Official logos, icons and colours for ${esc(src.organization.name)} and its WooCommerce plugins. Every URL below is permanent: we update the file behind it, never the address, so you can hotlink these directly and always get the current mark.</p>
   <div class="panel">
     <h2>Hotlink it</h2>
     <p>Point straight at the URL. No copy in your media library, no version to keep in sync.</p>
-    <pre>&lt;img src="${esc(sampleUrl)}" alt="${esc(sample?.name ?? '')}" height="40"&gt;</pre>
+    <div class="code-row">
+      <pre>${esc(sampleSnippet)}</pre>
+      <button type="button" class="act js-copy" data-copy="${esc(sampleSnippet)}" title="Copy snippet" aria-label="Copy snippet">${ICONS.copy}</button>
+    </div>
   </div>
   <div class="panel">
     <h2>Machine-readable</h2>
-    <p>Every product, asset URL and colour on this page, as JSON.</p>
-    <pre>${esc(ORIGIN)}/brand.json</pre>
+    <p>Every product, asset URL and colour on this page, as JSON, or fetch one product on its own at <code>/brand/&lt;product&gt;/brand.json</code>.</p>
+    <div class="code-row">
+      <pre>${esc(ORIGIN)}/brand.json</pre>
+      <button type="button" class="act js-copy" data-copy="${esc(ORIGIN + '/brand.json')}" title="Copy URL" aria-label="Copy URL">${ICONS.copy}</button>
+    </div>
   </div>
 </div></header>
 
 ${brand ? `<section><div class="wrap">
   <h2 class="section">The ${esc(brand.name)} brand</h2>
-  <p class="sub">Use these for the company itself — not for an individual plugin.</p>
+  <p class="sub">Use these for the company itself, not for an individual plugin.</p>
   <div class="grid">${card({ ...brand, _solo: true }).replace('class="card"', 'class="card solo"')}</div>
 </div></section>` : ''}
 
 <section><div class="wrap">
   <h2 class="section">Plugins</h2>
-  <p class="sub">${plugins.length} product${plugins.length === 1 ? '' : 's'}. Click a format to copy its URL, or ↓ to download.</p>
+  <p class="sub">${plugins.length} product${plugins.length === 1 ? '' : 's'}. Copy, download or open any file directly. Hover a control to see what it does.</p>
   <div class="grid">${plugins.map(card).join('')}</div>
 </div></section>
 
@@ -314,7 +427,7 @@ ${brand ? `<section><div class="wrap">
 
 <footer><div class="wrap">
   Trademarks and logos are the property of ${esc(src.organization.name)}.
-  Questions about usage — <a href="${esc(src.organization.url)}">${esc(src.organization.url.replace(/^https?:\/\//, ''))}</a>.
+  Questions about usage: <a href="${esc(src.organization.url)}">${esc(src.organization.url.replace(/^https?:\/\//, ''))}</a>.
   · <a href="/brand.json">brand.json</a>
 </div></footer>
 
@@ -329,9 +442,9 @@ function flash(msg){
   timer = setTimeout(() => toast.classList.remove('show'), 1600);
 }
 document.addEventListener('click', async (e) => {
-  const btn = e.target.closest('.copy');
+  const btn = e.target.closest('.js-copy');
   if (!btn) return;
-  const text = btn.dataset.url;
+  const text = btn.dataset.copy;
   try {
     await navigator.clipboard.writeText(text);
   } catch {
@@ -340,7 +453,7 @@ document.addEventListener('click', async (e) => {
     ta.style.cssText = 'position:fixed;opacity:0';
     document.body.appendChild(ta);
     ta.select();
-    try { document.execCommand('copy'); } catch { flash('Copy failed — select the URL manually'); ta.remove(); return; }
+    try { document.execCommand('copy'); } catch { flash('Copy failed. Select the URL manually'); ta.remove(); return; }
     ta.remove();
   }
   btn.classList.add('done');
@@ -361,12 +474,11 @@ writeFileSync(join(ROOT, 'public', '404.html'), `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Not found — ${esc(src.organization.name)} brand assets</title>
+<title>Not found: ${esc(src.organization.name)} brand assets</title>
 <meta name="robots" content="noindex">
 <style>
 :root{--ink:${esc(src.palette.ink)};--anchor:${esc(src.palette.anchor)};
-  --bg:#fbfcfd;--text:#0e1b2a;--muted:#5b6b7d;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--bg:#0a1420;--text:#e6eef7;--muted:#93a7bb}}
+  --bg:#f5f7fa;--text:#101828;--muted:#5b6472;color-scheme:light}
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);
   font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;padding:24px}
 img{height:30px;width:auto;display:block}
@@ -374,7 +486,7 @@ img{height:30px;width:auto;display:block}
   padding:11px 17px;margin-bottom:26px}
 h1{margin:0 0 10px;font-size:24px;letter-spacing:-.02em}
 p{margin:0 0 22px;color:var(--muted);max-width:44ch}
-code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;background:rgba(127,127,127,.14);
+code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;background:rgba(16,24,40,.06);
   padding:2px 6px;border-radius:5px}
 a.btn{display:inline-block;background:var(--anchor);color:var(--ink);text-decoration:none;font-weight:600;
   padding:10px 20px;border-radius:9px}
@@ -395,6 +507,7 @@ console.log('404.html    generated');
 /* ---------- report ---------- */
 const total = list.reduce((n, p) => n + Object.values(p.assets).reduce((m, a) => m + Object.keys(a.formats).length, 0), 0);
 console.log(`brand.json  ${list.length} products, ${total} files`);
+console.log(`per-product ${perProductCount} brand.json files under public/brand/<slug>/`);
 console.log(`index.html  ${(html.length / 1024).toFixed(1)} KB`);
 if (missing.length) console.warn(`WARN  no asset files found for: ${missing.join(', ')}`);
 if (orphans.length) console.warn(`WARN  asset folder with no entry in brand.source.json: ${orphans.join(', ')}`);

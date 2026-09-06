@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/optionbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "optionbay",
+    "name": "OptionBay",
+    "kind": "plugin",
+    "tagline": "Product options and add-ons for WooCommerce.",
+    "color": "#1A87FF",
+    "onColor": "#FFFFFF",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/optionbay-product-options-and-addons/",
+      "site": "https://wpanchorbay.com/plugins/optionbay/",
+      "docs": "https://docs.wpanchorbay.com/optionbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/optionbay/logo.png",
+            "path": "/brand/optionbay/logo.png",
+            "type": "image/png",
+            "bytes": 15394,
+            "width": 1009,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/optionbay/logo.svg",
+            "path": "/brand/optionbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 8984,
+            "width": 505,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/optionbay/icon.png",
+            "path": "/brand/optionbay/icon.png",
+            "type": "image/png",
+            "bytes": 2032,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/optionbay/icon.svg",
+            "path": "/brand/optionbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 341,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

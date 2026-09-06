@@ -1,0 +1,67 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/upsellbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "upsellbay",
+    "name": "UpsellBay",
+    "kind": "plugin",
+    "tagline": "Order bumps and upsells for WooCommerce.",
+    "color": "#F5C000",
+    "onColor": "#001F3F",
+    "links": {
+      "wordpress": "https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/",
+      "site": "https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/",
+      "docs": "https://docs.wpanchorbay.com/upsellbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo.png",
+            "path": "/brand/upsellbay/logo.png",
+            "type": "image/png",
+            "bytes": 14012,
+            "width": 960,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo.svg",
+            "path": "/brand/upsellbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 9071,
+            "width": 480,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon.png",
+            "path": "/brand/upsellbay/icon.png",
+            "type": "image/png",
+            "bytes": 2043,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon.svg",
+            "path": "/brand/upsellbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 583,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

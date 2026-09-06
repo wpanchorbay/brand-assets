@@ -3,29 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Brand Assets — WPAnchorBay</title>
-<meta name="description" content="Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Stable, permanent URLs — safe to hotlink.">
+<title>Brand Assets: WPAnchorBay</title>
+<meta name="description" content="Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Stable, permanent URLs. Safe to hotlink.">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/brand/wpanchorbay/icon.svg" type="image/svg+xml">
-<meta property="og:title" content="Brand Assets — WPAnchorBay">
+<meta property="og:title" content="Brand Assets: WPAnchorBay">
 <meta property="og:description" content="Official logos, icons and colours. Stable URLs, safe to hotlink.">
 <meta property="og:url" content="https://assets.wpanchorbay.com/">
 <style>
 :root{
   --ink:#001F3F; --anchor:#39CCCC;
-  --bg:#fbfcfd; --surface:#fff; --line:#e3e8ee; --text:#0e1b2a; --muted:#5b6b7d;
-  --radius:14px; --shadow:0 1px 2px rgba(0,31,63,.06),0 8px 24px -12px rgba(0,31,63,.14);
-  color-scheme:light dark;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#0a1420;--surface:#101f31;--line:#1e3247;--text:#e6eef7;--muted:#93a7bb;
-        --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);}
+  --bg:#f5f7fa; --surface:#ffffff; --surface-2:#fbfcfe;
+  --line:#e2e7ee; --line-strong:#cdd5e0;
+  --text:#101828; --muted:#5b6472;
+  --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16);
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
   font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased}
 a{color:inherit}
+:focus-visible{outline:2px solid var(--anchor);outline-offset:2px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 header.top{padding:56px 0 32px;border-bottom:1px solid var(--line)}
 .brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);
@@ -37,54 +36,74 @@ h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacin
   border-radius:var(--radius);box-shadow:var(--shadow)}
 .panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
 .panel p{margin:0 0 12px;color:var(--muted)}
-pre{margin:0;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+.code-row{display:flex;align-items:stretch;gap:8px}
+pre{flex:1;margin:0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
   overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+.code-row .act{width:36px;height:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
+  color:var(--muted)}
+.code-row .act:hover,.code-row .act:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
 section{padding:44px 0}
 h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .sub{margin:0 0 24px;color:var(--muted);font-size:14px}
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
-.card.solo{grid-column:1/-1;max-width:520px}
+  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+.card.solo{grid-column:1/-1;max-width:560px;width:100%;margin:0 auto}
 .card-head{display:flex;gap:14px;align-items:center}
 .card-icon{border-radius:14px;flex:none}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
-.tagline{margin:2px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
-/* Always light: the wordmarks are dark-ink only and would disappear on the
-   dark theme's ground. A logo is previewed on the background it is made for. */
+.tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
+/* Always light: the wordmarks are dark-ink only and would disappear on a
+   tinted or dark plate. A logo is previewed on the background it is made for. */
 .logo-plate{display:flex;align-items:center;justify-content:center;padding:22px 18px;
   background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 8%,transparent),color-mix(in srgb,var(--brand) 8%,transparent)),#fff;
   border:1px solid var(--line);border-radius:10px;min-height:96px}
 .logo-plate img{max-width:100%;max-height:44px;width:auto;height:auto}
-.assets{display:flex;flex-direction:column;gap:10px}
-.asset{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;justify-content:space-between}
-.asset-name{font-size:13px;font-weight:600}
-.asset-formats{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.fmt{display:inline-flex;align-items:center;gap:5px}
-button{font:inherit;cursor:pointer}
-.copy{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:6px;
-  padding:2px 8px;font-size:11.5px;font-weight:700;letter-spacing:.04em;transition:.14s}
-.copy:hover{border-color:var(--brand,var(--anchor));color:var(--brand,var(--anchor))}
-.copy.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
-.dl{text-decoration:none;color:var(--muted);font-size:13px;line-height:1;padding:2px 4px;border-radius:5px}
-.dl:hover{color:var(--brand,var(--anchor));background:var(--bg)}
-.meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.swatch{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;border:1px solid var(--line);
-  background:var(--bg);color:var(--text);border-radius:7px;padding:5px 10px;
-  font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;transition:.14s}
+/* Stacked on small screens; side by side (Logo | Icon) once a card has room. */
+.assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
+@media (min-width:721px){.assets{grid-template-columns:1fr 1fr}}
+/* Same bordered, rounded treatment as .logo-plate, so each section (Logo,
+   Icon, …) reads as its own block; most visible once they sit side by side. */
+.asset{border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px}
+.asset-name{font-size:13px;font-weight:700;margin-bottom:8px}
+.fmt-list{display:flex;flex-direction:column;gap:7px}
+.fmt-row{display:flex;align-items:center}
+.fmt-label{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
+  color:var(--muted);min-width:32px;margin-right:6px}
+/* No outer border: the tinted background, inner dividers and rounded corners
+   already read as one grouped control. */
+.btn-group{display:inline-flex;border-radius:8px;overflow:hidden;background:var(--surface-2)}
+.act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:0;
+  background:transparent;color:var(--muted);cursor:pointer;text-decoration:none}
+.act+.act{border-left:1px solid var(--line)}
+.act svg{width:14px;height:14px;display:block}
+.act:hover,.act:focus-visible{background:#fff;color:var(--brand,var(--anchor))}
+.act.done{color:#0d8a5f;background:#eafbf3}
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  flex:none;margin-right:auto;cursor:default;padding:0}
+.info-btn svg{width:12px;height:12px;display:block}
+.info-btn:hover,.info-btn:focus-visible{color:var(--brand,var(--anchor));border-color:var(--brand,var(--anchor))}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.swatch{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+  background:var(--surface-2);color:var(--text);border-radius:7px;padding:5px 10px;
+  font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;cursor:pointer;transition:.14s}
 .swatch:hover{border-color:var(--brand)}
 .swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
-.chip{width:13px;height:13px;border-radius:4px;background:var(--brand);
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);flex:none}
-.card-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
-.card-links a{font-size:12.5px;color:var(--muted);text-decoration:none}
-.card-links a:hover{color:var(--brand);text-decoration:underline}
+.chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
+.card-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--muted);
+  text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;transition:.14s}
+.badge svg{width:14px;height:14px;flex:none}
+.badge:hover,.badge:focus-visible{border-color:var(--brand);color:var(--brand);background:#fff}
 .rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .rules ul{margin:0;padding-left:20px}
 .rules li{margin:0 0 7px;color:var(--muted);font-size:14px}
 .rules h3{margin:0 0 10px;font-size:14px}
 .yes h3{color:#0d8a5f}.no h3{color:#c2374a}
-@media (prefers-color-scheme:dark){.yes h3{color:#3ecf9a}.no h3{color:#ff7a8a}}
 footer{border-top:1px solid var(--line);padding:28px 0 56px;color:var(--muted);font-size:13px}
 footer a{color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:var(--ink);color:#fff;
@@ -97,22 +116,28 @@ footer a{color:var(--muted)}
 <header class="top"><div class="wrap">
   <div class="brandplate"><img class="brandmark" src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay" height="32"></div>
   <h1>Brand assets</h1>
-  <p class="lede">Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Every URL below is permanent — we update the file behind it, never the address — so you can hotlink these directly and always get the current mark.</p>
+  <p class="lede">Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Every URL below is permanent: we update the file behind it, never the address, so you can hotlink these directly and always get the current mark.</p>
   <div class="panel">
     <h2>Hotlink it</h2>
     <p>Point straight at the URL. No copy in your media library, no version to keep in sync.</p>
-    <pre>&lt;img src="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" alt="CampaignBay" height="40"&gt;</pre>
+    <div class="code-row">
+      <pre>&lt;img src=&quot;https://assets.wpanchorbay.com/brand/campaignbay/logo.svg&quot; alt=&quot;CampaignBay&quot; height=&quot;40&quot;&gt;</pre>
+      <button type="button" class="act js-copy" data-copy="&lt;img src=&quot;https://assets.wpanchorbay.com/brand/campaignbay/logo.svg&quot; alt=&quot;CampaignBay&quot; height=&quot;40&quot;&gt;" title="Copy snippet" aria-label="Copy snippet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+    </div>
   </div>
   <div class="panel">
     <h2>Machine-readable</h2>
-    <p>Every product, asset URL and colour on this page, as JSON.</p>
-    <pre>https://assets.wpanchorbay.com/brand.json</pre>
+    <p>Every product, asset URL and colour on this page, as JSON, or fetch one product on its own at <code>/brand/&lt;product&gt;/brand.json</code>.</p>
+    <div class="code-row">
+      <pre>https://assets.wpanchorbay.com/brand.json</pre>
+      <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand.json" title="Copy URL" aria-label="Copy URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+    </div>
   </div>
 </div></header>
 
 <section><div class="wrap">
   <h2 class="section">The WPAnchorBay brand</h2>
-  <p class="sub">Use these for the company itself — not for an individual plugin.</p>
+  <p class="sub">Use these for the company itself, not for an individual plugin.</p>
   <div class="grid">
       <article class="card solo" id="wpanchorbay" style="--brand:#39CCCC;--on-brand:#001F3F">
         <header class="card-head">
@@ -126,44 +151,65 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/wpanchorbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">619×120 · 10.0 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/wpanchorbay/logo.png" download title="Download">↓</a>
-              <span class="meta">1238×240 · 18 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="619×120 · 10.0 KB" aria-label="619×120 · 10.0 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="1238×240 · 18 KB" aria-label="1238×240 · 18 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/wpanchorbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 928 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/wpanchorbay/icon.png" download title="Download">↓</a>
-              <span class="meta">240×240 · 4.4 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 928 B" aria-label="120×120 · 928 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="240×240 · 4.4 KB" aria-label="240×240 · 4.4 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#39CCCC" title="Copy hex">
-          <span class="chip"></span>#39CCCC
-        </button>
-        <nav class="card-links"><a href="https://wpanchorbay.com/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#39CCCC" title="Copy primary hex (#39CCCC)">
+            <span class="chip" style="background:#39CCCC"></span>#39CCCC
+          </button>
+          <button type="button" class="swatch js-copy" data-copy="#001F3F" title="Copy secondary hex (#001F3F)">
+            <span class="chip" style="background:#001F3F"></span>#001F3F
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(2,1fr)"><a class="badge" href="https://wpanchorbay.com/" rel="noopener" title="Visit Website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Visit Website</span></a><a class="badge" href="https://docs.wpanchorbay.com/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article></div>
 </div></section>
 
 <section><div class="wrap">
   <h2 class="section">Plugins</h2>
-  <p class="sub">8 products. Click a format to copy its URL, or ↓ to download.</p>
+  <p class="sub">8 products. Copy, download or open any file directly. Hover a control to see what it does.</p>
   <div class="grid">
       <article class="card" id="campaignbay" style="--brand:#F02A74;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -177,38 +223,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/campaignbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">645×120 · 13 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/campaignbay/logo.png" download title="Download">↓</a>
-              <span class="meta">1290×240 · 20 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="645×120 · 13 KB" aria-label="645×120 · 13 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/campaignbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="1290×240 · 20 KB" aria-label="1290×240 · 20 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/campaignbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/campaignbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/campaignbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/campaignbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 1.1 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/campaignbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.7 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 1.1 KB" aria-label="120×120 · 1.1 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/campaignbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/campaignbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/campaignbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.7 KB" aria-label="120×120 · 2.7 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/campaignbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/campaignbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/campaignbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#F02A74" title="Copy hex">
-          <span class="chip"></span>#F02A74
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/campaignbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/campaignbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#F02A74" title="Copy hex (#F02A74)">
+            <span class="chip" style="background:#F02A74"></span>#F02A74
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/campaignbay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/campaignbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="cartbay" style="--brand:#851AFF;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -222,38 +286,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/cartbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">422×120 · 7.4 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/cartbay/logo.png" download title="Download">↓</a>
-              <span class="meta">843×240 · 12 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="422×120 · 7.4 KB" aria-label="422×120 · 7.4 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/cartbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/cartbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/cartbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="843×240 · 12 KB" aria-label="843×240 · 12 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/cartbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/cartbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/cartbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/cartbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 799 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/cartbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 1.9 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 799 B" aria-label="120×120 · 799 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/cartbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/cartbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/cartbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 1.9 KB" aria-label="120×120 · 1.9 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/cartbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/cartbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/cartbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#851AFF" title="Copy hex">
-          <span class="chip"></span>#851AFF
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/cartbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/cartbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#851AFF" title="Copy hex (#851AFF)">
+            <span class="chip" style="background:#851AFF"></span>#851AFF
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/cartbay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/cartbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="notifybay" style="--brand:#0000F2;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -267,38 +349,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/notifybay/logo.svg" download title="Download">↓</a>
-              <span class="meta">476×120 · 8.8 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/notifybay/logo.png" download title="Download">↓</a>
-              <span class="meta">951×240 · 14 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="476×120 · 8.8 KB" aria-label="476×120 · 8.8 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/notifybay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/notifybay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/notifybay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="951×240 · 14 KB" aria-label="951×240 · 14 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/notifybay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/notifybay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/notifybay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/notifybay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 1.1 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/notifybay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.2 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 1.1 KB" aria-label="120×120 · 1.1 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/notifybay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/notifybay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/notifybay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.2 KB" aria-label="120×120 · 2.2 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/notifybay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/notifybay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/notifybay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#0000F2" title="Copy hex">
-          <span class="chip"></span>#0000F2
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/notifybay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/notifybay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#0000F2" title="Copy hex (#0000F2)">
+            <span class="chip" style="background:#0000F2"></span>#0000F2
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/notifybay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/notifybay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="optionbay" style="--brand:#1A87FF;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -312,38 +412,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/optionbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">505×120 · 8.8 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/optionbay/logo.png" download title="Download">↓</a>
-              <span class="meta">1009×240 · 15 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="505×120 · 8.8 KB" aria-label="505×120 · 8.8 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/optionbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/optionbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/optionbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="1009×240 · 15 KB" aria-label="1009×240 · 15 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/optionbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/optionbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/optionbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/optionbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 341 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/optionbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.0 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 341 B" aria-label="120×120 · 341 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/optionbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/optionbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/optionbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.0 KB" aria-label="120×120 · 2.0 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/optionbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/optionbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/optionbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#1A87FF" title="Copy hex">
-          <span class="chip"></span>#1A87FF
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/optionbay-product-options-and-addons/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/optionbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/optionbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#1A87FF" title="Copy hex (#1A87FF)">
+            <span class="chip" style="background:#1A87FF"></span>#1A87FF
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/optionbay-product-options-and-addons/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/optionbay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/optionbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="pointbay" style="--brand:#22CF95;--on-brand:#001F3F">
         <header class="card-head">
@@ -357,38 +475,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/pointbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">522×120 · 8.4 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/pointbay/logo.png" download title="Download">↓</a>
-              <span class="meta">1044×240 · 16 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="522×120 · 8.4 KB" aria-label="522×120 · 8.4 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/pointbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/pointbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/pointbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="1044×240 · 16 KB" aria-label="1044×240 · 16 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/pointbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/pointbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/pointbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/pointbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 698 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/pointbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.4 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 698 B" aria-label="120×120 · 698 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/pointbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/pointbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/pointbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.4 KB" aria-label="120×120 · 2.4 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/pointbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/pointbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/pointbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#22CF95" title="Copy hex">
-          <span class="chip"></span>#22CF95
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/pointbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/pointbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#22CF95" title="Copy hex (#22CF95)">
+            <span class="chip" style="background:#22CF95"></span>#22CF95
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/pointbay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/pointbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="productbay" style="--brand:#F05C2A;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -402,38 +538,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/productbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">545×120 · 10 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/productbay/logo.png" download title="Download">↓</a>
-              <span class="meta">1089×240 · 15 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="545×120 · 10 KB" aria-label="545×120 · 10 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/productbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/productbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/productbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="1089×240 · 15 KB" aria-label="1089×240 · 15 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/productbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/productbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/productbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/productbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 840 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/productbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.1 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 840 B" aria-label="120×120 · 840 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/productbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/productbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/productbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.1 KB" aria-label="120×120 · 2.1 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/productbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/productbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/productbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#F05C2A" title="Copy hex">
-          <span class="chip"></span>#F05C2A
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/productbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/productbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#F05C2A" title="Copy hex (#F05C2A)">
+            <span class="chip" style="background:#F05C2A"></span>#F05C2A
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/productbay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/productbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="tubebay" style="--brand:#DD0000;--on-brand:#FFFFFF">
         <header class="card-head">
@@ -447,38 +601,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/tubebay/logo.svg" download title="Download">↓</a>
-              <span class="meta">444×120 · 7.5 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/tubebay/logo.png" download title="Download">↓</a>
-              <span class="meta">888×240 · 13 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="444×120 · 7.5 KB" aria-label="444×120 · 7.5 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/tubebay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/tubebay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/tubebay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="888×240 · 13 KB" aria-label="888×240 · 13 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/tubebay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/tubebay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/tubebay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/tubebay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 596 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/tubebay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.3 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 596 B" aria-label="120×120 · 596 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/tubebay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/tubebay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/tubebay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.3 KB" aria-label="120×120 · 2.3 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/tubebay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/tubebay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/tubebay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#DD0000" title="Copy hex">
-          <span class="chip"></span>#DD0000
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/tubebay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/tubebay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#DD0000" title="Copy hex (#DD0000)">
+            <span class="chip" style="background:#DD0000"></span>#DD0000
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/tubebay/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/tubebay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article>
       <article class="card" id="upsellbay" style="--brand:#F5C000;--on-brand:#001F3F">
         <header class="card-head">
@@ -492,38 +664,56 @@ footer a{color:var(--muted)}
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/logo.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/upsellbay/logo.svg" download title="Download">↓</a>
-              <span class="meta">480×120 · 8.9 KB</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/logo.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/upsellbay/logo.png" download title="Download">↓</a>
-              <span class="meta">960×240 · 14 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="480×120 · 8.9 KB" aria-label="480×120 · 8.9 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/upsellbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/upsellbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/upsellbay/logo.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="960×240 · 14 KB" aria-label="960×240 · 14 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/upsellbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/upsellbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/upsellbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div>
         <div class="asset">
           <div class="asset-name">Icon</div>
-          <div class="asset-formats">
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/icon.svg" title="Copy URL">SVG</button>
-              <a class="dl" href="/brand/upsellbay/icon.svg" download title="Download">↓</a>
-              <span class="meta">120×120 · 583 B</span>
-            </span>
-            <span class="fmt">
-              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/icon.png" title="Copy URL">PNG</button>
-              <a class="dl" href="/brand/upsellbay/icon.png" download title="Download">↓</a>
-              <span class="meta">120×120 · 2.0 KB</span>
-            </span>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="120×120 · 583 B" aria-label="120×120 · 583 B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/upsellbay/icon.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/upsellbay/icon.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/upsellbay/icon.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="120×120 · 2.0 KB" aria-label="120×120 · 2.0 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/upsellbay/icon.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/upsellbay/icon.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/upsellbay/icon.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
           </div>
         </div></div>
-        <button class="swatch copy" data-url="#F5C000" title="Copy hex">
-          <span class="chip"></span>#F5C000
-        </button>
-        <nav class="card-links"><a href="https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/upsellbay/" rel="noopener">Docs</a></nav>
+        <div class="swatches">
+          <button type="button" class="swatch js-copy" data-copy="#F5C000" title="Copy hex (#F5C000)">
+            <span class="chip" style="background:#F5C000"></span>#F5C000
+          </button>
+        </div>
+        <nav class="card-links" style="grid-template-columns:repeat(3,1fr)"><a class="badge" href="https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/" rel="noopener" title="WordPress.org"><svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg><span>WordPress.org</span></a><a class="badge" href="https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/" rel="noopener" title="Product page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Product page</span></a><a class="badge" href="https://docs.wpanchorbay.com/upsellbay/" rel="noopener" title="Docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Docs</span></a></nav>
       </article></div>
 </div></section>
 
@@ -531,14 +721,14 @@ footer a{color:var(--muted)}
   <h2 class="section">Using the marks</h2>
   <p class="sub">Short version: don't redraw them.</p>
   <div class="rules">
-    <div class="yes"><h3>Please do</h3><ul><li>Hotlink these URLs directly — they are stable and versionless.</li><li>Use the SVG wherever the surface supports it; fall back to PNG only when it does not.</li><li>Keep clear space around the logo equal to the height of the icon's corner radius.</li><li>Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast.</li></ul></div>
-    <div class="no"><h3>Please don't</h3><ul><li>Do not recolour, rotate, skew, outline or add effects to the marks.</li><li>Do not stretch — scale proportionally only.</li><li>Do not rebuild the wordmark in another typeface.</li><li>Do not place the logo on a busy photograph or a low-contrast background.</li><li>Do not use the marks to imply partnership or endorsement without written permission.</li></ul></div>
+    <div class="yes"><h3>Please do</h3><ul><li>Hotlink these URLs directly; they are stable and versionless.</li><li>Use the SVG wherever the surface supports it; fall back to PNG only when it does not.</li><li>Keep clear space around the logo equal to the height of the icon's corner radius.</li><li>Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast.</li></ul></div>
+    <div class="no"><h3>Please don't</h3><ul><li>Do not recolour, rotate, skew, outline or add effects to the marks.</li><li>Do not stretch; scale proportionally only.</li><li>Do not rebuild the wordmark in another typeface.</li><li>Do not place the logo on a busy photograph or a low-contrast background.</li><li>Do not use the marks to imply partnership or endorsement without written permission.</li></ul></div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   Trademarks and logos are the property of WPAnchorBay.
-  Questions about usage — <a href="https://wpanchorbay.com">wpanchorbay.com</a>.
+  Questions about usage: <a href="https://wpanchorbay.com">wpanchorbay.com</a>.
   · <a href="/brand.json">brand.json</a>
 </div></footer>
 
@@ -553,9 +743,9 @@ function flash(msg){
   timer = setTimeout(() => toast.classList.remove('show'), 1600);
 }
 document.addEventListener('click', async (e) => {
-  const btn = e.target.closest('.copy');
+  const btn = e.target.closest('.js-copy');
   if (!btn) return;
-  const text = btn.dataset.url;
+  const text = btn.dataset.copy;
   try {
     await navigator.clipboard.writeText(text);
   } catch {
@@ -564,7 +754,7 @@ document.addEventListener('click', async (e) => {
     ta.style.cssText = 'position:fixed;opacity:0';
     document.body.appendChild(ta);
     ta.select();
-    try { document.execCommand('copy'); } catch { flash('Copy failed — select the URL manually'); ta.remove(); return; }
+    try { document.execCommand('copy'); } catch { flash('Copy failed. Select the URL manually'); ta.remove(); return; }
     ta.remove();
   }
   btn.classList.add('done');
