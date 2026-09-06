@@ -26,6 +26,8 @@ public/
   _headers             Cache and CORS rules. Hand-written.
 scripts/build.mjs      Regenerates every generated file above.
 wordpress/             The plugin that renders wpanchorbay.com/brand from brand.json.
+sources/<slug>/        Pre-optimization design files kept for reference. NOT served; discover()
+                       never looks here, so nothing in this folder can leak onto the public page.
 ```
 
 ## Everyday tasks
@@ -110,10 +112,11 @@ marketplace and partner listings, press.
 
 ## Known gaps
 
-- **No reversed/light logo variants.** Every wordmark is dark ink (`#001F3F`), so it disappears on
-  dark backgrounds — which is why the previews sit on forced-light plates. Export `logo-dark.svg`
-  per product when you get a chance; the build already knows the filename.
+- **Only WPAnchorBay has a `logo-dark` variant so far.** Every other wordmark is still dark ink
+  (`#001F3F`) only, so it disappears on dark backgrounds. Export `logo-dark.svg` per product when
+  you get a chance: the build already knows the filename, and gives it its own dark-background
+  preview automatically (see `public/brand/wpanchorbay/` for the pattern).
 - **Icon PNGs are 120x120** (240 for the brand mark). WordPress.org wants 128 and 256. Export
-  those from the design source — do not upscale the existing PNGs.
+  those from the design source; do not upscale the existing PNGs.
 - **PointBay's wordmark reads "LoyaltyBay"** (`public/brand/pointbay/logo.svg` / `.png`). Looks
   like a rename that never reached the logo.

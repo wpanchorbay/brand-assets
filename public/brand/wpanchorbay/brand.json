@@ -34,7 +34,28 @@
             "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg",
             "path": "/brand/wpanchorbay/logo.svg",
             "type": "image/svg+xml",
-            "bytes": 10236,
+            "bytes": 4592,
+            "width": 619,
+            "height": 120
+          }
+        }
+      },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.png",
+            "path": "/brand/wpanchorbay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 17373,
+            "width": 619,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.svg",
+            "path": "/brand/wpanchorbay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 4592,
             "width": 619,
             "height": 120
           }

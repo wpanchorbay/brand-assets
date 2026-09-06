@@ -48,17 +48,26 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .grid{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
-.card.solo{grid-column:1/-1;max-width:560px;width:100%;margin:0 auto}
+  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;
+  --link-accent:var(--brand)}
+/* The brand card's own links hover to its secondary colour (WPAnchorBay's
+   navy) rather than the primary brand teal, which reads too pale for text. */
+.card.solo{grid-column:1/-1;width:100%;--link-accent:var(--on-brand)}
 .card-head{display:flex;gap:14px;align-items:center}
 .card-icon{border-radius:14px;flex:none}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
 .tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
-/* Always light: the wordmarks are dark-ink only and would disappear on a
-   tinted or dark plate. A logo is previewed on the background it is made for. */
+/* Light by default: a wordmark with no dark-safe sibling is dark-ink only
+   and would disappear on a tinted or dark plate. A logo is previewed on the
+   background it is actually made for; when a -dark variant exists it gets
+   its own dark plate right beside the light one. */
+.plates{display:grid;grid-template-columns:1fr;gap:10px}
+.plates:has(.logo-plate--dark){grid-template-columns:1fr 1fr}
 .logo-plate{display:flex;align-items:center;justify-content:center;padding:22px 18px;
   background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 8%,transparent),color-mix(in srgb,var(--brand) 8%,transparent)),#fff;
   border:1px solid var(--line);border-radius:10px;min-height:96px}
+.logo-plate--dark{background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 14%,transparent),color-mix(in srgb,var(--brand) 14%,transparent)),var(--ink);
+  border-color:var(--ink)}
 .logo-plate img{max-width:100%;max-height:44px;width:auto;height:auto}
 /* Stacked on small screens; side by side (Logo | Icon) once a card has room. */
 .assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
@@ -98,7 +107,7 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
   text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
   text-overflow:ellipsis;transition:.14s}
 .badge svg{width:14px;height:14px;flex:none}
-.badge:hover,.badge:focus-visible{border-color:var(--brand);color:var(--brand);background:#fff}
+.badge:hover,.badge:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
 .rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .rules ul{margin:0;padding-left:20px}
 .rules li{margin:0 0 7px;color:var(--muted);font-size:14px}
@@ -147,14 +156,18 @@ footer a{color:var(--muted)}
             <p class="tagline">WooCommerce plugins that pull their weight.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay logo" loading="lazy"></div>
+          <div class="logo-plate logo-plate--dark"><img src="/brand/wpanchorbay/logo-dark.svg" alt="WPAnchorBay logo, for dark backgrounds" loading="lazy"></div>
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
           <div class="fmt-list">
             <div class="fmt-row">
               <span class="fmt-label">SVG</span>
-              <button type="button" class="info-btn" title="619×120 · 10.0 KB" aria-label="619×120 · 10.0 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <button type="button" class="info-btn" title="619×120 · 4.5 KB" aria-label="619×120 · 4.5 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
               <span class="btn-group" role="group" aria-label="SVG actions">
                 <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
                 <a class="act" href="/brand/wpanchorbay/logo.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
@@ -168,6 +181,29 @@ footer a{color:var(--muted)}
                 <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
                 <a class="act" href="/brand/wpanchorbay/logo.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
                 <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Logo (dark)</div>
+          <div class="fmt-list">
+            <div class="fmt-row">
+              <span class="fmt-label">SVG</span>
+              <button type="button" class="info-btn" title="619×120 · 4.5 KB" aria-label="619×120 · 4.5 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="SVG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.svg" title="Copy URL" aria-label="Copy SVG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/logo-dark.svg" download title="Download SVG" aria-label="Download SVG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.svg" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open SVG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </span>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-label">PNG</span>
+              <button type="button" class="info-btn" title="619×120 · 17 KB" aria-label="619×120 · 17 KB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+              <span class="btn-group" role="group" aria-label="PNG actions">
+                <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.png" title="Copy URL" aria-label="Copy PNG URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                <a class="act" href="/brand/wpanchorbay/logo-dark.png" download title="Download PNG" aria-label="Download PNG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                <a class="act" href="https://assets.wpanchorbay.com/brand/wpanchorbay/logo-dark.png" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open PNG in new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
               </span>
             </div>
           </div>
@@ -219,7 +255,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Automated discount campaigns and flash sales for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/campaignbay/logo.svg" alt="CampaignBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/campaignbay/logo.svg" alt="CampaignBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -282,7 +322,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Abandoned cart recovery for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/cartbay/logo.svg" alt="CartBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/cartbay/logo.svg" alt="CartBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -345,7 +389,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Waitlist and back-in-stock alerts for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/notifybay/logo.svg" alt="NotifyBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/notifybay/logo.svg" alt="NotifyBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -408,7 +456,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Product options and add-ons for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/optionbay/logo.svg" alt="OptionBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/optionbay/logo.svg" alt="OptionBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -471,7 +523,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Loyalty points and referral rewards for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/pointbay/logo.svg" alt="PointBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/pointbay/logo.svg" alt="PointBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -534,7 +590,11 @@ footer a{color:var(--muted)}
             <p class="tagline">High-performance product tables and order forms for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/productbay/logo.svg" alt="ProductBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/productbay/logo.svg" alt="ProductBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -597,7 +657,11 @@ footer a{color:var(--muted)}
             <p class="tagline">YouTube product videos for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/tubebay/logo.svg" alt="TubeBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/tubebay/logo.svg" alt="TubeBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>
@@ -660,7 +724,11 @@ footer a{color:var(--muted)}
             <p class="tagline">Order bumps and upsells for WooCommerce.</p>
           </div>
         </header>
-        <div class="logo-plate"><img src="/brand/upsellbay/logo.svg" alt="UpsellBay logo" loading="lazy"></div>
+        
+        <div class="plates">
+          <div class="logo-plate"><img src="/brand/upsellbay/logo.svg" alt="UpsellBay logo" loading="lazy"></div>
+          
+        </div>
         <div class="assets">
         <div class="asset">
           <div class="asset-name">Logo</div>

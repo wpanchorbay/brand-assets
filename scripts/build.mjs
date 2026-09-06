@@ -236,6 +236,14 @@ function linkBadges(p) {
 function card(p) {
   const icon = p.assets.icon?.formats.svg ?? p.assets.icon?.formats.png;
   const logo = p.assets.logo?.formats.svg ?? p.assets.logo?.formats.png;
+  // A "-dark" sibling is meant for dark backgrounds, so preview it on one:
+  // a light-only plate would defeat the point of even having the file.
+  const logoDark = p.assets['logo-dark']?.formats.svg ?? p.assets['logo-dark']?.formats.png;
+  const plates = `
+        <div class="plates">
+          ${logo ? `<div class="logo-plate"><img src="${esc(logo.path)}" alt="${esc(p.name)} logo" loading="lazy"></div>` : ''}
+          ${logoDark ? `<div class="logo-plate logo-plate--dark"><img src="${esc(logoDark.path)}" alt="${esc(p.name)} logo, for dark backgrounds" loading="lazy"></div>` : ''}
+        </div>`;
   return `
       <article class="card" id="${esc(p.slug)}" style="--brand:${esc(p.color)};--on-brand:${esc(p.onColor)}">
         <header class="card-head">
@@ -245,7 +253,7 @@ function card(p) {
             <p class="tagline">${esc(p.tagline)}</p>
           </div>
         </header>
-        ${logo ? `<div class="logo-plate"><img src="${esc(logo.path)}" alt="${esc(p.name)} logo" loading="lazy"></div>` : ''}
+        ${logo || logoDark ? plates : ''}
         <div class="assets">${Object.values(p.assets).map(assetRow).join('')}</div>
         <div class="swatches">${swatches(p)
           .map(
@@ -317,17 +325,26 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .grid{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
 @media (max-width:720px){.grid{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
-.card.solo{grid-column:1/-1;max-width:560px;width:100%;margin:0 auto}
+  padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;
+  --link-accent:var(--brand)}
+/* The brand card's own links hover to its secondary colour (WPAnchorBay's
+   navy) rather than the primary brand teal, which reads too pale for text. */
+.card.solo{grid-column:1/-1;width:100%;--link-accent:var(--on-brand)}
 .card-head{display:flex;gap:14px;align-items:center}
 .card-icon{border-radius:14px;flex:none}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
 .tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
-/* Always light: the wordmarks are dark-ink only and would disappear on a
-   tinted or dark plate. A logo is previewed on the background it is made for. */
+/* Light by default: a wordmark with no dark-safe sibling is dark-ink only
+   and would disappear on a tinted or dark plate. A logo is previewed on the
+   background it is actually made for; when a -dark variant exists it gets
+   its own dark plate right beside the light one. */
+.plates{display:grid;grid-template-columns:1fr;gap:10px}
+.plates:has(.logo-plate--dark){grid-template-columns:1fr 1fr}
 .logo-plate{display:flex;align-items:center;justify-content:center;padding:22px 18px;
   background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 8%,transparent),color-mix(in srgb,var(--brand) 8%,transparent)),#fff;
   border:1px solid var(--line);border-radius:10px;min-height:96px}
+.logo-plate--dark{background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 14%,transparent),color-mix(in srgb,var(--brand) 14%,transparent)),var(--ink);
+  border-color:var(--ink)}
 .logo-plate img{max-width:100%;max-height:44px;width:auto;height:auto}
 /* Stacked on small screens; side by side (Logo | Icon) once a card has room. */
 .assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
@@ -367,7 +384,7 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
   text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
   text-overflow:ellipsis;transition:.14s}
 .badge svg{width:14px;height:14px;flex:none}
-.badge:hover,.badge:focus-visible{border-color:var(--brand);color:var(--brand);background:#fff}
+.badge:hover,.badge:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
 .rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .rules ul{margin:0;padding-left:20px}
 .rules li{margin:0 0 7px;color:var(--muted);font-size:14px}

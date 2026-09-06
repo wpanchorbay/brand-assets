@@ -265,10 +265,13 @@ function render_card( array $product ): string {
 		return '';
 	}
 
-	$glyphs = icons();
-	$meta   = link_meta();
-	$icon   = safe_asset_url( $assets['icon']['formats']['svg']['url'] ?? $assets['icon']['formats']['png']['url'] ?? '' );
-	$logo   = safe_asset_url( $assets['logo']['formats']['svg']['url'] ?? $assets['logo']['formats']['png']['url'] ?? '' );
+	$glyphs    = icons();
+	$meta      = link_meta();
+	$icon      = safe_asset_url( $assets['icon']['formats']['svg']['url'] ?? $assets['icon']['formats']['png']['url'] ?? '' );
+	$logo      = safe_asset_url( $assets['logo']['formats']['svg']['url'] ?? $assets['logo']['formats']['png']['url'] ?? '' );
+	// A "-dark" sibling is meant for dark backgrounds, so preview it on one:
+	// a light-only plate would defeat the point of even having the file.
+	$logo_dark = safe_asset_url( $assets['logo-dark']['formats']['svg']['url'] ?? $assets['logo-dark']['formats']['png']['url'] ?? '' );
 
 	// WPAnchorBay the brand carries two identity colours (teal + navy); a
 	// plugin's onColor is only ever a text-contrast helper for its badge,
@@ -288,9 +291,13 @@ function render_card( array $product ): string {
 
 	$badge_links = array_intersect_key( $links, $meta );
 
+	// The brand card's own links hover to its secondary colour (WPAnchorBay's
+	// navy) rather than the primary brand teal, which reads too pale for text.
+	$link_accent = 'brand' === $kind ? $on_color : $color;
+
 	ob_start();
 	?>
-	<article class="wpab-ba-card" id="wpab-ba-<?php echo esc_attr( $slug ); ?>" style="--wpab-ba-brand:<?php echo esc_attr( $color ); ?>;--wpab-ba-on-brand:<?php echo esc_attr( $on_color ); ?>">
+	<article class="wpab-ba-card" id="wpab-ba-<?php echo esc_attr( $slug ); ?>" style="--wpab-ba-brand:<?php echo esc_attr( $color ); ?>;--wpab-ba-on-brand:<?php echo esc_attr( $on_color ); ?>;--wpab-ba-link-accent:<?php echo esc_attr( $link_accent ); ?>">
 		<div class="wpab-ba-card__head">
 			<?php if ( $icon ) : ?>
 				<img class="wpab-ba-card__icon" src="<?php echo esc_url( $icon ); ?>"
@@ -304,14 +311,28 @@ function render_card( array $product ): string {
 			</div>
 		</div>
 
-		<?php if ( $logo ) : ?>
-			<div class="wpab-ba-card__plate">
-				<img src="<?php echo esc_url( $logo ); ?>"
-					alt="<?php
-						/* translators: %s: product name. */
-						echo esc_attr( sprintf( __( '%s logo', 'wpab-brand-assets' ), $name ) );
-					?>"
-					loading="lazy" decoding="async">
+		<?php if ( $logo || $logo_dark ) : ?>
+			<div class="wpab-ba-plates">
+				<?php if ( $logo ) : ?>
+					<div class="wpab-ba-card__plate">
+						<img src="<?php echo esc_url( $logo ); ?>"
+							alt="<?php
+								/* translators: %s: product name. */
+								echo esc_attr( sprintf( __( '%s logo', 'wpab-brand-assets' ), $name ) );
+							?>"
+							loading="lazy" decoding="async">
+					</div>
+				<?php endif; ?>
+				<?php if ( $logo_dark ) : ?>
+					<div class="wpab-ba-card__plate wpab-ba-card__plate--dark">
+						<img src="<?php echo esc_url( $logo_dark ); ?>"
+							alt="<?php
+								/* translators: %s: product name. */
+								echo esc_attr( sprintf( __( '%s logo, for dark backgrounds', 'wpab-brand-assets' ), $name ) );
+							?>"
+							loading="lazy" decoding="async">
+					</div>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
@@ -536,10 +557,14 @@ box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
 .wpab-ba-card__icon{border-radius:14px;flex:none}
 .wpab-ba-card__title{margin:0;font-size:17px;line-height:1.3;letter-spacing:-.01em}
 .wpab-ba-card__tagline{margin:3px 0 0;font-size:13.5px;line-height:1.45;color:#5b6472}
+.wpab-ba-plates{display:grid;grid-template-columns:1fr;gap:10px}
+.wpab-ba-plates:has(.wpab-ba-card__plate--dark){grid-template-columns:1fr 1fr}
 .wpab-ba-card__plate{display:flex;align-items:center;justify-content:center;min-height:92px;padding:20px 16px;
 border:1px solid #e2e7ee;border-radius:10px;
 background:linear-gradient(0deg,color-mix(in srgb,var(--wpab-ba-brand) 8%,transparent),
 color-mix(in srgb,var(--wpab-ba-brand) 8%,transparent)),#fff}
+.wpab-ba-card__plate--dark{background:linear-gradient(0deg,color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent),
+color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent)),#001F3F;border-color:#001F3F}
 .wpab-ba-card__plate img{max-width:100%;max-height:40px;width:auto;height:auto}
 /* Stacked on small screens; side by side (Logo | Icon) once there is room. */
 .wpab-ba-assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
@@ -574,7 +599,7 @@ letter-spacing:.03em;cursor:pointer}
 border:1px solid #e2e7ee;border-radius:8px;background:#fbfcfe;color:#5b6472;text-decoration:none;
 font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wpab-ba-badge svg{width:14px;height:14px;flex:none}
-.wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-brand);color:var(--wpab-ba-brand);background:#fff}
+.wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-link-accent);color:var(--wpab-ba-link-accent);background:#fff}
 .wpab-ba-notice{padding:12px 16px;border-left:3px solid #d63638;background:rgba(214,54,56,.06);font-size:14px}
 .wpab-ba-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:#001F3F;color:#fff;
 padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:9999}
