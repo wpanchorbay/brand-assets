@@ -1,0 +1,42 @@
+{
+  "CampaignBay": {
+    "wordpressLink": "https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/campaignbay/",
+    "docsLink": "https://docs.wpanchorbay.com/campaignbay/"
+  },
+  "CartBay": {
+    "wordpressLink": "https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/cartbay/",
+    "docsLink": "https://docs.wpanchorbay.com/cartbay/"
+  },
+  "NotifyBay": {
+    "wordpressLink": "https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/notifybay/",
+    "docsLink": "https://docs.wpanchorbay.com/notifybay/"
+  },
+  "OptionBay": {
+    "wordpressLink": "https://wordpress.org/plugins/optionbay-product-options-and-addons/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/optionbay/",
+    "docsLink": "https://docs.wpanchorbay.com/optionbay/"
+  },
+  "PointBay": {
+    "wordpressLink": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/pointbay/",
+    "docsLink": "https://docs.wpanchorbay.com/pointbay/"
+  },
+  "ProductBay": {
+    "wordpressLink": "https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/productbay/",
+    "docsLink": "https://docs.wpanchorbay.com/productbay/"
+  },
+  "TubeBay": {
+    "wordpressLink": "https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/tubebay/",
+    "docsLink": "https://docs.wpanchorbay.com/tubebay/"
+  },
+  "UpsellBay": {
+    "wordpressLink": "https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/",
+    "wpanchorbayLink": "https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/",
+    "docsLink": "https://docs.wpanchorbay.com/upsellbay/"
+  }
+}
