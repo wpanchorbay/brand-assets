@@ -1,0 +1,15 @@
+{
+  "name": "wpanchorbay-brand-assets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Brand asset origin for assets.wpanchorbay.com — permanent URLs for WPAnchorBay logos, icons and colours.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs && git diff --quiet -- public/ || (echo 'public/ is out of date — run npm run build and commit' && exit 1)",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

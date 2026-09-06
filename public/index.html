@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brand Assets — WPAnchorBay</title>
+<meta name="description" content="Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Stable, permanent URLs — safe to hotlink.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/brand/wpanchorbay/icon.svg" type="image/svg+xml">
+<meta property="og:title" content="Brand Assets — WPAnchorBay">
+<meta property="og:description" content="Official logos, icons and colours. Stable URLs, safe to hotlink.">
+<meta property="og:url" content="https://assets.wpanchorbay.com/">
+<style>
+:root{
+  --ink:#001F3F; --anchor:#39CCCC;
+  --bg:#fbfcfd; --surface:#fff; --line:#e3e8ee; --text:#0e1b2a; --muted:#5b6b7d;
+  --radius:14px; --shadow:0 1px 2px rgba(0,31,63,.06),0 8px 24px -12px rgba(0,31,63,.14);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0a1420;--surface:#101f31;--line:#1e3247;--text:#e6eef7;--muted:#93a7bb;
+        --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+header.top{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+.brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:11px;padding:12px 18px;margin-bottom:28px;box-shadow:var(--shadow)}
+.brandmark{height:32px;width:auto;display:block}
+h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.02em}
+.lede{margin:0;max-width:62ch;color:var(--muted);font-size:17px}
+.panel{margin:28px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.panel p{margin:0 0 12px;color:var(--muted)}
+pre{margin:0;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+  overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+section{padding:44px 0}
+h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
+.sub{margin:0 0 24px;color:var(--muted);font-size:14px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.card.solo{grid-column:1/-1;max-width:520px}
+.card-head{display:flex;gap:14px;align-items:center}
+.card-icon{border-radius:14px;flex:none}
+.card h3{margin:0;font-size:17px;letter-spacing:-.01em}
+.tagline{margin:2px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
+/* Always light: the wordmarks are dark-ink only and would disappear on the
+   dark theme's ground. A logo is previewed on the background it is made for. */
+.logo-plate{display:flex;align-items:center;justify-content:center;padding:22px 18px;
+  background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 8%,transparent),color-mix(in srgb,var(--brand) 8%,transparent)),#fff;
+  border:1px solid var(--line);border-radius:10px;min-height:96px}
+.logo-plate img{max-width:100%;max-height:44px;width:auto;height:auto}
+.assets{display:flex;flex-direction:column;gap:10px}
+.asset{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;justify-content:space-between}
+.asset-name{font-size:13px;font-weight:600}
+.asset-formats{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fmt{display:inline-flex;align-items:center;gap:5px}
+button{font:inherit;cursor:pointer}
+.copy{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:6px;
+  padding:2px 8px;font-size:11.5px;font-weight:700;letter-spacing:.04em;transition:.14s}
+.copy:hover{border-color:var(--brand,var(--anchor));color:var(--brand,var(--anchor))}
+.copy.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+.dl{text-decoration:none;color:var(--muted);font-size:13px;line-height:1;padding:2px 4px;border-radius:5px}
+.dl:hover{color:var(--brand,var(--anchor));background:var(--bg)}
+.meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.swatch{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;border:1px solid var(--line);
+  background:var(--bg);color:var(--text);border-radius:7px;padding:5px 10px;
+  font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;transition:.14s}
+.swatch:hover{border-color:var(--brand)}
+.swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+.chip{width:13px;height:13px;border-radius:4px;background:var(--brand);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);flex:none}
+.card-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.card-links a{font-size:12.5px;color:var(--muted);text-decoration:none}
+.card-links a:hover{color:var(--brand);text-decoration:underline}
+.rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.rules ul{margin:0;padding-left:20px}
+.rules li{margin:0 0 7px;color:var(--muted);font-size:14px}
+.rules h3{margin:0 0 10px;font-size:14px}
+.yes h3{color:#0d8a5f}.no h3{color:#c2374a}
+@media (prefers-color-scheme:dark){.yes h3{color:#3ecf9a}.no h3{color:#ff7a8a}}
+footer{border-top:1px solid var(--line);padding:28px 0 56px;color:var(--muted);font-size:13px}
+footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:var(--ink);color:#fff;
+  padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:9}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brandplate"><img class="brandmark" src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay" height="32"></div>
+  <h1>Brand assets</h1>
+  <p class="lede">Official logos, icons and colours for WPAnchorBay and its WooCommerce plugins. Every URL below is permanent — we update the file behind it, never the address — so you can hotlink these directly and always get the current mark.</p>
+  <div class="panel">
+    <h2>Hotlink it</h2>
+    <p>Point straight at the URL. No copy in your media library, no version to keep in sync.</p>
+    <pre>&lt;img src="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" alt="CampaignBay" height="40"&gt;</pre>
+  </div>
+  <div class="panel">
+    <h2>Machine-readable</h2>
+    <p>Every product, asset URL and colour on this page, as JSON.</p>
+    <pre>https://assets.wpanchorbay.com/brand.json</pre>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <h2 class="section">The WPAnchorBay brand</h2>
+  <p class="sub">Use these for the company itself — not for an individual plugin.</p>
+  <div class="grid">
+      <article class="card solo" id="wpanchorbay" style="--brand:#39CCCC;--on-brand:#001F3F">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/wpanchorbay/icon.svg" alt="WPAnchorBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>WPAnchorBay</h3>
+            <p class="tagline">WooCommerce plugins that pull their weight.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/wpanchorbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">619×120 · 10.0 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/wpanchorbay/logo.png" download title="Download">↓</a>
+              <span class="meta">1238×240 · 18 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/wpanchorbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 928 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/wpanchorbay/icon.png" download title="Download">↓</a>
+              <span class="meta">240×240 · 4.4 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#39CCCC" title="Copy hex">
+          <span class="chip"></span>#39CCCC
+        </button>
+        <nav class="card-links"><a href="https://wpanchorbay.com/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/" rel="noopener">Docs</a></nav>
+      </article></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="section">Plugins</h2>
+  <p class="sub">8 products. Click a format to copy its URL, or ↓ to download.</p>
+  <div class="grid">
+      <article class="card" id="campaignbay" style="--brand:#F02A74;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/campaignbay/icon.svg" alt="CampaignBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>CampaignBay</h3>
+            <p class="tagline">Automated discount campaigns and flash sales for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/campaignbay/logo.svg" alt="CampaignBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/campaignbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">645×120 · 13 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/campaignbay/logo.png" download title="Download">↓</a>
+              <span class="meta">1290×240 · 20 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/campaignbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 1.1 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/campaignbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/campaignbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.7 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#F02A74" title="Copy hex">
+          <span class="chip"></span>#F02A74
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/campaignbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/campaignbay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="cartbay" style="--brand:#851AFF;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/cartbay/icon.svg" alt="CartBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>CartBay</h3>
+            <p class="tagline">Abandoned cart recovery for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/cartbay/logo.svg" alt="CartBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/cartbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">422×120 · 7.4 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/cartbay/logo.png" download title="Download">↓</a>
+              <span class="meta">843×240 · 12 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/cartbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 799 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/cartbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/cartbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 1.9 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#851AFF" title="Copy hex">
+          <span class="chip"></span>#851AFF
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/cartbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/cartbay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="notifybay" style="--brand:#0000F2;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/notifybay/icon.svg" alt="NotifyBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>NotifyBay</h3>
+            <p class="tagline">Waitlist and back-in-stock alerts for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/notifybay/logo.svg" alt="NotifyBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/notifybay/logo.svg" download title="Download">↓</a>
+              <span class="meta">476×120 · 8.8 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/notifybay/logo.png" download title="Download">↓</a>
+              <span class="meta">951×240 · 14 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/notifybay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 1.1 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/notifybay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/notifybay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.2 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#0000F2" title="Copy hex">
+          <span class="chip"></span>#0000F2
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/notifybay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/notifybay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="optionbay" style="--brand:#1A87FF;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/optionbay/icon.svg" alt="OptionBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>OptionBay</h3>
+            <p class="tagline">Product options and add-ons for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/optionbay/logo.svg" alt="OptionBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/optionbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">505×120 · 8.8 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/optionbay/logo.png" download title="Download">↓</a>
+              <span class="meta">1009×240 · 15 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/optionbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 341 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/optionbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/optionbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.0 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#1A87FF" title="Copy hex">
+          <span class="chip"></span>#1A87FF
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/optionbay-product-options-and-addons/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/optionbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/optionbay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="pointbay" style="--brand:#22CF95;--on-brand:#001F3F">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/pointbay/icon.svg" alt="PointBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>PointBay</h3>
+            <p class="tagline">Loyalty points and referral rewards for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/pointbay/logo.svg" alt="PointBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/pointbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">522×120 · 8.4 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/pointbay/logo.png" download title="Download">↓</a>
+              <span class="meta">1044×240 · 16 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/pointbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 698 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/pointbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/pointbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.4 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#22CF95" title="Copy hex">
+          <span class="chip"></span>#22CF95
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/pointbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/pointbay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="productbay" style="--brand:#F05C2A;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/productbay/icon.svg" alt="ProductBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>ProductBay</h3>
+            <p class="tagline">High-performance product tables and order forms for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/productbay/logo.svg" alt="ProductBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/productbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">545×120 · 10 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/productbay/logo.png" download title="Download">↓</a>
+              <span class="meta">1089×240 · 15 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/productbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 840 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/productbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/productbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.1 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#F05C2A" title="Copy hex">
+          <span class="chip"></span>#F05C2A
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/productbay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/productbay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="tubebay" style="--brand:#DD0000;--on-brand:#FFFFFF">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/tubebay/icon.svg" alt="TubeBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>TubeBay</h3>
+            <p class="tagline">YouTube product videos for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/tubebay/logo.svg" alt="TubeBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/tubebay/logo.svg" download title="Download">↓</a>
+              <span class="meta">444×120 · 7.5 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/tubebay/logo.png" download title="Download">↓</a>
+              <span class="meta">888×240 · 13 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/tubebay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 596 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/tubebay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/tubebay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.3 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#DD0000" title="Copy hex">
+          <span class="chip"></span>#DD0000
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/tubebay/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/tubebay/" rel="noopener">Docs</a></nav>
+      </article>
+      <article class="card" id="upsellbay" style="--brand:#F5C000;--on-brand:#001F3F">
+        <header class="card-head">
+          <img class="card-icon" src="/brand/upsellbay/icon.svg" alt="UpsellBay icon" width="56" height="56" loading="lazy">
+          <div>
+            <h3>UpsellBay</h3>
+            <p class="tagline">Order bumps and upsells for WooCommerce.</p>
+          </div>
+        </header>
+        <div class="logo-plate"><img src="/brand/upsellbay/logo.svg" alt="UpsellBay logo" loading="lazy"></div>
+        <div class="assets">
+        <div class="asset">
+          <div class="asset-name">Logo</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/logo.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/upsellbay/logo.svg" download title="Download">↓</a>
+              <span class="meta">480×120 · 8.9 KB</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/logo.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/upsellbay/logo.png" download title="Download">↓</a>
+              <span class="meta">960×240 · 14 KB</span>
+            </span>
+          </div>
+        </div>
+        <div class="asset">
+          <div class="asset-name">Icon</div>
+          <div class="asset-formats">
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/icon.svg" title="Copy URL">SVG</button>
+              <a class="dl" href="/brand/upsellbay/icon.svg" download title="Download">↓</a>
+              <span class="meta">120×120 · 583 B</span>
+            </span>
+            <span class="fmt">
+              <button class="copy" data-url="https://assets.wpanchorbay.com/brand/upsellbay/icon.png" title="Copy URL">PNG</button>
+              <a class="dl" href="/brand/upsellbay/icon.png" download title="Download">↓</a>
+              <span class="meta">120×120 · 2.0 KB</span>
+            </span>
+          </div>
+        </div></div>
+        <button class="swatch copy" data-url="#F5C000" title="Copy hex">
+          <span class="chip"></span>#F5C000
+        </button>
+        <nav class="card-links"><a href="https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/" rel="noopener">WordPress.org</a><a href="https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/" rel="noopener">Product page</a><a href="https://docs.wpanchorbay.com/upsellbay/" rel="noopener">Docs</a></nav>
+      </article></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="section">Using the marks</h2>
+  <p class="sub">Short version: don't redraw them.</p>
+  <div class="rules">
+    <div class="yes"><h3>Please do</h3><ul><li>Hotlink these URLs directly — they are stable and versionless.</li><li>Use the SVG wherever the surface supports it; fall back to PNG only when it does not.</li><li>Keep clear space around the logo equal to the height of the icon's corner radius.</li><li>Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast.</li></ul></div>
+    <div class="no"><h3>Please don't</h3><ul><li>Do not recolour, rotate, skew, outline or add effects to the marks.</li><li>Do not stretch — scale proportionally only.</li><li>Do not rebuild the wordmark in another typeface.</li><li>Do not place the logo on a busy photograph or a low-contrast background.</li><li>Do not use the marks to imply partnership or endorsement without written permission.</li></ul></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Trademarks and logos are the property of WPAnchorBay.
+  Questions about usage — <a href="https://wpanchorbay.com">wpanchorbay.com</a>.
+  · <a href="/brand.json">brand.json</a>
+</div></footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const toast = document.getElementById('toast');
+let timer;
+function flash(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(timer);
+  timer = setTimeout(() => toast.classList.remove('show'), 1600);
+}
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy');
+  if (!btn) return;
+  const text = btn.dataset.url;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch { flash('Copy failed — select the URL manually'); ta.remove(); return; }
+    ta.remove();
+  }
+  btn.classList.add('done');
+  setTimeout(() => btn.classList.remove('done'), 900);
+  flash('Copied ' + text);
+});
+</script>
+</body>
+</html>

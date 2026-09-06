@@ -1,0 +1,138 @@
+{
+  "$comment": "Single source of truth for WPAnchorBay brand assets. Edit this file, then run `npm run build` to regenerate public/brand.json and public/index.html. Asset FILES are discovered from public/brand/<slug>/ — never list them here, or the manifest can lie.",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "palette": {
+    "ink": "#001F3F",
+    "anchor": "#39CCCC"
+  },
+  "usage": {
+    "allowed": [
+      "Hotlink these URLs directly — they are stable and versionless.",
+      "Use the SVG wherever the surface supports it; fall back to PNG only when it does not.",
+      "Keep clear space around the logo equal to the height of the icon's corner radius.",
+      "Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast."
+    ],
+    "notAllowed": [
+      "Do not recolour, rotate, skew, outline or add effects to the marks.",
+      "Do not stretch — scale proportionally only.",
+      "Do not rebuild the wordmark in another typeface.",
+      "Do not place the logo on a busy photograph or a low-contrast background.",
+      "Do not use the marks to imply partnership or endorsement without written permission."
+    ]
+  },
+  "products": {
+    "wpanchorbay": {
+      "name": "WPAnchorBay",
+      "kind": "brand",
+      "tagline": "WooCommerce plugins that pull their weight.",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "links": {
+        "site": "https://wpanchorbay.com/",
+        "docs": "https://docs.wpanchorbay.com/"
+      }
+    },
+    "campaignbay": {
+      "name": "CampaignBay",
+      "kind": "plugin",
+      "tagline": "Automated discount campaigns and flash sales for WooCommerce.",
+      "color": "#F02A74",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/campaignbay/",
+        "docs": "https://docs.wpanchorbay.com/campaignbay/"
+      }
+    },
+    "cartbay": {
+      "name": "CartBay",
+      "kind": "plugin",
+      "tagline": "Abandoned cart recovery for WooCommerce.",
+      "color": "#851AFF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/cartbay/",
+        "docs": "https://docs.wpanchorbay.com/cartbay/"
+      }
+    },
+    "notifybay": {
+      "name": "NotifyBay",
+      "kind": "plugin",
+      "tagline": "Waitlist and back-in-stock alerts for WooCommerce.",
+      "color": "#0000F2",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/notifybay/",
+        "docs": "https://docs.wpanchorbay.com/notifybay/"
+      }
+    },
+    "optionbay": {
+      "name": "OptionBay",
+      "kind": "plugin",
+      "tagline": "Product options and add-ons for WooCommerce.",
+      "color": "#1A87FF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/optionbay-product-options-and-addons/",
+        "site": "https://wpanchorbay.com/plugins/optionbay/",
+        "docs": "https://docs.wpanchorbay.com/optionbay/"
+      }
+    },
+    "pointbay": {
+      "name": "PointBay",
+      "kind": "plugin",
+      "tagline": "Loyalty points and referral rewards for WooCommerce.",
+      "color": "#22CF95",
+      "onColor": "#001F3F",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/pointbay/",
+        "docs": "https://docs.wpanchorbay.com/pointbay/"
+      }
+    },
+    "productbay": {
+      "name": "ProductBay",
+      "kind": "plugin",
+      "tagline": "High-performance product tables and order forms for WooCommerce.",
+      "color": "#F05C2A",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/productbay/",
+        "docs": "https://docs.wpanchorbay.com/productbay/"
+      }
+    },
+    "tubebay": {
+      "name": "TubeBay",
+      "kind": "plugin",
+      "tagline": "YouTube product videos for WooCommerce.",
+      "color": "#DD0000",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/tubebay/",
+        "docs": "https://docs.wpanchorbay.com/tubebay/"
+      }
+    },
+    "upsellbay": {
+      "name": "UpsellBay",
+      "kind": "plugin",
+      "tagline": "Order bumps and upsells for WooCommerce.",
+      "color": "#F5C000",
+      "onColor": "#001F3F",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/",
+        "docs": "https://docs.wpanchorbay.com/upsellbay/"
+      }
+    }
+  }
+}

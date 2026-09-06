@@ -1,0 +1,23 @@
+# Cloudflare _headers — https://developers.cloudflare.com/pages/configuration/headers/
+#
+# The whole point of this origin is that a URL is permanent while the file
+# behind it can change. That only works if caches revalidate, so nothing here
+# gets a long immutable max-age.
+#
+# Need a hard, instant bust anywhere? Append a query string (?v=2) — Cloudflare
+# keys the cache on the full URL, so that bypasses both edge and browser copies.
+
+/brand/*
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+/brand.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN

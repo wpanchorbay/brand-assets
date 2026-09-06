@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "wpanchorbay-assets",
+  "compatibility_date": "2026-09-06",
+
+  // Assets-only Worker: no "main", and no "binding" (that is only valid with a
+  // Worker script). Everything in public/ is served straight from the edge.
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  },
+
+  "observability": { "enabled": true }
+
+  // The custom domain assets.wpanchorbay.com is attached in the dashboard
+  // (Workers > wpanchorbay-assets > Settings > Domains & Routes > Add custom
+  // domain). That creates the proxied DNS record for you — do not pre-create it.
+}

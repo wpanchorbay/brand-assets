@@ -1,0 +1,543 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "palette": {
+    "ink": "#001F3F",
+    "anchor": "#39CCCC"
+  },
+  "usage": {
+    "allowed": [
+      "Hotlink these URLs directly — they are stable and versionless.",
+      "Use the SVG wherever the surface supports it; fall back to PNG only when it does not.",
+      "Keep clear space around the logo equal to the height of the icon's corner radius.",
+      "Place the logo on white, on #001F3F, or on a plain colour with sufficient contrast."
+    ],
+    "notAllowed": [
+      "Do not recolour, rotate, skew, outline or add effects to the marks.",
+      "Do not stretch — scale proportionally only.",
+      "Do not rebuild the wordmark in another typeface.",
+      "Do not place the logo on a busy photograph or a low-contrast background.",
+      "Do not use the marks to imply partnership or endorsement without written permission."
+    ]
+  },
+  "products": {
+    "wpanchorbay": {
+      "slug": "wpanchorbay",
+      "name": "WPAnchorBay",
+      "kind": "brand",
+      "tagline": "WooCommerce plugins that pull their weight.",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "links": {
+        "site": "https://wpanchorbay.com/",
+        "docs": "https://docs.wpanchorbay.com/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo.png",
+              "path": "/brand/wpanchorbay/logo.png",
+              "type": "image/png",
+              "bytes": 18803,
+              "width": 1238,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg",
+              "path": "/brand/wpanchorbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 10236,
+              "width": 619,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon.png",
+              "path": "/brand/wpanchorbay/icon.png",
+              "type": "image/png",
+              "bytes": 4547,
+              "width": 240,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon.svg",
+              "path": "/brand/wpanchorbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 928,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "campaignbay": {
+      "slug": "campaignbay",
+      "name": "CampaignBay",
+      "kind": "plugin",
+      "tagline": "Automated discount campaigns and flash sales for WooCommerce.",
+      "color": "#F02A74",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/campaignbay/",
+        "docs": "https://docs.wpanchorbay.com/campaignbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo.png",
+              "path": "/brand/campaignbay/logo.png",
+              "type": "image/png",
+              "bytes": 20272,
+              "width": 1290,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo.svg",
+              "path": "/brand/campaignbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 13529,
+              "width": 645,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon.png",
+              "path": "/brand/campaignbay/icon.png",
+              "type": "image/png",
+              "bytes": 2774,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon.svg",
+              "path": "/brand/campaignbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 1163,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "cartbay": {
+      "slug": "cartbay",
+      "name": "CartBay",
+      "kind": "plugin",
+      "tagline": "Abandoned cart recovery for WooCommerce.",
+      "color": "#851AFF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/cartbay-abandoned-cart-recovery-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/cartbay/",
+        "docs": "https://docs.wpanchorbay.com/cartbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/logo.png",
+              "path": "/brand/cartbay/logo.png",
+              "type": "image/png",
+              "bytes": 12626,
+              "width": 843,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/logo.svg",
+              "path": "/brand/cartbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 7551,
+              "width": 422,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon.png",
+              "path": "/brand/cartbay/icon.png",
+              "type": "image/png",
+              "bytes": 1978,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon.svg",
+              "path": "/brand/cartbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 799,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "notifybay": {
+      "slug": "notifybay",
+      "name": "NotifyBay",
+      "kind": "plugin",
+      "tagline": "Waitlist and back-in-stock alerts for WooCommerce.",
+      "color": "#0000F2",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/notifybay/",
+        "docs": "https://docs.wpanchorbay.com/notifybay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/logo.png",
+              "path": "/brand/notifybay/logo.png",
+              "type": "image/png",
+              "bytes": 14654,
+              "width": 951,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/logo.svg",
+              "path": "/brand/notifybay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 8970,
+              "width": 476,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon.png",
+              "path": "/brand/notifybay/icon.png",
+              "type": "image/png",
+              "bytes": 2217,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon.svg",
+              "path": "/brand/notifybay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 1079,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "optionbay": {
+      "slug": "optionbay",
+      "name": "OptionBay",
+      "kind": "plugin",
+      "tagline": "Product options and add-ons for WooCommerce.",
+      "color": "#1A87FF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/optionbay-product-options-and-addons/",
+        "site": "https://wpanchorbay.com/plugins/optionbay/",
+        "docs": "https://docs.wpanchorbay.com/optionbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/logo.png",
+              "path": "/brand/optionbay/logo.png",
+              "type": "image/png",
+              "bytes": 15394,
+              "width": 1009,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/logo.svg",
+              "path": "/brand/optionbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 8984,
+              "width": 505,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon.png",
+              "path": "/brand/optionbay/icon.png",
+              "type": "image/png",
+              "bytes": 2032,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon.svg",
+              "path": "/brand/optionbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 341,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "pointbay": {
+      "slug": "pointbay",
+      "name": "PointBay",
+      "kind": "plugin",
+      "tagline": "Loyalty points and referral rewards for WooCommerce.",
+      "color": "#22CF95",
+      "onColor": "#001F3F",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/pointbay/",
+        "docs": "https://docs.wpanchorbay.com/pointbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.png",
+              "path": "/brand/pointbay/logo.png",
+              "type": "image/png",
+              "bytes": 16645,
+              "width": 1044,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.svg",
+              "path": "/brand/pointbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 8638,
+              "width": 522,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon.png",
+              "path": "/brand/pointbay/icon.png",
+              "type": "image/png",
+              "bytes": 2441,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon.svg",
+              "path": "/brand/pointbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 698,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "productbay": {
+      "slug": "productbay",
+      "name": "ProductBay",
+      "kind": "plugin",
+      "tagline": "High-performance product tables and order forms for WooCommerce.",
+      "color": "#F05C2A",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/productbay/",
+        "docs": "https://docs.wpanchorbay.com/productbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/logo.png",
+              "path": "/brand/productbay/logo.png",
+              "type": "image/png",
+              "bytes": 15641,
+              "width": 1089,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/logo.svg",
+              "path": "/brand/productbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 10495,
+              "width": 545,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon.png",
+              "path": "/brand/productbay/icon.png",
+              "type": "image/png",
+              "bytes": 2182,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon.svg",
+              "path": "/brand/productbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 840,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "tubebay": {
+      "slug": "tubebay",
+      "name": "TubeBay",
+      "kind": "plugin",
+      "tagline": "YouTube product videos for WooCommerce.",
+      "color": "#DD0000",
+      "onColor": "#FFFFFF",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/tubebay/",
+        "docs": "https://docs.wpanchorbay.com/tubebay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/logo.png",
+              "path": "/brand/tubebay/logo.png",
+              "type": "image/png",
+              "bytes": 13275,
+              "width": 888,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/logo.svg",
+              "path": "/brand/tubebay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 7637,
+              "width": 444,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon.png",
+              "path": "/brand/tubebay/icon.png",
+              "type": "image/png",
+              "bytes": 2327,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon.svg",
+              "path": "/brand/tubebay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 596,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "upsellbay": {
+      "slug": "upsellbay",
+      "name": "UpsellBay",
+      "kind": "plugin",
+      "tagline": "Order bumps and upsells for WooCommerce.",
+      "color": "#F5C000",
+      "onColor": "#001F3F",
+      "links": {
+        "wordpress": "https://wordpress.org/plugins/upsellbay-order-bump-for-woocommerce/",
+        "site": "https://wpanchorbay.com/plugins/upsellbay-order-bump-upsell-for-woocommerce/",
+        "docs": "https://docs.wpanchorbay.com/upsellbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo.png",
+              "path": "/brand/upsellbay/logo.png",
+              "type": "image/png",
+              "bytes": 14012,
+              "width": 960,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo.svg",
+              "path": "/brand/upsellbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 9071,
+              "width": 480,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon.png",
+              "path": "/brand/upsellbay/icon.png",
+              "type": "image/png",
+              "bytes": 2043,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon.svg",
+              "path": "/brand/upsellbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 583,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    }
+  }
+}
