@@ -79,22 +79,36 @@ and the browser copy.
 
 ## Deploying
 
-One-time setup:
+Cloudflare's own Git integration ("Workers Builds") deploys on push. No GitHub Actions secrets,
+no API token stored anywhere — Cloudflare's GitHub App handles auth on its own side.
 
-1. Push this repo to GitHub (`wpanchorbay/brand-assets`).
-2. `npx wrangler deploy` once from your machine to create the Worker.
-3. Cloudflare dashboard → Workers → `wpanchorbay-assets` → Settings → Domains & Routes →
-   **Add custom domain** → `assets.wpanchorbay.com`. That creates the proxied DNS record itself —
-   do not add one by hand first.
-4. For push-to-deploy, add repo secrets `CLOUDFLARE_API_TOKEN` (Edit Workers) and
-   `CLOUDFLARE_ACCOUNT_ID`. `.github/workflows/deploy.yml` handles the rest.
+One-time setup, already pushed to `wpanchorbay/brand-assets`:
 
-After that: `git push` is the deploy.
+1. Cloudflare dashboard → **Workers & Pages** → **Create application** → **Import a repository** →
+   select `wpanchorbay/brand-assets` (authorize the Cloudflare GitHub App for the `wpanchorbay` org
+   the first time you do this).
+2. **Worker name must be exactly `wpanchorbay-assets`** — it has to match `name` in
+   `wrangler.jsonc`, or every build fails silently until it does. Cloudflare will suggest a name
+   from the repo (likely `brand-assets`); override it.
+3. Build command: `npm run build` — regenerates `public/` from `brand.source.json` fresh on every
+   deploy, so a forgotten local `npm run build` before a commit can't ship a stale manifest even
+   though the generated files are also committed. Deploy command: leave the default
+   (`npx wrangler deploy`).
+4. Root directory: leave blank (`wrangler.jsonc` is at the repo root). Production branch: `main`.
+5. Save and deploy. From here, every push to `main` rebuilds and redeploys automatically; opening
+   a PR gets a preview URL and a bot comment on the PR.
+6. Once the Worker is live: Worker → **Settings** → **Domains & Routes** → **Add custom domain** →
+   `assets.wpanchorbay.com`. That creates the proxied DNS record itself; don't add one by hand
+   first.
+
+`.github/workflows/check.yml` still runs on every push and PR — it regenerates `public/` and fails
+if the committed output doesn't match `brand.source.json` and the files on disk, catching a
+forgotten `npm run build` before it ever reaches Cloudflare. It only checks; it never deploys.
 
 ```bash
 npm run build     # regenerate brand.json, index.html, 404.html
-npm run check     # regenerate and fail if the committed output was stale (CI runs this)
-npm run deploy    # build + wrangler deploy, from your machine
+npm run check     # regenerate and fail if the committed output was stale (CI runs this too)
+npm run deploy    # build + wrangler deploy, from your machine — a manual escape hatch
 ```
 
 ## Where these assets should and should NOT be used
