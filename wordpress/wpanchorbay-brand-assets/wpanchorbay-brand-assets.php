@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.3.0
+ * Version:           1.3.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.3.0; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.3.1; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -802,10 +802,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.3.0' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.3.1' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.3.0', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.3.1', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -838,13 +838,15 @@ box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
 appearance:none;border:0;background:none;color:inherit;padding:0;margin:0}
 .wpab-ba-card__head{display:flex;gap:14px;align-items:center}
 .wpab-ba-card__head-text{flex:1;min-width:0}
-.wpab-ba-copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
-margin-left:auto;border:1px solid #cbd5e0!important;background:#f5f7fa;color:#5b6472;border-radius:7px;
-padding:6px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+.wpab-ba-copy-info{display:inline-flex!important;align-items:center!important;gap:6px!important;
+flex:none;align-self:flex-start;margin-left:auto;border:1px solid #cbd5e0!important;
+background:#f5f7fa!important;color:#5b6472!important;border-radius:7px!important;padding:6px 10px!important;
+font-size:12px!important;font-weight:600!important;white-space:nowrap}
 .wpab-ba-copy-info svg{width:13px;height:13px;display:block}
-.wpab-ba-copy-info:hover,.wpab-ba-copy-info:focus-visible{border-color:var(--wpab-ba-link-accent);
-color:var(--wpab-ba-link-accent);background:#fff}
-.wpab-ba-copy-info.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
+.wpab-ba-copy-info:hover,.wpab-ba-copy-info:focus-visible{border-color:var(--wpab-ba-link-accent)!important;
+color:var(--wpab-ba-link-accent)!important;background:#fff!important}
+.wpab-ba-copy-info.wpab-ba-done{color:#0d8a5f!important;border-color:#0d8a5f!important;
+background:#eafbf3!important}
 .wpab-ba-card__icon{border-radius:14px;flex:none}
 .wpab-ba-card__title{margin:0;font-size:17px;line-height:1.3;letter-spacing:-.01em}
 .wpab-ba-card__tagline{margin:3px 0 0;font-size:13.5px;line-height:1.45;color:#5b6472}
@@ -871,24 +873,34 @@ color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent)),#001F3F;border-color:#0
 .wpab-ba-fmt-row{display:flex;align-items:center}
 .wpab-ba-fmt-label{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
 color:#5b6472;min-width:32px;margin-right:6px}
-.wpab-ba-info{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
-border-radius:999px;border:1px solid #e2e7ee;background:#fff;color:#5b6472;flex:none;
-margin:0 auto 0 8px;cursor:pointer;padding:0}
+/* Every rule from here down that styles a <button> or <a> is !important.
+   The theme has repeatedly been shown to override plain plugin CSS on those
+   two element types specifically (h1 weight, badge colours/border, copy
+   info) - never on the plain <div> layout wrappers, which is why only the
+   interactive controls need this guard, not every rule in the file. */
+.wpab-ba-info{display:inline-flex!important;align-items:center!important;justify-content:center!important;
+width:22px!important;height:22px!important;border-radius:999px!important;border:1px solid #e2e7ee!important;
+background:#fff!important;color:#5b6472!important;flex:none;margin:0 auto 0 8px!important;
+cursor:pointer;padding:0!important}
 .wpab-ba-info svg{width:12px;height:12px;display:block}
-.wpab-ba-info:hover,.wpab-ba-info:focus-visible{color:var(--wpab-ba-brand);border-color:var(--wpab-ba-brand)}
+.wpab-ba-info:hover,.wpab-ba-info:focus-visible{color:var(--wpab-ba-brand)!important;
+border-color:var(--wpab-ba-brand)!important}
 .wpab-ba-btn-group{display:inline-flex;border-radius:8px;overflow:hidden;background:#fbfcfe}
-.wpab-ba-act{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:0;
-background:transparent;color:#5b6472;cursor:pointer;text-decoration:none}
+.wpab-ba-act{display:inline-flex!important;align-items:center!important;justify-content:center!important;
+width:30px!important;height:28px!important;border:0!important;background:transparent!important;
+color:#5b6472!important;cursor:pointer;text-decoration:none!important}
 .wpab-ba-act+.wpab-ba-act{border-left:1px solid #e2e7ee}
 .wpab-ba-act svg{width:14px;height:14px;display:block}
-.wpab-ba-act:hover,.wpab-ba-act:focus-visible{background:#fff;color:var(--wpab-ba-brand)}
-.wpab-ba-act.wpab-ba-done{color:#0d8a5f;background:#eafbf3}
+.wpab-ba-act:hover,.wpab-ba-act:focus-visible{background:#fff!important;color:var(--wpab-ba-brand)!important}
+.wpab-ba-act.wpab-ba-done{color:#0d8a5f!important;background:#eafbf3!important}
 .wpab-ba-swatches{display:flex;flex-wrap:wrap;gap:8px}
-.wpab-ba-swatch{display:inline-flex;align-items:center;gap:8px;border:1px solid #e2e7ee;background:#fbfcfe;
-color:#101828;border-radius:7px;padding:5px 10px;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-letter-spacing:.03em;cursor:pointer}
-.wpab-ba-swatch:hover{border-color:var(--wpab-ba-brand)}
-.wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand);color:var(--wpab-ba-on-brand);border-color:var(--wpab-ba-brand)}
+.wpab-ba-swatch{display:inline-flex!important;align-items:center!important;gap:8px!important;
+border:1px solid #e2e7ee!important;background:#fbfcfe!important;color:#101828!important;
+border-radius:7px!important;padding:5px 10px!important;
+font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace!important;letter-spacing:.03em;cursor:pointer}
+.wpab-ba-swatch:hover{border-color:var(--wpab-ba-brand)!important}
+.wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand)!important;color:var(--wpab-ba-on-brand)!important;
+border-color:var(--wpab-ba-brand)!important}
 .wpab-ba-swatch__chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
 /* All N badges share one row on a normal or wide screen - grid-template-
    columns is set per-card via inline style (repeat(N, minmax(...,220px))),
