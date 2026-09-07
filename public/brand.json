@@ -352,16 +352,16 @@
               "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.png",
               "path": "/brand/pointbay/logo.png",
               "type": "image/png",
-              "bytes": 16645,
-              "width": 1044,
-              "height": 240
+              "bytes": 6829,
+              "width": 445,
+              "height": 120
             },
             "svg": {
               "url": "https://assets.wpanchorbay.com/brand/pointbay/logo.svg",
               "path": "/brand/pointbay/logo.svg",
               "type": "image/svg+xml",
-              "bytes": 8638,
-              "width": 522,
+              "bytes": 7879,
+              "width": 445,
               "height": 120
             }
           }

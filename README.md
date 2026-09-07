@@ -132,5 +132,3 @@ marketplace and partner listings, press.
   preview automatically (see `public/brand/wpanchorbay/` for the pattern).
 - **Icon PNGs are 120x120** (240 for the brand mark). WordPress.org wants 128 and 256. Export
   those from the design source; do not upscale the existing PNGs.
-- **PointBay's wordmark reads "LoyaltyBay"** (`public/brand/pointbay/logo.svg` / `.png`). Looks
-  like a rename that never reached the logo.
