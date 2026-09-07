@@ -324,6 +324,7 @@ const html = `<!doctype html>
 <meta property="og:title" content="Brand Assets: ${esc(src.organization.name)}">
 <meta property="og:description" content="Official logos, icons and colours. Stable URLs, safe to hotlink.">
 <meta property="og:url" content="${esc(ORIGIN)}/">
+<link rel="canonical" href="${esc(ORIGIN)}/">
 <style>
 :root{
   --ink:${esc(src.palette.ink)}; --anchor:${esc(src.palette.anchor)};
