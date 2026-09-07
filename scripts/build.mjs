@@ -173,6 +173,7 @@ const ICONS = {
   wordpress: '<svg viewBox="0 0 122.52 122.523" aria-hidden="true" focusable="false"><g fill="currentColor"><path d="m8.708 61.26c0 20.802 12.089 38.779 29.619 47.298l-25.069-68.686c-2.916 6.536-4.55 13.769-4.55 21.388z"/><path d="m96.74 58.608c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501l19.138 56.925 11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z"/><path d="m62.184 65.857-15.768 45.819c4.708 1.384 9.687 2.141 14.846 2.141 6.12 0 11.989-1.058 17.452-2.979-.141-.225-.269-.464-.374-.724z"/><path d="m107.376 36.046c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z"/><path d="m61.262 0c-33.779 0-61.262 27.481-61.262 61.26 0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263-.001-33.779-27.487-61.26-61.265-61.26zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z"/></g></svg>',
   globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
   book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
 };
 
 const LINK_META = {
@@ -221,16 +222,51 @@ function swatches(p) {
 
 function linkBadges(p) {
   const entries = Object.entries(p.links ?? {}).filter(([k]) => LINK_META[k]);
-  if (!entries.length) return '';
-  return `<nav class="card-links" style="grid-template-columns:repeat(${entries.length},1fr)">${entries
-    .map(([k, v]) => {
-      const meta = LINK_META[k];
-      // The brand's own "site" link goes to the company homepage, not a
-      // per-product page — label it accordingly.
-      const label = k === 'site' && p.kind === 'brand' ? 'Visit Website' : meta.label;
-      return `<a class="badge" href="${esc(v)}" rel="noopener" title="${esc(label)}">${meta.icon}<span>${esc(label)}</span></a>`;
-    })
-    .join('')}</nav>`;
+  const linkBadgeHtml = entries.map(([k, v]) => {
+    const meta = LINK_META[k];
+    // The brand's own "site" link goes to the company homepage, not a
+    // per-product page — label it accordingly.
+    const label = k === 'site' && p.kind === 'brand' ? 'Visit Website' : meta.label;
+    return `<a class="badge" href="${esc(v)}" rel="noopener" title="${esc(label)}">${meta.icon}<span>${esc(label)}</span></a>`;
+  });
+
+  // Every product with any asset files also gets its own brand.json (see
+  // the per-product manifest step above) — surface it here, or it exists
+  // with no link to find it from.
+  const hasOwnManifest = Object.keys(p.assets).length > 0;
+  if (hasOwnManifest) {
+    const jsonUrl = `${ORIGIN}/brand/${p.slug}/brand.json`;
+    linkBadgeHtml.push(
+      `<button type="button" class="badge js-copy" data-copy="${esc(jsonUrl)}" title="Copy this product's JSON URL" aria-label="Copy ${esc(p.name)} JSON URL">${ICONS.code}<span>JSON</span></button>`
+    );
+  }
+
+  if (!linkBadgeHtml.length) return '';
+  return `<nav class="card-links" style="grid-template-columns:repeat(${linkBadgeHtml.length},1fr)">${linkBadgeHtml.join('')}</nav>`;
+}
+
+/** Plain-text summary for the "Copy Info" button: name, tagline, colours, links. */
+function productInfoText(p) {
+  const lines = [p.name, p.tagline, ''];
+
+  const cols = swatches(p);
+  if (cols.length > 1) {
+    lines.push('Colours:');
+    for (const s of cols) lines.push(`  ${s.name[0].toUpperCase()}${s.name.slice(1)}: ${s.hex}`);
+  } else {
+    lines.push(`Colour: ${cols[0].hex}`);
+  }
+
+  const linkEntries = Object.entries(p.links ?? {}).filter(([k]) => LINK_META[k]);
+  if (linkEntries.length) {
+    lines.push('', 'Links:');
+    for (const [k, v] of linkEntries) {
+      const label = k === 'site' && p.kind === 'brand' ? 'Visit Website' : LINK_META[k].label;
+      lines.push(`  ${label}: ${v}`);
+    }
+  }
+
+  return lines.join('\n');
 }
 
 function card(p) {
@@ -241,17 +277,18 @@ function card(p) {
   const logoDark = p.assets['logo-dark']?.formats.svg ?? p.assets['logo-dark']?.formats.png;
   const plates = `
         <div class="plates">
-          ${logo ? `<div class="logo-plate"><img src="${esc(logo.path)}" alt="${esc(p.name)} logo" loading="lazy"></div>` : ''}
-          ${logoDark ? `<div class="logo-plate logo-plate--dark"><img src="${esc(logoDark.path)}" alt="${esc(p.name)} logo, for dark backgrounds" loading="lazy"></div>` : ''}
+          ${logo ? `<div class="logo-plate"><img src="${esc(logo.path)}" alt="${esc(p.name)} logo"></div>` : ''}
+          ${logoDark ? `<div class="logo-plate logo-plate--dark"><img src="${esc(logoDark.path)}" alt="${esc(p.name)} logo, for dark backgrounds"></div>` : ''}
         </div>`;
   return `
       <article class="card" id="${esc(p.slug)}" style="--brand:${esc(p.color)};--on-brand:${esc(p.onColor)}">
         <header class="card-head">
-          ${icon ? `<img class="card-icon" src="${esc(icon.path)}" alt="${esc(p.name)} icon" width="56" height="56" loading="lazy">` : ''}
-          <div>
+          ${icon ? `<img class="card-icon" src="${esc(icon.path)}" alt="${esc(p.name)} icon" width="56" height="56">` : ''}
+          <div class="card-head-text">
             <h3>${esc(p.name)}</h3>
             <p class="tagline">${esc(p.tagline)}</p>
           </div>
+          <button type="button" class="copy-info js-copy" data-copy="${esc(productInfoText(p))}" title="Copy name, colours and links" aria-label="Copy ${esc(p.name)} info">${ICONS.copy}<span>Copy Info</span></button>
         </header>
         ${logo || logoDark ? plates : ''}
         <div class="assets">${Object.values(p.assets).map(assetRow).join('')}</div>
@@ -297,6 +334,11 @@ const html = `<!doctype html>
   color-scheme:light;
 }
 *{box-sizing:border-box}
+/* Buttons don't inherit font-family or reset to cursor:pointer by default;
+   every button class below sets its own border/background/padding, so this
+   only fixes the gaps, it doesn't fight any of them. */
+button{font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;
+  border:0;background:none;color:inherit;padding:0;margin:0}
 body{margin:0;background:var(--bg);color:var(--text);
   font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased}
@@ -331,9 +373,16 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
    navy) rather than the primary brand teal, which reads too pale for text. */
 .card.solo{grid-column:1/-1;width:100%;--link-accent:var(--on-brand)}
 .card-head{display:flex;gap:14px;align-items:center}
+.card-head-text{flex:1;min-width:0}
 .card-icon{border-radius:14px;flex:none}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
 .tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
+.copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
+  border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:7px;
+  padding:6px 10px;font-size:12px;font-weight:600;white-space:nowrap;transition:.14s}
+.copy-info svg{width:13px;height:13px;display:block}
+.copy-info:hover,.copy-info:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
+.copy-info.done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 /* Light by default: a wordmark with no dark-safe sibling is dark-ink only
    and would disappear on a tinted or dark plate. A logo is previewed on the
    background it is actually made for; when a -dark variant exists it gets
@@ -379,12 +428,16 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
 .chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
 .card-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+/* text-overflow:ellipsis has no effect set directly on a flex container (a
+   known gotcha) — it has to sit on the text run itself, which also needs
+   min-width:0 to be allowed to shrink below its content size in a flex row. */
 .badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
   border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--muted);
-  text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;
-  text-overflow:ellipsis;transition:.14s}
+  text-decoration:none;font-size:12px;font-weight:600;transition:.14s}
 .badge svg{width:14px;height:14px;flex:none}
+.badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .badge:hover,.badge:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
+.badge.done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 .rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .rules ul{margin:0;padding-left:20px}
 .rules li{margin:0 0 7px;color:var(--muted);font-size:14px}

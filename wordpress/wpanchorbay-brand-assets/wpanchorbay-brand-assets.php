@@ -46,6 +46,27 @@ function manifest_url(): string {
 	return (string) apply_filters( 'wpab_brand_assets_manifest_url', MANIFEST_URL );
 }
 
+/**
+ * The asset origin (scheme + host) derived from the manifest URL, so a
+ * per-product JSON link keeps working even if a filter points
+ * manifest_url() somewhere with a different path shape.
+ */
+function asset_origin(): string {
+	$parts = wp_parse_url( manifest_url() );
+
+	if ( empty( $parts['scheme'] ) || empty( $parts['host'] ) ) {
+		return '';
+	}
+
+	$origin = $parts['scheme'] . '://' . $parts['host'];
+
+	if ( ! empty( $parts['port'] ) ) {
+		$origin .= ':' . $parts['port'];
+	}
+
+	return $origin;
+}
+
 /* -------------------------------------------------------------------------
  * Fetching and caching
  * ---------------------------------------------------------------------- */
@@ -207,6 +228,7 @@ function icons(): array {
 		'info'     => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
 		'globe'    => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
 		'book'     => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+		'code'     => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
 		// The official WordPress "W" mark (source: WordPress Foundation, via
 		// commons.wikimedia.org/wiki/File:Wordpress-Logo.svg), recoloured to
 		// currentColor. Used only to identify a link to the product's own
@@ -240,6 +262,41 @@ function link_meta(): array {
 			'icon'  => $glyphs['book'],
 		),
 	);
+}
+
+/**
+ * Plain-text summary for the "Copy Info" button: name, tagline, colours,
+ * links. Mirrors the public brand-assets page's own version.
+ *
+ * @param array<int,array{hex:string,name:string}> $swatches    Same shape as render_card()'s $swatches.
+ * @param array<string,string>                      $badge_links Link key => URL (wordpress/site/docs only).
+ * @param array<string,array{label:string,icon:string}> $meta    From link_meta().
+ */
+function product_info_text( string $name, string $tagline, array $swatches, array $badge_links, array $meta, string $kind ): string {
+	$lines = array( $name, $tagline, '' );
+
+	if ( count( $swatches ) > 1 ) {
+		$lines[] = __( 'Colours:', 'wpab-brand-assets' );
+		foreach ( $swatches as $s ) {
+			$lines[] = '  ' . ucfirst( $s['name'] ) . ': ' . $s['hex'];
+		}
+	} else {
+		/* translators: %s: hex value. */
+		$lines[] = sprintf( __( 'Colour: %s', 'wpab-brand-assets' ), $swatches[0]['hex'] );
+	}
+
+	if ( $badge_links ) {
+		$lines[] = '';
+		$lines[] = __( 'Links:', 'wpab-brand-assets' );
+		foreach ( $badge_links as $key => $href ) {
+			$label   = ( 'site' === $key && 'brand' === $kind )
+				? __( 'Visit Website', 'wpab-brand-assets' )
+				: $meta[ $key ]['label'];
+			$lines[] = '  ' . $label . ': ' . $href;
+		}
+	}
+
+	return implode( "\n", $lines );
 }
 
 /* -------------------------------------------------------------------------
@@ -294,6 +351,7 @@ function render_card( array $product ): string {
 	// The brand card's own links hover to its secondary colour (WPAnchorBay's
 	// navy) rather than the primary brand teal, which reads too pale for text.
 	$link_accent = 'brand' === $kind ? $on_color : $color;
+	$info_text   = product_info_text( $name, $tagline, $swatches, $badge_links, $meta, $kind );
 
 	ob_start();
 	?>
@@ -301,14 +359,23 @@ function render_card( array $product ): string {
 		<div class="wpab-ba-card__head">
 			<?php if ( $icon ) : ?>
 				<img class="wpab-ba-card__icon" src="<?php echo esc_url( $icon ); ?>"
-					alt="" width="48" height="48" loading="lazy" decoding="async">
+					alt="" width="48" height="48" decoding="async">
 			<?php endif; ?>
-			<div>
+			<div class="wpab-ba-card__head-text">
 				<h3 class="wpab-ba-card__title"><?php echo esc_html( $name ); ?></h3>
 				<?php if ( $tagline ) : ?>
 					<p class="wpab-ba-card__tagline"><?php echo esc_html( $tagline ); ?></p>
 				<?php endif; ?>
 			</div>
+			<button type="button" class="wpab-ba-copy-info wpab-ba-js-copy" data-copy="<?php echo esc_attr( $info_text ); ?>"
+				title="<?php esc_attr_e( 'Copy name, colours and links', 'wpab-brand-assets' ); ?>"
+				aria-label="<?php echo esc_attr( sprintf(
+					/* translators: %s: product name. */
+					__( 'Copy %s info', 'wpab-brand-assets' ),
+					$name
+				) ); ?>">
+				<?php echo $glyphs['copy']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?><span><?php esc_html_e( 'Copy Info', 'wpab-brand-assets' ); ?></span>
+			</button>
 		</div>
 
 		<?php if ( $logo || $logo_dark ) : ?>
@@ -320,7 +387,7 @@ function render_card( array $product ): string {
 								/* translators: %s: product name. */
 								echo esc_attr( sprintf( __( '%s logo', 'wpab-brand-assets' ), $name ) );
 							?>"
-							loading="lazy" decoding="async">
+							decoding="async">
 					</div>
 				<?php endif; ?>
 				<?php if ( $logo_dark ) : ?>
@@ -330,7 +397,7 @@ function render_card( array $product ): string {
 								/* translators: %s: product name. */
 								echo esc_attr( sprintf( __( '%s logo, for dark backgrounds', 'wpab-brand-assets' ), $name ) );
 							?>"
-							loading="lazy" decoding="async">
+							decoding="async">
 					</div>
 				<?php endif; ?>
 			</div>
@@ -439,8 +506,15 @@ function render_card( array $product ): string {
 			<?php endforeach; ?>
 		</div>
 
-		<?php if ( $badge_links ) : ?>
-			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) count( $badge_links ); ?>,1fr)">
+		<?php
+		// Every product with any asset files also gets its own brand.json (see
+		// the per-product manifest step in scripts/build.mjs) — surface it
+		// here, or it exists with no link to find it from.
+		$has_own_manifest = ! empty( $assets ) && '' !== $slug;
+		$total_badges     = count( $badge_links ) + ( $has_own_manifest ? 1 : 0 );
+		?>
+		<?php if ( $total_badges ) : ?>
+			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) $total_badges; ?>,1fr)">
 				<?php foreach ( $badge_links as $key => $href ) : ?>
 					<?php
 					// The brand's own "site" link goes to the company homepage,
@@ -454,6 +528,18 @@ function render_card( array $product ): string {
 						<span><?php echo esc_html( $label ); ?></span>
 					</a>
 				<?php endforeach; ?>
+				<?php if ( $has_own_manifest ) : ?>
+					<?php $json_url = asset_origin() . '/brand/' . $slug . '/brand.json'; ?>
+					<button type="button" class="wpab-ba-badge wpab-ba-js-copy" data-copy="<?php echo esc_attr( $json_url ); ?>"
+						title="<?php esc_attr_e( "Copy this product's JSON URL", 'wpab-brand-assets' ); ?>"
+						aria-label="<?php echo esc_attr( sprintf(
+							/* translators: %s: product name. */
+							__( 'Copy %s JSON URL', 'wpab-brand-assets' ),
+							$name
+						) ); ?>">
+						<?php echo $glyphs['code']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?><span><?php esc_html_e( 'JSON', 'wpab-brand-assets' ); ?></span>
+					</button>
+				<?php endif; ?>
 			</nav>
 		<?php endif; ?>
 	</article>
@@ -553,7 +639,20 @@ function styles(): string {
 border:1px solid #e2e7ee;border-radius:14px;background:#fff;color:#101828;
 box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
 .wpab-ba-card *{box-sizing:border-box}
+/* Buttons don't inherit font-family or reset to cursor:pointer by default;
+   every button class below sets its own border/background/padding, so this
+   only fixes the gaps, it doesn't fight any of them. */
+.wpab-ba-card button{font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;
+border:0;background:none;color:inherit;padding:0;margin:0}
 .wpab-ba-card__head{display:flex;gap:14px;align-items:center}
+.wpab-ba-card__head-text{flex:1;min-width:0}
+.wpab-ba-copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
+border:1px solid #e2e7ee;background:#f5f7fa;color:#5b6472;border-radius:7px;padding:6px 10px;
+font-size:12px;font-weight:600;white-space:nowrap}
+.wpab-ba-copy-info svg{width:13px;height:13px;display:block}
+.wpab-ba-copy-info:hover,.wpab-ba-copy-info:focus-visible{border-color:var(--wpab-ba-link-accent);
+color:var(--wpab-ba-link-accent);background:#fff}
+.wpab-ba-copy-info.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 .wpab-ba-card__icon{border-radius:14px;flex:none}
 .wpab-ba-card__title{margin:0;font-size:17px;line-height:1.3;letter-spacing:-.01em}
 .wpab-ba-card__tagline{margin:3px 0 0;font-size:13.5px;line-height:1.45;color:#5b6472}
@@ -595,11 +694,16 @@ letter-spacing:.03em;cursor:pointer}
 .wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand);color:var(--wpab-ba-on-brand);border-color:var(--wpab-ba-brand)}
 .wpab-ba-swatch__chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
 .wpab-ba-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
+/* text-overflow:ellipsis has no effect set directly on a flex container (a
+   known gotcha) — it has to sit on the text run itself, which also needs
+   min-width:0 to be allowed to shrink below its content size in a flex row. */
 .wpab-ba-badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
 border:1px solid #e2e7ee;border-radius:8px;background:#fbfcfe;color:#5b6472;text-decoration:none;
-font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+font-size:12px;font-weight:600}
 .wpab-ba-badge svg{width:14px;height:14px;flex:none}
+.wpab-ba-badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-link-accent);color:var(--wpab-ba-link-accent);background:#fff}
+.wpab-ba-badge.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 .wpab-ba-notice{padding:12px 16px;border-left:3px solid #d63638;background:rgba(214,54,56,.06);font-size:14px}
 .wpab-ba-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:#001F3F;color:#fff;
 padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:9999}
