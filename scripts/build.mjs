@@ -308,7 +308,7 @@ function card(p) {
 const list = Object.values(products);
 const brand = list.find((p) => p.kind === 'brand');
 const plugins = list.filter((p) => p.kind !== 'brand');
-const sample = plugins[0] ?? brand;
+const sample = brand ?? plugins[0];
 const sampleUrl = sample?.assets.logo?.formats.svg?.url ?? `${ORIGIN}/brand/…/logo.svg`;
 const sampleSnippet = `<img src="${sampleUrl}" alt="${sample?.name ?? ''}" height="40">`;
 
@@ -356,8 +356,15 @@ h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacin
 .panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
 .panel p{margin:0 0 12px;color:var(--muted)}
 .code-row{display:flex;align-items:stretch;gap:8px}
+/* Still scrollable on narrow screens where the snippet overflows — just a
+   slim, low-contrast bar instead of the browser's full-size default. */
 pre{flex:1;margin:0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
-  overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+  overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text);
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+pre::-webkit-scrollbar{height:6px}
+pre::-webkit-scrollbar-track{background:transparent}
+pre::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+pre::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 .code-row .act{width:36px;height:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
   color:var(--muted)}
 .code-row .act:hover,.code-row .act:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}

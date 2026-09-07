@@ -42,8 +42,15 @@ h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacin
 .panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
 .panel p{margin:0 0 12px;color:var(--muted)}
 .code-row{display:flex;align-items:stretch;gap:8px}
+/* Still scrollable on narrow screens where the snippet overflows — just a
+   slim, low-contrast bar instead of the browser's full-size default. */
 pre{flex:1;margin:0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
-  overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+  overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text);
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+pre::-webkit-scrollbar{height:6px}
+pre::-webkit-scrollbar-track{background:transparent}
+pre::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+pre::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 .code-row .act{width:36px;height:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
   color:var(--muted)}
 .code-row .act:hover,.code-row .act:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
@@ -146,8 +153,8 @@ footer a{color:var(--muted)}
     <h2>Hotlink it</h2>
     <p>Point straight at the URL. No copy in your media library, no version to keep in sync.</p>
     <div class="code-row">
-      <pre>&lt;img src=&quot;https://assets.wpanchorbay.com/brand/campaignbay/logo.svg&quot; alt=&quot;CampaignBay&quot; height=&quot;40&quot;&gt;</pre>
-      <button type="button" class="act js-copy" data-copy="&lt;img src=&quot;https://assets.wpanchorbay.com/brand/campaignbay/logo.svg&quot; alt=&quot;CampaignBay&quot; height=&quot;40&quot;&gt;" title="Copy snippet" aria-label="Copy snippet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+      <pre>&lt;img src=&quot;https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg&quot; alt=&quot;WPAnchorBay&quot; height=&quot;40&quot;&gt;</pre>
+      <button type="button" class="act js-copy" data-copy="&lt;img src=&quot;https://assets.wpanchorbay.com/brand/wpanchorbay/logo.svg&quot; alt=&quot;WPAnchorBay&quot; height=&quot;40&quot;&gt;" title="Copy snippet" aria-label="Copy snippet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
     </div>
   </div>
   <div class="panel">
