@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.1.0; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.2.0; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -367,15 +367,6 @@ function render_card( array $product ): string {
 					<p class="wpab-ba-card__tagline"><?php echo esc_html( $tagline ); ?></p>
 				<?php endif; ?>
 			</div>
-			<button type="button" class="wpab-ba-copy-info wpab-ba-js-copy" data-copy="<?php echo esc_attr( $info_text ); ?>"
-				title="<?php esc_attr_e( 'Copy name, colours and links', 'wpab-brand-assets' ); ?>"
-				aria-label="<?php echo esc_attr( sprintf(
-					/* translators: %s: product name. */
-					__( 'Copy %s info', 'wpab-brand-assets' ),
-					$name
-				) ); ?>">
-				<?php echo $glyphs['copy']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?><span><?php esc_html_e( 'Copy Info', 'wpab-brand-assets' ); ?></span>
-			</button>
 		</div>
 
 		<?php if ( $logo || $logo_dark ) : ?>
@@ -504,6 +495,15 @@ function render_card( array $product ): string {
 					<span class="wpab-ba-swatch__chip" style="background:<?php echo esc_attr( $hex ); ?>"></span><?php echo esc_html( $hex ); ?>
 				</button>
 			<?php endforeach; ?>
+			<button type="button" class="wpab-ba-copy-info wpab-ba-js-copy" data-copy="<?php echo esc_attr( $info_text ); ?>"
+				title="<?php esc_attr_e( 'Copy name, colours and links', 'wpab-brand-assets' ); ?>"
+				aria-label="<?php echo esc_attr( sprintf(
+					/* translators: %s: product name. */
+					__( 'Copy %s info', 'wpab-brand-assets' ),
+					$name
+				) ); ?>">
+				<?php echo $glyphs['copy']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?><span><?php esc_html_e( 'Copy Info', 'wpab-brand-assets' ); ?></span>
+			</button>
 		</div>
 
 		<?php
@@ -514,7 +514,7 @@ function render_card( array $product ): string {
 		$total_badges     = count( $badge_links ) + ( $has_own_manifest ? 1 : 0 );
 		?>
 		<?php if ( $total_badges ) : ?>
-			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) $total_badges; ?>,1fr)">
+			<nav class="wpab-ba-links">
 				<?php foreach ( $badge_links as $key => $href ) : ?>
 					<?php
 					// The brand's own "site" link goes to the company homepage,
@@ -773,10 +773,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.1.0' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.2.0' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.1.0', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.2.0', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -861,7 +861,12 @@ letter-spacing:.03em;cursor:pointer}
 .wpab-ba-swatch:hover{border-color:var(--wpab-ba-brand)}
 .wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand);color:var(--wpab-ba-on-brand);border-color:var(--wpab-ba-brand)}
 .wpab-ba-swatch__chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
-.wpab-ba-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
+/* auto-fit + minmax(min(Npx,100%),1fr): all badges share one row when the
+   card is wide enough (equally distributed, same as before), and wrap to
+   two-per-row instead of overflowing once the card is too narrow to fit
+   them all — driven by the card's real width, not a fixed column count. */
+.wpab-ba-links{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(min(120px,100%),1fr));
+margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
 /* text-overflow:ellipsis has no effect set directly on a flex container (a
    known gotcha) — it has to sit on the text run itself, which also needs
    min-width:0 to be allowed to shrink below its content size in a flex row. */
@@ -874,7 +879,11 @@ font-size:12px;font-weight:600}
 .wpab-ba-badge.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 .wpab-ba-hero{margin:0 0 2em}
 .wpab-ba-hero *{box-sizing:border-box}
-.wpab-ba-hero h1{margin:0 0 10px;font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.02em;color:#101828}
+/* !important on weight only: themes commonly set their own heading
+   font-weight, which can otherwise win over a plain descendant selector
+   regardless of source order. */
+.wpab-ba-hero h1{margin:0 0 10px;font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.02em;
+color:#101828;font-weight:800!important}
 .wpab-ba-hero .wpab-ba-lede{margin:0 0 24px;max-width:62ch;color:#5b6472;font-size:16px;line-height:1.6}
 .wpab-ba-hero .wpab-ba-panel{margin:0 0 16px;padding:18px 20px;background:#fff;border:1px solid #e2e7ee;
 border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
