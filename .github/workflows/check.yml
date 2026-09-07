@@ -1,0 +1,27 @@
+name: Check build is current
+
+# Deployment itself is Cloudflare's own Git integration (Workers Builds) —
+# it connects directly to this repo and deploys on push, no secrets stored
+# here. This workflow only guards against a forgotten `npm run build` before
+# commit, so it's safe to run on PRs too, unlike a deploy job would be.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify public/ matches brand.source.json and the asset files
+        run: npm run check
