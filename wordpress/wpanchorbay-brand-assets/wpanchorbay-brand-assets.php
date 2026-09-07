@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.2.1
+ * Version:           1.3.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.2.1; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.3.0; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -201,6 +201,32 @@ function safe_hex( $color, string $fallback = '#001F3F' ): string {
 	$clean = is_string( $color ) ? sanitize_hex_color( $color ) : null;
 
 	return $clean ? $clean : $fallback;
+}
+
+/**
+ * True unless the URL's host is exactly this site's own root domain (not a
+ * subdomain, not another domain entirely) — used to decide which links open
+ * in a new tab. docs.wpanchorbay.com and wordpress.org both count as
+ * external; a link back to wpanchorbay.com itself does not. Compares
+ * against home_url() rather than a hardcoded domain so this still behaves
+ * correctly on a staging copy of the site.
+ */
+function is_external_link( string $url ): bool {
+	$host      = wp_parse_url( $url, PHP_URL_HOST );
+	$site_host = wp_parse_url( home_url(), PHP_URL_HOST );
+
+	if ( ! $host || ! $site_host ) {
+		return true;
+	}
+
+	// Normalise a www/non-www mismatch: the manifest's links are all bare
+	// wpanchorbay.com, so home_url() resolving with a "www." would otherwise
+	// make every same-site link look external.
+	$strip_www = static function ( string $h ): string {
+		return preg_replace( '/^www\./i', '', $h );
+	};
+
+	return $strip_www( strtolower( $host ) ) !== $strip_www( strtolower( $site_host ) );
 }
 
 /* -------------------------------------------------------------------------
@@ -514,16 +540,19 @@ function render_card( array $product ): string {
 		$total_badges     = count( $badge_links ) + ( $has_own_manifest ? 1 : 0 );
 		?>
 		<?php if ( $total_badges ) : ?>
-			<nav class="wpab-ba-links">
+			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) $total_badges; ?>,minmax(min(90px,100%),220px))">
 				<?php foreach ( $badge_links as $key => $href ) : ?>
 					<?php
 					// The brand's own "site" link goes to the company homepage,
 					// not a per-product page, label it accordingly.
-					$label = ( 'site' === $key && 'brand' === $kind )
+					$label    = ( 'site' === $key && 'brand' === $kind )
 						? __( 'Visit Website', 'wpab-brand-assets' )
 						: $meta[ $key ]['label'];
+					$external = is_external_link( $href );
 					?>
-					<a class="wpab-ba-badge" href="<?php echo esc_url( $href ); ?>" rel="noopener" title="<?php echo esc_attr( $label ); ?>">
+					<a class="wpab-ba-badge" href="<?php echo esc_url( $href ); ?>"
+						<?php echo $external ? 'target="_blank" rel="noopener noreferrer"' : 'rel="noopener"'; ?>
+						title="<?php echo esc_attr( $label ); ?>">
 						<?php echo $meta[ $key ]['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?>
 						<span><?php echo esc_html( $label ); ?></span>
 					</a>
@@ -773,10 +802,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.2.1' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.3.0' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.2.1', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.3.0', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -810,8 +839,8 @@ appearance:none;border:0;background:none;color:inherit;padding:0;margin:0}
 .wpab-ba-card__head{display:flex;gap:14px;align-items:center}
 .wpab-ba-card__head-text{flex:1;min-width:0}
 .wpab-ba-copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
-border:1px solid #cbd5e0!important;background:#f5f7fa;color:#5b6472;border-radius:7px;padding:6px 10px;
-font-size:12px;font-weight:600;white-space:nowrap}
+margin-left:auto;border:1px solid #cbd5e0!important;background:#f5f7fa;color:#5b6472;border-radius:7px;
+padding:6px 10px;font-size:12px;font-weight:600;white-space:nowrap}
 .wpab-ba-copy-info svg{width:13px;height:13px;display:block}
 .wpab-ba-copy-info:hover,.wpab-ba-copy-info:focus-visible{border-color:var(--wpab-ba-link-accent);
 color:var(--wpab-ba-link-accent);background:#fff}
@@ -843,8 +872,8 @@ color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent)),#001F3F;border-color:#0
 .wpab-ba-fmt-label{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
 color:#5b6472;min-width:32px;margin-right:6px}
 .wpab-ba-info{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
-border-radius:999px;border:1px solid #e2e7ee;background:#fff;color:#5b6472;flex:none;margin-right:auto;
-cursor:default;padding:0}
+border-radius:999px;border:1px solid #e2e7ee;background:#fff;color:#5b6472;flex:none;
+margin:0 auto 0 8px;cursor:pointer;padding:0}
 .wpab-ba-info svg{width:12px;height:12px;display:block}
 .wpab-ba-info:hover,.wpab-ba-info:focus-visible{color:var(--wpab-ba-brand);border-color:var(--wpab-ba-brand)}
 .wpab-ba-btn-group{display:inline-flex;border-radius:8px;overflow:hidden;background:#fbfcfe}
@@ -861,22 +890,34 @@ letter-spacing:.03em;cursor:pointer}
 .wpab-ba-swatch:hover{border-color:var(--wpab-ba-brand)}
 .wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand);color:var(--wpab-ba-on-brand);border-color:var(--wpab-ba-brand)}
 .wpab-ba-swatch__chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
-/* auto-fit + minmax(min(Npx,100%),1fr): all badges share one row when the
-   card is wide enough (equally distributed, same as before), and wrap to
-   two-per-row instead of overflowing once the card is too narrow to fit
-   them all — driven by the card's real width, not a fixed column count. */
-.wpab-ba-links{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(min(120px,100%),1fr));
-margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
+/* All N badges share one row on a normal or wide screen - grid-template-
+   columns is set per-card via inline style (repeat(N, minmax(...,220px))),
+   so it works whether a card has 3 badges or 4. The 220px cap stops them
+   stretching to fill the full-width WPAnchorBay card into mostly-empty
+   pills; the min(90px,100%) floor is only a last-resort guard against true
+   overflow. Below 480px width every card forces exactly two columns,
+   overriding the inline style - "!important" is the one case a stylesheet
+   rule is allowed to beat an inline style, which is what makes this work. */
+.wpab-ba-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
+@media (max-width:480px){.wpab-ba-links{grid-template-columns:repeat(2,1fr)!important}}
 /* text-overflow:ellipsis has no effect set directly on a flex container (a
    known gotcha) — it has to sit on the text run itself, which also needs
-   min-width:0 to be allowed to shrink below its content size in a flex row. */
-.wpab-ba-badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
-border:1px solid #cbd5e0!important;border-radius:8px;background:#fbfcfe;color:#5b6472;text-decoration:none;
-font-size:12px;font-weight:600}
+   min-width:0 to be allowed to shrink below its content size in a grid item. */
+/* Every property here is !important: three of these four badges are <a>
+   tags and one (JSON) is a <button>, and a theme's own global link styling
+   (colour, underline) has already been shown to override plain plugin CSS
+   in this file - without a guard the anchors and the button can end up
+   rendering visibly differently from each other. */
+.wpab-ba-badge{display:flex!important;align-items:center!important;justify-content:center!important;
+gap:6px!important;padding:8px 6px!important;min-width:0;box-sizing:border-box;
+border:1px solid #cbd5e0!important;border-radius:8px!important;background:#fbfcfe!important;
+color:#5b6472!important;text-decoration:none!important;font-size:12px!important;
+font-weight:600!important;line-height:1.2!important}
 .wpab-ba-badge svg{width:14px;height:14px;flex:none}
 .wpab-ba-badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-link-accent);color:var(--wpab-ba-link-accent);background:#fff}
-.wpab-ba-badge.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
+.wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-link-accent)!important;
+color:var(--wpab-ba-link-accent)!important;background:#fff!important}
+.wpab-ba-badge.wpab-ba-done{color:#0d8a5f!important;border-color:#0d8a5f!important;background:#eafbf3!important}
 .wpab-ba-hero{margin:0 0 2em}
 .wpab-ba-hero *{box-sizing:border-box}
 /* !important on weight only: themes commonly set their own heading
@@ -958,12 +999,21 @@ function script(): string {
 			document.execCommand( 'copy' );
 			onDone();
 		} catch ( err ) {
-			toast( 'Copy failed. Select the URL manually' );
+			toast( 'Copy failed' );
 		}
 		ta.remove();
 	}
 
 	document.addEventListener( 'click', function ( event ) {
+		// The (i) info button relies on the title attribute for hover, which
+		// touch devices never trigger — tapping it shows the same text as a
+		// toast instead, so the information is reachable on mobile too.
+		var info = event.target.closest && event.target.closest( '.wpab-ba-info' );
+		if ( info ) {
+			toast( info.getAttribute( 'title' ) || '' );
+			return;
+		}
+
 		var btn = event.target.closest && event.target.closest( '.wpab-ba-js-copy' );
 		if ( ! btn ) {
 			return;
@@ -974,7 +1024,10 @@ function script(): string {
 			setTimeout( function () {
 				btn.classList.remove( 'wpab-ba-done' );
 			}, 900 );
-			toast( 'Copied ' + text );
+			// Keep it short — this used to echo the full copied value, which
+			// for the "Copy Info" button meant dumping several lines of text
+			// into a toast. Say only that the copy happened.
+			toast( 'Copied to clipboard' );
 		};
 		if ( navigator.clipboard && navigator.clipboard.writeText ) {
 			navigator.clipboard.writeText( text ).then( onDone, function () {
