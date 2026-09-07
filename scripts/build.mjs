@@ -227,7 +227,9 @@ function linkBadges(p) {
     // The brand's own "site" link goes to the company homepage, not a
     // per-product page — label it accordingly.
     const label = k === 'site' && p.kind === 'brand' ? 'Visit Website' : meta.label;
-    return `<a class="badge" href="${esc(v)}" rel="noopener" title="${esc(label)}">${meta.icon}<span>${esc(label)}</span></a>`;
+    // Every badge link leaves assets.wpanchorbay.com by definition (nothing
+    // here ever points back at this origin), so it always opens in a new tab.
+    return `<a class="badge" href="${esc(v)}" target="_blank" rel="noopener noreferrer" title="${esc(label)}">${meta.icon}<span>${esc(label)}</span></a>`;
   });
 
   // Every product with any asset files also gets its own brand.json (see
@@ -242,7 +244,8 @@ function linkBadges(p) {
   }
 
   if (!linkBadgeHtml.length) return '';
-  return `<nav class="card-links" style="grid-template-columns:repeat(${linkBadgeHtml.length},1fr)">${linkBadgeHtml.join('')}</nav>`;
+  const cols = `repeat(${linkBadgeHtml.length},minmax(min(90px,100%),220px))`;
+  return `<nav class="card-links" style="grid-template-columns:${cols}">${linkBadgeHtml.join('')}</nav>`;
 }
 
 /** Plain-text summary for the "Copy Info" button: name, tagline, colours, links. */
@@ -288,7 +291,6 @@ function card(p) {
             <h3>${esc(p.name)}</h3>
             <p class="tagline">${esc(p.tagline)}</p>
           </div>
-          <button type="button" class="copy-info js-copy" data-copy="${esc(productInfoText(p))}" title="Copy name, colours and links" aria-label="Copy ${esc(p.name)} info">${ICONS.copy}<span>Copy Info</span></button>
         </header>
         ${logo || logoDark ? plates : ''}
         <div class="assets">${Object.values(p.assets).map(assetRow).join('')}</div>
@@ -300,6 +302,7 @@ function card(p) {
           </button>`
           )
           .join('')}
+          <button type="button" class="copy-info js-copy" data-copy="${esc(productInfoText(p))}" title="Copy name, colours and links" aria-label="Copy ${esc(p.name)} info">${ICONS.copy}<span>Copy Info</span></button>
         </div>
         ${linkBadges(p)}
       </article>`;
@@ -386,8 +389,8 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .card h3{margin:0;font-size:17px;letter-spacing:-.01em}
 .tagline{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
 .copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
-  border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:7px;
-  padding:6px 10px;font-size:12px;font-weight:600;white-space:nowrap;transition:.14s}
+  margin-left:auto;border:1px solid var(--line-strong);background:var(--bg);color:var(--muted);
+  border-radius:7px;padding:6px 10px;font-size:12px;font-weight:600;white-space:nowrap;transition:.14s}
 .copy-info svg{width:13px;height:13px;display:block}
 .copy-info:hover,.copy-info:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
 .copy-info.done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
@@ -425,7 +428,7 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .act.done{color:#0d8a5f;background:#eafbf3}
 .info-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
   border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);
-  flex:none;margin-right:auto;cursor:default;padding:0}
+  flex:none;margin:0 auto 0 8px;cursor:pointer;padding:0}
 .info-btn svg{width:12px;height:12px;display:block}
 .info-btn:hover,.info-btn:focus-visible{color:var(--brand,var(--anchor));border-color:var(--brand,var(--anchor))}
 .swatches{display:flex;flex-wrap:wrap;gap:8px}
@@ -435,13 +438,21 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .swatch:hover{border-color:var(--brand)}
 .swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
 .chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
+/* All N badges share one row on a normal or wide screen - grid-template-
+   columns is set per-card via inline style (repeat(N, minmax(...,220px))),
+   so it works whether a card has 2 badges or 4. The 220px cap stops them
+   stretching to fill the full-width WPAnchorBay card into mostly-empty
+   pills; the min(90px,100%) floor is only a last-resort guard against true
+   overflow. Below 480px width every card forces exactly two columns. */
 .card-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+@media (max-width:480px){.card-links{grid-template-columns:repeat(2,1fr)!important}}
 /* text-overflow:ellipsis has no effect set directly on a flex container (a
    known gotcha) — it has to sit on the text run itself, which also needs
-   min-width:0 to be allowed to shrink below its content size in a flex row. */
+   min-width:0 to be allowed to shrink below its content size in a grid item. */
 .badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
+  min-width:0;
   border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--muted);
-  text-decoration:none;font-size:12px;font-weight:600;transition:.14s}
+  text-decoration:none;font-size:12px;font-weight:600;line-height:1.2;transition:.14s}
 .badge svg{width:14px;height:14px;flex:none}
 .badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .badge:hover,.badge:focus-visible{border-color:var(--link-accent);color:var(--link-accent);background:#fff}
@@ -522,6 +533,12 @@ function flash(msg){
   timer = setTimeout(() => toast.classList.remove('show'), 1600);
 }
 document.addEventListener('click', async (e) => {
+  // The (i) info button relies on the title attribute for hover, which touch
+  // devices never trigger — tapping it shows the same text as a toast
+  // instead, so the information is reachable on mobile too.
+  const info = e.target.closest('.info-btn');
+  if (info) { flash(info.getAttribute('title') || ''); return; }
+
   const btn = e.target.closest('.js-copy');
   if (!btn) return;
   const text = btn.dataset.copy;
@@ -533,12 +550,14 @@ document.addEventListener('click', async (e) => {
     ta.style.cssText = 'position:fixed;opacity:0';
     document.body.appendChild(ta);
     ta.select();
-    try { document.execCommand('copy'); } catch { flash('Copy failed. Select the URL manually'); ta.remove(); return; }
+    try { document.execCommand('copy'); } catch { flash('Copy failed'); ta.remove(); return; }
     ta.remove();
   }
   btn.classList.add('done');
   setTimeout(() => btn.classList.remove('done'), 900);
-  flash('Copied ' + text);
+  // Keep it short — this used to echo the full copied value, which for the
+  // "Copy Info" button meant dumping several lines of text into a toast.
+  flash('Copied to clipboard');
 });
 </script>
 </body>
