@@ -355,7 +355,7 @@ function render_card( array $product ): string {
 
 	ob_start();
 	?>
-	<article class="wpab-ba-card" id="wpab-ba-<?php echo esc_attr( $slug ); ?>" style="--wpab-ba-brand:<?php echo esc_attr( $color ); ?>;--wpab-ba-on-brand:<?php echo esc_attr( $on_color ); ?>;--wpab-ba-link-accent:<?php echo esc_attr( $link_accent ); ?>">
+	<article class="wpab-ba-card<?php echo 'brand' === $kind ? ' wpab-ba-card--brand' : ''; ?>" id="wpab-ba-<?php echo esc_attr( $slug ); ?>" style="--wpab-ba-brand:<?php echo esc_attr( $color ); ?>;--wpab-ba-on-brand:<?php echo esc_attr( $on_color ); ?>;--wpab-ba-link-accent:<?php echo esc_attr( $link_accent ); ?>">
 		<div class="wpab-ba-card__head">
 			<?php if ( $icon ) : ?>
 				<img class="wpab-ba-card__icon" src="<?php echo esc_url( $icon ); ?>"
@@ -578,8 +578,10 @@ function hero_shortcode(): string {
 	$org      = isset( $manifest['organization'] ) && is_array( $manifest['organization'] ) ? $manifest['organization'] : array();
 	$org_name = isset( $org['name'] ) ? (string) $org['name'] : __( 'WPAnchorBay', 'wpab-brand-assets' );
 
-	// The brand-kind entry (WPAnchorBay itself) for the logo mark up top;
-	// falls back to the first product if the manifest somehow has none.
+	// The brand-kind entry (WPAnchorBay itself), preferred as the "Hotlink
+	// it" example; falls back to the first product if the manifest somehow
+	// has no brand-kind entry. No logo mark here — the theme's own nav
+	// already shows one, a second one in the hero would be redundant.
 	$brand  = null;
 	$sample = null;
 	foreach ( $manifest['products'] as $slug => $p ) {
@@ -599,7 +601,6 @@ function hero_shortcode(): string {
 		$sample = $brand;
 	}
 
-	$brand_logo    = $brand ? safe_asset_url( $brand['assets']['logo']['formats']['svg']['url'] ?? $brand['assets']['logo']['formats']['png']['url'] ?? '' ) : '';
 	$sample_logo   = $sample ? safe_asset_url( $sample['assets']['logo']['formats']['svg']['url'] ?? $sample['assets']['logo']['formats']['png']['url'] ?? '' ) : '';
 	$sample_name   = $sample ? (string) ( $sample['name'] ?? '' ) : '';
 	$manifest_self = isset( $manifest['self'] ) ? safe_asset_url( $manifest['self'] ) : '';
@@ -607,12 +608,6 @@ function hero_shortcode(): string {
 	ob_start();
 	?>
 	<div class="wpab-ba-hero">
-		<?php if ( $brand_logo ) : ?>
-			<div class="wpab-ba-brandplate">
-				<img class="wpab-ba-brandmark" src="<?php echo esc_url( $brand_logo ); ?>" alt="<?php echo esc_attr( $org_name ); ?>" height="32">
-			</div>
-		<?php endif; ?>
-
 		<h1><?php esc_html_e( 'Brand assets', 'wpab-brand-assets' ); ?></h1>
 		<p class="wpab-ba-lede"><?php
 			echo esc_html( sprintf(
@@ -800,6 +795,9 @@ function styles(): string {
    overflow. Capping it at 100% means a track never demands more room than
    the container actually has. */
 .wpab-ba-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));margin:2em 0}
+/* Matches the public brand-assets page: the WPAnchorBay card spans the full
+   row instead of sitting alongside the plugin cards at the same size. */
+.wpab-ba-card--brand{grid-column:1/-1}
 .wpab-ba-card{box-sizing:border-box;display:flex;flex-direction:column;gap:16px;padding:22px;
 border:1px solid #e2e7ee;border-radius:14px;background:#fff;color:#101828;
 box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
@@ -876,10 +874,6 @@ font-size:12px;font-weight:600}
 .wpab-ba-badge.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
 .wpab-ba-hero{margin:0 0 2em}
 .wpab-ba-hero *{box-sizing:border-box}
-.wpab-ba-brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid #e2e7ee;
-border-radius:11px;padding:12px 18px;margin:0 0 24px;
-box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
-.wpab-ba-brandmark{height:32px;width:auto;display:block}
 .wpab-ba-hero h1{margin:0 0 10px;font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.02em;color:#101828}
 .wpab-ba-hero .wpab-ba-lede{margin:0 0 24px;max-width:62ch;color:#5b6472;font-size:16px;line-height:1.6}
 .wpab-ba-hero .wpab-ba-panel{margin:0 0 16px;padding:18px 20px;background:#fff;border:1px solid #e2e7ee;
