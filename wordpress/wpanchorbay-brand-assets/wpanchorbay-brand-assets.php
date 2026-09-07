@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.2.0; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.2.1; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -773,10 +773,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.2.0' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.2.1' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.2.0', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.2.1', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -810,7 +810,7 @@ appearance:none;border:0;background:none;color:inherit;padding:0;margin:0}
 .wpab-ba-card__head{display:flex;gap:14px;align-items:center}
 .wpab-ba-card__head-text{flex:1;min-width:0}
 .wpab-ba-copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
-border:1px solid #e2e7ee;background:#f5f7fa;color:#5b6472;border-radius:7px;padding:6px 10px;
+border:1px solid #cbd5e0!important;background:#f5f7fa;color:#5b6472;border-radius:7px;padding:6px 10px;
 font-size:12px;font-weight:600;white-space:nowrap}
 .wpab-ba-copy-info svg{width:13px;height:13px;display:block}
 .wpab-ba-copy-info:hover,.wpab-ba-copy-info:focus-visible{border-color:var(--wpab-ba-link-accent);
@@ -871,7 +871,7 @@ margin-top:auto;padding-top:14px;border-top:1px solid #e2e7ee}
    known gotcha) — it has to sit on the text run itself, which also needs
    min-width:0 to be allowed to shrink below its content size in a flex row. */
 .wpab-ba-badge{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;
-border:1px solid #e2e7ee;border-radius:8px;background:#fbfcfe;color:#5b6472;text-decoration:none;
+border:1px solid #cbd5e0!important;border-radius:8px;background:#fbfcfe;color:#5b6472;text-decoration:none;
 font-size:12px;font-weight:600}
 .wpab-ba-badge svg{width:14px;height:14px;flex:none}
 .wpab-ba-badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
