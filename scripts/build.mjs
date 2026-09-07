@@ -244,7 +244,12 @@ function linkBadges(p) {
   }
 
   if (!linkBadgeHtml.length) return '';
-  const cols = `repeat(${linkBadgeHtml.length},minmax(min(90px,100%),220px))`;
+  // Plugin cards: always two per row, even on a wide screen. The brand card
+  // is the one exception — it stays one row of N (3 badges fits comfortably
+  // even on its full-width layout), only forced to two under 480px like
+  // everything else (see the media query in the stylesheet).
+  const badgeCols = p.kind === 'brand' ? linkBadgeHtml.length : 2;
+  const cols = `repeat(${badgeCols},minmax(min(90px,100%),1fr))`;
   return `<nav class="card-links" style="grid-template-columns:${cols}">${linkBadgeHtml.join('')}</nav>`;
 }
 
@@ -438,11 +443,10 @@ h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
 .swatch:hover{border-color:var(--brand)}
 .swatch.done{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
 .chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
-/* All N badges share one row on a normal or wide screen - grid-template-
-   columns is set per-card via inline style (repeat(N, minmax(...,220px))),
-   so it works whether a card has 2 badges or 4. The 220px cap stops them
-   stretching to fill the full-width WPAnchorBay card into mostly-empty
-   pills; the min(90px,100%) floor is only a last-resort guard against true
+/* Column count is set per-card via inline style (repeat(N, minmax(...))):
+   two for a plugin card regardless of width, N (all of them, one row) for
+   the WPAnchorBay card. Each column stretches to share the row equally
+   (1fr) - the min(90px,100%) floor is only a last-resort guard against true
    overflow. Below 480px width every card forces exactly two columns. */
 .card-links{display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
 @media (max-width:480px){.card-links{grid-template-columns:repeat(2,1fr)!important}}
