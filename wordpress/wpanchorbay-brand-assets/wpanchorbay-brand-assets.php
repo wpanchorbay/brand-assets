@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.3.1
+ * Version:           1.3.2
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.3.1; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.3.2; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -538,9 +538,14 @@ function render_card( array $product ): string {
 		// here, or it exists with no link to find it from.
 		$has_own_manifest = ! empty( $assets ) && '' !== $slug;
 		$total_badges     = count( $badge_links ) + ( $has_own_manifest ? 1 : 0 );
+		// Plugin cards: always two per row, even on a wide screen. The brand
+		// card is the one exception - it stays one row of N (3 badges fits
+		// comfortably even on its full-width layout), only forced to two
+		// under 480px like everything else (see the media query below).
+		$badge_cols       = ( 'brand' === $kind ) ? $total_badges : 2;
 		?>
 		<?php if ( $total_badges ) : ?>
-			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) $total_badges; ?>,minmax(min(90px,100%),220px))">
+			<nav class="wpab-ba-links" style="grid-template-columns:repeat(<?php echo (int) $badge_cols; ?>,minmax(min(90px,100%),1fr))">
 				<?php foreach ( $badge_links as $key => $href ) : ?>
 					<?php
 					// The brand's own "site" link goes to the company homepage,
@@ -802,10 +807,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.3.1' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.3.2' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.3.1', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.3.2', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -902,11 +907,10 @@ font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace!important;letter-spa
 .wpab-ba-swatch.wpab-ba-done{background:var(--wpab-ba-brand)!important;color:var(--wpab-ba-on-brand)!important;
 border-color:var(--wpab-ba-brand)!important}
 .wpab-ba-swatch__chip{width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
-/* All N badges share one row on a normal or wide screen - grid-template-
-   columns is set per-card via inline style (repeat(N, minmax(...,220px))),
-   so it works whether a card has 3 badges or 4. The 220px cap stops them
-   stretching to fill the full-width WPAnchorBay card into mostly-empty
-   pills; the min(90px,100%) floor is only a last-resort guard against true
+/* Column count is set per-card via inline style (repeat(N, minmax(...))):
+   two for a plugin card regardless of width, N (all of them, one row) for
+   the WPAnchorBay card. Each column stretches to share the row equally
+   (1fr) - the min(90px,100%) floor is only a last-resort guard against true
    overflow. Below 480px width every card forces exactly two columns,
    overriding the inline style - "!important" is the one case a stylesheet
    rule is allowed to beat an inline style, which is what makes this work. */
