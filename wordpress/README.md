@@ -11,16 +11,26 @@ a whole new product appears automatically.
 1. Copy `wpanchorbay-brand-assets/` into `wp-content/plugins/`, or zip that folder and upload it
    through Plugins → Add New → Upload.
 2. Activate it.
-3. Create a page titled **Brand Assets** at the slug `brand`, and add one Shortcode block:
+3. Create a page titled **Brand Assets** at the slug `brand`, and add three Shortcode blocks, one
+   per line, to reproduce the public brand-assets page exactly:
 
    ```
+   [wpanchorbay_brand_hero]
    [wpanchorbay_brand_assets]
+   [wpanchorbay_brand_usage]
    ```
 
-Everything above and below the grid — your intro copy, the usage do's and don'ts, a press contact —
-is just normal blocks on that page. The shortcode only renders the product grid.
+Each one is a self-contained region — use just `[wpanchorbay_brand_assets]` on its own (for example
+on a single product's page) if you don't want the header or the usage guidelines there too.
+Anything else you add around them — a press contact, extra copy — is just normal blocks.
 
-## Shortcode attributes
+## Shortcodes
+
+**`[wpanchorbay_brand_hero]`** — brand mark, "Brand assets" heading, lede paragraph, and the
+"Hotlink it" / "Machine-readable" panels (with copy buttons). No attributes; the hotlink example
+always uses the brand's own logo.
+
+**`[wpanchorbay_brand_assets]`** — the product grid. Attributes:
 
 | Attribute | Values | Default | Effect |
 |---|---|---|---|
@@ -34,6 +44,10 @@ is just normal blocks on that page. The shortcode only renders the product grid.
 ```
 
 Useful on a product page: `[wpanchorbay_brand_assets products="cartbay"]`.
+
+**`[wpanchorbay_brand_usage]`** — the "Please do / Please don't" guidelines. No attributes; pulled
+straight from the manifest's own `usage` field, so editing `brand.source.json` and redeploying the
+asset origin updates this section too, with no plugin change needed.
 
 ## How it behaves
 
@@ -54,6 +68,12 @@ Useful on a product page: `[wpanchorbay_brand_assets products="cartbay"]`.
   only honour HTML's `download` attribute for same-origin URLs. Clicking it opens the file instead;
   visitors can still right-click it and choose Save As. Fixing this for real needs a same-origin
   proxy endpoint, which is out of scope for a plugin this small.
+- The layout grids (product cards, Logo/Icon split, do's/don'ts columns) all use
+  `minmax(min(Npx,100%),1fr)` rather than a fixed pixel floor or a viewport `@media` query. This
+  plugin can end up in a narrow sidebar widget just as easily as a full-width page, and a viewport
+  breakpoint reacts to the *browser window*, not the actual space the shortcode has to work with —
+  the `min()` guard keeps every grid from overflowing or triggering a two-column layout it doesn't
+  have room for, regardless of where it's embedded.
 
 ## Pointing at a different origin
 

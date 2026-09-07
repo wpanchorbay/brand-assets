@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WPAnchorBay Brand Assets
  * Description:       Renders the WPAnchorBay brand assets grid from the remote brand.json manifest. Nothing is uploaded to the media library — every image is hotlinked from assets.wpanchorbay.com, so updating a file there updates it here.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            WPAnchorBay
@@ -81,7 +81,7 @@ function fetch_manifest() {
 		manifest_url(),
 		array(
 			'timeout'    => 5,
-			'user-agent' => 'WPAnchorBay Brand Assets/1.0.0; ' . home_url( '/' ),
+			'user-agent' => 'WPAnchorBay Brand Assets/1.1.0; ' . home_url( '/' ),
 			'headers'    => array( 'Accept' => 'application/json' ),
 		)
 	);
@@ -548,6 +548,173 @@ function render_card( array $product ): string {
 }
 
 /**
+ * A shared "brand.json could not be loaded" message — never shown to
+ * ordinary visitors, only to anyone who can edit posts.
+ */
+function unavailable_notice(): string {
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		return '';
+	}
+
+	return '<p class="wpab-ba-notice">' . esc_html__(
+		'Brand assets could not be loaded from assets.wpanchorbay.com. This message is only visible to editors.',
+		'wpab-brand-assets'
+	) . '</p>';
+}
+
+/**
+ * Shortcode: [wpanchorbay_brand_hero] — the header block from the public
+ * brand-assets page: brand mark, title, lede, and the "Hotlink it" /
+ * "Machine-readable" panels. Meant to sit above [wpanchorbay_brand_assets].
+ */
+function hero_shortcode(): string {
+	$manifest = get_manifest();
+
+	if ( null === $manifest ) {
+		return unavailable_notice();
+	}
+
+	$glyphs   = icons();
+	$org      = isset( $manifest['organization'] ) && is_array( $manifest['organization'] ) ? $manifest['organization'] : array();
+	$org_name = isset( $org['name'] ) ? (string) $org['name'] : __( 'WPAnchorBay', 'wpab-brand-assets' );
+
+	// The brand-kind entry (WPAnchorBay itself) for the logo mark up top;
+	// falls back to the first product if the manifest somehow has none.
+	$brand  = null;
+	$sample = null;
+	foreach ( $manifest['products'] as $slug => $p ) {
+		if ( ! is_array( $p ) ) {
+			continue;
+		}
+		$p['slug'] = $p['slug'] ?? $slug;
+		if ( null === $sample ) {
+			$sample = $p;
+		}
+		if ( 'brand' === ( $p['kind'] ?? '' ) ) {
+			$brand = $p;
+			break;
+		}
+	}
+	if ( $brand ) {
+		$sample = $brand;
+	}
+
+	$brand_logo    = $brand ? safe_asset_url( $brand['assets']['logo']['formats']['svg']['url'] ?? $brand['assets']['logo']['formats']['png']['url'] ?? '' ) : '';
+	$sample_logo   = $sample ? safe_asset_url( $sample['assets']['logo']['formats']['svg']['url'] ?? $sample['assets']['logo']['formats']['png']['url'] ?? '' ) : '';
+	$sample_name   = $sample ? (string) ( $sample['name'] ?? '' ) : '';
+	$manifest_self = isset( $manifest['self'] ) ? safe_asset_url( $manifest['self'] ) : '';
+
+	ob_start();
+	?>
+	<div class="wpab-ba-hero">
+		<?php if ( $brand_logo ) : ?>
+			<div class="wpab-ba-brandplate">
+				<img class="wpab-ba-brandmark" src="<?php echo esc_url( $brand_logo ); ?>" alt="<?php echo esc_attr( $org_name ); ?>" height="32">
+			</div>
+		<?php endif; ?>
+
+		<h1><?php esc_html_e( 'Brand assets', 'wpab-brand-assets' ); ?></h1>
+		<p class="wpab-ba-lede"><?php
+			echo esc_html( sprintf(
+				/* translators: %s: organization name. */
+				__( 'Official logos, icons and colours for %s and its WooCommerce plugins. Every URL below is permanent: we update the file behind it, never the address, so you can hotlink these directly and always get the current mark.', 'wpab-brand-assets' ),
+				$org_name
+			) );
+		?></p>
+
+		<?php if ( $sample_logo ) : ?>
+			<?php $snippet = sprintf( '<img src="%s" alt="%s" height="40">', $sample_logo, $sample_name ); ?>
+			<div class="wpab-ba-panel">
+				<h2><?php esc_html_e( 'Hotlink it', 'wpab-brand-assets' ); ?></h2>
+				<p><?php esc_html_e( 'Point straight at the URL. No copy in your media library, no version to keep in sync.', 'wpab-brand-assets' ); ?></p>
+				<div class="wpab-ba-code-row">
+					<pre><?php echo esc_html( $snippet ); ?></pre>
+					<button type="button" class="wpab-ba-act wpab-ba-js-copy" data-copy="<?php echo esc_attr( $snippet ); ?>"
+						title="<?php esc_attr_e( 'Copy snippet', 'wpab-brand-assets' ); ?>"
+						aria-label="<?php esc_attr_e( 'Copy snippet', 'wpab-brand-assets' ); ?>"><?php echo $glyphs['copy']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?></button>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<?php if ( $manifest_self ) : ?>
+			<div class="wpab-ba-panel">
+				<h2><?php esc_html_e( 'Machine-readable', 'wpab-brand-assets' ); ?></h2>
+				<p><?php esc_html_e( 'Every product, asset URL and colour, as JSON, or fetch one product on its own at /brand/<product>/brand.json.', 'wpab-brand-assets' ); ?></p>
+				<div class="wpab-ba-code-row">
+					<pre><?php echo esc_html( $manifest_self ); ?></pre>
+					<button type="button" class="wpab-ba-act wpab-ba-js-copy" data-copy="<?php echo esc_attr( $manifest_self ); ?>"
+						title="<?php esc_attr_e( 'Copy URL', 'wpab-brand-assets' ); ?>"
+						aria-label="<?php esc_attr_e( 'Copy URL', 'wpab-brand-assets' ); ?>"><?php echo $glyphs['copy']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup, see icons(). ?></button>
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+	$html = (string) ob_get_clean();
+
+	wp_enqueue_style( STYLE_HANDLE );
+	wp_enqueue_script( SCRIPT_HANDLE );
+
+	return $html;
+}
+
+/**
+ * Shortcode: [wpanchorbay_brand_usage] — the "Please do / Please don't"
+ * section, sourced from the manifest's own usage guidelines so it can never
+ * drift out of sync with the public brand-assets page.
+ */
+function usage_shortcode(): string {
+	$manifest = get_manifest();
+
+	if ( null === $manifest ) {
+		return unavailable_notice();
+	}
+
+	$usage       = isset( $manifest['usage'] ) && is_array( $manifest['usage'] ) ? $manifest['usage'] : array();
+	$allowed     = isset( $usage['allowed'] ) && is_array( $usage['allowed'] ) ? $usage['allowed'] : array();
+	$not_allowed = isset( $usage['notAllowed'] ) && is_array( $usage['notAllowed'] ) ? $usage['notAllowed'] : array();
+
+	if ( ! $allowed && ! $not_allowed ) {
+		return '';
+	}
+
+	ob_start();
+	?>
+	<div class="wpab-ba-usage">
+		<h2 class="wpab-ba-usage-title"><?php esc_html_e( 'Using the marks', 'wpab-brand-assets' ); ?></h2>
+		<p class="wpab-ba-usage-sub"><?php esc_html_e( "Short version: don't redraw them.", 'wpab-brand-assets' ); ?></p>
+		<div class="wpab-ba-rules">
+			<?php if ( $allowed ) : ?>
+				<div class="wpab-ba-yes">
+					<h3><?php esc_html_e( 'Please do', 'wpab-brand-assets' ); ?></h3>
+					<ul>
+						<?php foreach ( $allowed as $rule ) : ?>
+							<li><?php echo esc_html( (string) $rule ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
+			<?php if ( $not_allowed ) : ?>
+				<div class="wpab-ba-no">
+					<h3><?php esc_html_e( "Please don't", 'wpab-brand-assets' ); ?></h3>
+					<ul>
+						<?php foreach ( $not_allowed as $rule ) : ?>
+							<li><?php echo esc_html( (string) $rule ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php
+	$html = (string) ob_get_clean();
+
+	wp_enqueue_style( STYLE_HANDLE );
+
+	return $html;
+}
+
+/**
  * Shortcode handler.
  *
  * @param array<string,string>|string $atts Shortcode attributes.
@@ -565,14 +732,7 @@ function shortcode( $atts = array() ): string {
 	$manifest = get_manifest();
 
 	if ( null === $manifest ) {
-		// Never show a raw error to visitors; give editors something actionable.
-		if ( current_user_can( 'edit_posts' ) ) {
-			return '<p class="wpab-ba-notice">' . esc_html__(
-				'Brand assets could not be loaded from assets.wpanchorbay.com. This message is only visible to editors.',
-				'wpab-brand-assets'
-			) . '</p>';
-		}
-		return '';
+		return unavailable_notice();
 	}
 
 	$only = array_filter( array_map( 'sanitize_key', explode( ',', (string) $atts['products'] ) ) );
@@ -618,10 +778,10 @@ function shortcode( $atts = array() ): string {
  * ---------------------------------------------------------------------- */
 
 function register_assets(): void {
-	wp_register_style( STYLE_HANDLE, false, array(), '1.0.0' );
+	wp_register_style( STYLE_HANDLE, false, array(), '1.1.0' );
 	wp_add_inline_style( STYLE_HANDLE, styles() );
 
-	wp_register_script( SCRIPT_HANDLE, false, array(), '1.0.0', true );
+	wp_register_script( SCRIPT_HANDLE, false, array(), '1.1.0', true );
 	wp_add_inline_script( SCRIPT_HANDLE, script() );
 }
 
@@ -634,7 +794,12 @@ function register_assets(): void {
  */
 function styles(): string {
 	return <<<'CSS'
-.wpab-ba-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:2em 0}
+/* minmax(min(Npx,100%),1fr) instead of minmax(Npx,1fr): this plugin renders
+   inside an arbitrary theme container (could be a narrow sidebar, not a
+   full-width page like the public site), so a fixed pixel floor can force
+   overflow. Capping it at 100% means a track never demands more room than
+   the container actually has. */
+.wpab-ba-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));margin:2em 0}
 .wpab-ba-card{box-sizing:border-box;display:flex;flex-direction:column;gap:16px;padding:22px;
 border:1px solid #e2e7ee;border-radius:14px;background:#fff;color:#101828;
 box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
@@ -642,8 +807,8 @@ box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
 /* Buttons don't inherit font-family or reset to cursor:pointer by default;
    every button class below sets its own border/background/padding, so this
    only fixes the gaps, it doesn't fight any of them. */
-.wpab-ba-card button{font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;
-border:0;background:none;color:inherit;padding:0;margin:0}
+.wpab-ba-card button,.wpab-ba-hero button{font-family:inherit;cursor:pointer;-webkit-appearance:none;
+appearance:none;border:0;background:none;color:inherit;padding:0;margin:0}
 .wpab-ba-card__head{display:flex;gap:14px;align-items:center}
 .wpab-ba-card__head-text{flex:1;min-width:0}
 .wpab-ba-copy-info{display:inline-flex;align-items:center;gap:6px;flex:none;align-self:flex-start;
@@ -656,8 +821,12 @@ color:var(--wpab-ba-link-accent);background:#fff}
 .wpab-ba-card__icon{border-radius:14px;flex:none}
 .wpab-ba-card__title{margin:0;font-size:17px;line-height:1.3;letter-spacing:-.01em}
 .wpab-ba-card__tagline{margin:3px 0 0;font-size:13.5px;line-height:1.45;color:#5b6472}
-.wpab-ba-plates{display:grid;grid-template-columns:1fr;gap:10px}
-.wpab-ba-plates:has(.wpab-ba-card__plate--dark){grid-template-columns:1fr 1fr}
+/* auto-fit + minmax(min(Npx,100%),1fr) instead of a viewport @media query:
+   this reacts to how wide the card actually renders — which depends on the
+   theme's container, not the browser viewport — so it works the same in a
+   full-width page and a narrow sidebar widget. Two plates that don't fit
+   side by side stack instead of overflowing or getting crushed. */
+.wpab-ba-plates{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
 .wpab-ba-card__plate{display:flex;align-items:center;justify-content:center;min-height:92px;padding:20px 16px;
 border:1px solid #e2e7ee;border-radius:10px;
 background:linear-gradient(0deg,color-mix(in srgb,var(--wpab-ba-brand) 8%,transparent),
@@ -665,9 +834,10 @@ color-mix(in srgb,var(--wpab-ba-brand) 8%,transparent)),#fff}
 .wpab-ba-card__plate--dark{background:linear-gradient(0deg,color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent),
 color-mix(in srgb,var(--wpab-ba-brand) 14%,transparent)),#001F3F;border-color:#001F3F}
 .wpab-ba-card__plate img{max-width:100%;max-height:40px;width:auto;height:auto}
-/* Stacked on small screens; side by side (Logo | Icon) once there is room. */
-.wpab-ba-assets{display:grid;grid-template-columns:1fr;gap:14px 16px}
-@media (min-width:560px){.wpab-ba-assets{grid-template-columns:1fr 1fr}}
+/* Stacked when the card itself is narrow; side by side (Logo | Icon) once
+   there's room — driven by the card's actual width, not the viewport (see
+   .wpab-ba-grid above for why that distinction matters here). */
+.wpab-ba-assets{display:grid;gap:14px 16px;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
 .wpab-ba-asset{border:1px solid #e2e7ee;border-radius:10px;padding:12px 14px 14px}
 .wpab-ba-asset__name{font-size:13px;font-weight:700;margin-bottom:8px}
 .wpab-ba-fmt-list{display:flex;flex-direction:column;gap:7px}
@@ -704,6 +874,43 @@ font-size:12px;font-weight:600}
 .wpab-ba-badge span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .wpab-ba-badge:hover,.wpab-ba-badge:focus-visible{border-color:var(--wpab-ba-link-accent);color:var(--wpab-ba-link-accent);background:#fff}
 .wpab-ba-badge.wpab-ba-done{color:#0d8a5f;border-color:#0d8a5f;background:#eafbf3}
+.wpab-ba-hero{margin:0 0 2em}
+.wpab-ba-hero *{box-sizing:border-box}
+.wpab-ba-brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid #e2e7ee;
+border-radius:11px;padding:12px 18px;margin:0 0 24px;
+box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
+.wpab-ba-brandmark{height:32px;width:auto;display:block}
+.wpab-ba-hero h1{margin:0 0 10px;font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.02em;color:#101828}
+.wpab-ba-hero .wpab-ba-lede{margin:0 0 24px;max-width:62ch;color:#5b6472;font-size:16px;line-height:1.6}
+.wpab-ba-hero .wpab-ba-panel{margin:0 0 16px;padding:18px 20px;background:#fff;border:1px solid #e2e7ee;
+border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
+.wpab-ba-hero .wpab-ba-panel h2{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;
+color:#5b6472;font-weight:700}
+.wpab-ba-hero .wpab-ba-panel p{margin:0 0 12px;color:#5b6472;font-size:14px;line-height:1.5}
+.wpab-ba-code-row{display:flex;align-items:stretch;gap:8px}
+/* Still scrollable on narrow screens where the snippet overflows — just a
+   slim, low-contrast bar instead of the browser's full-size default. */
+.wpab-ba-code-row pre{flex:1;min-width:0;margin:0;padding:12px 14px;background:#fbfcfe;border:1px solid #e2e7ee;
+border-radius:9px;overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+color:#101828;scrollbar-width:thin;scrollbar-color:#e2e7ee transparent}
+.wpab-ba-code-row pre::-webkit-scrollbar{height:6px}
+.wpab-ba-code-row pre::-webkit-scrollbar-track{background:transparent}
+.wpab-ba-code-row pre::-webkit-scrollbar-thumb{background:#e2e7ee;border-radius:999px}
+.wpab-ba-code-row pre::-webkit-scrollbar-thumb:hover{background:#5b6472}
+.wpab-ba-code-row .wpab-ba-act{width:36px;height:auto;flex:none;border:1px solid #e2e7ee;border-radius:9px;
+background:#fbfcfe;color:#5b6472}
+.wpab-ba-code-row .wpab-ba-act:hover,.wpab-ba-code-row .wpab-ba-act:focus-visible{border-color:#39CCCC;
+color:#39CCCC;background:#fff}
+.wpab-ba-usage{margin:2em 0}
+.wpab-ba-usage *{box-sizing:border-box}
+.wpab-ba-usage-title{margin:0 0 4px;font-size:20px;letter-spacing:-.01em;color:#101828}
+.wpab-ba-usage-sub{margin:0 0 20px;color:#5b6472;font-size:14px}
+.wpab-ba-rules{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.wpab-ba-rules ul{margin:0;padding-left:20px}
+.wpab-ba-rules li{margin:0 0 7px;color:#5b6472;font-size:14px;line-height:1.5}
+.wpab-ba-rules h3{margin:0 0 10px;font-size:14px}
+.wpab-ba-yes h3{color:#0d8a5f}
+.wpab-ba-no h3{color:#c2374a}
 .wpab-ba-notice{padding:12px 16px;border-left:3px solid #d63638;background:rgba(214,54,56,.06);font-size:14px}
 .wpab-ba-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:#001F3F;color:#fff;
 padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:9999}
@@ -783,7 +990,9 @@ JS;
  * ---------------------------------------------------------------------- */
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\register_assets' );
+add_shortcode( 'wpanchorbay_brand_hero', __NAMESPACE__ . '\\hero_shortcode' );
 add_shortcode( 'wpanchorbay_brand_assets', __NAMESPACE__ . '\\shortcode' );
+add_shortcode( 'wpanchorbay_brand_usage', __NAMESPACE__ . '\\usage_shortcode' );
 
 // Warm the cache out of band so a visitor rarely pays for the fetch.
 add_action( CRON_HOOK, __NAMESPACE__ . '\\refresh_manifest' );
