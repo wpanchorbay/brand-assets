@@ -1,0 +1,116 @@
+{
+  "self": "https://assets.wpanchorbay.com/marketing-assets.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "palette": {
+    "ink": "#001F3F",
+    "anchor": "#39CCCC"
+  },
+  "assets": [
+    {
+      "slug": "money-back-guarantee",
+      "name": "30-Day Money-Back Guarantee",
+      "tagline": "Risk-free purchase guarantee badge",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "files": [
+        {
+          "name": "Large (high-res)",
+          "url": "https://assets.wpanchorbay.com/images/money-back-guarantee-large.png",
+          "path": "/images/money-back-guarantee-large.png",
+          "type": "image/png",
+          "width": 1200,
+          "height": 600
+        },
+        {
+          "name": "Small (web-optimized)",
+          "url": "https://assets.wpanchorbay.com/images/money-back-guarantee-small.png",
+          "path": "/images/money-back-guarantee-small.png",
+          "type": "image/png",
+          "width": 600,
+          "height": 300
+        }
+      ]
+    },
+    {
+      "slug": "5-star-rating",
+      "name": "5-Star Rating on WordPress.org",
+      "tagline": "WordPress.org 5-star rating badge",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "files": [
+        {
+          "name": "Large (high-res)",
+          "url": "https://assets.wpanchorbay.com/images/5-star-rating-large.png",
+          "path": "/images/5-star-rating-large.png",
+          "type": "image/png",
+          "width": 1200,
+          "height": 600
+        },
+        {
+          "name": "Small (web-optimized)",
+          "url": "https://assets.wpanchorbay.com/images/5-star-rating-small.png",
+          "path": "/images/5-star-rating-small.png",
+          "type": "image/png",
+          "width": 600,
+          "height": 300
+        }
+      ]
+    },
+    {
+      "slug": "free-versions",
+      "name": "Free Versions Available on WordPress.org",
+      "tagline": "Free plugin version availability badge",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "files": [
+        {
+          "name": "Large (high-res)",
+          "url": "https://assets.wpanchorbay.com/images/free-versions-large.png",
+          "path": "/images/free-versions-large.png",
+          "type": "image/png",
+          "width": 1200,
+          "height": 600
+        },
+        {
+          "name": "Small (web-optimized)",
+          "url": "https://assets.wpanchorbay.com/images/free-versions-small.png",
+          "path": "/images/free-versions-small.png",
+          "type": "image/png",
+          "width": 600,
+          "height": 300
+        }
+      ]
+    },
+    {
+      "slug": "support-replies",
+      "name": "Support Replies in Under 4 Hours",
+      "tagline": "Fast support response time badge",
+      "color": "#39CCCC",
+      "onColor": "#001F3F",
+      "files": [
+        {
+          "name": "Large (high-res)",
+          "url": "https://assets.wpanchorbay.com/images/support-replies-large.png",
+          "path": "/images/support-replies-large.png",
+          "type": "image/png",
+          "width": 1200,
+          "height": 600
+        },
+        {
+          "name": "Small (web-optimized)",
+          "url": "https://assets.wpanchorbay.com/images/support-replies-small.png",
+          "path": "/images/support-replies-small.png",
+          "type": "image/png",
+          "width": 600,
+          "height": 300
+        }
+      ]
+    }
+  ]
+}
