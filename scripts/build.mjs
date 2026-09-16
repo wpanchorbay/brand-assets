@@ -354,10 +354,14 @@ body{margin:0;background:var(--bg);color:var(--text);
 a{color:inherit}
 :focus-visible{outline:2px solid var(--anchor);outline-offset:2px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.topnav{background:var(--ink);color:#fff}
+.topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:13px;padding-bottom:13px}
+.nav-logo{display:inline-flex;align-items:center;text-decoration:none}
+.nav-logo img{height:28px;width:auto;display:block}
+.nav-visit{display:inline-flex;align-items:center;gap:8px;background:var(--anchor);color:var(--ink);font-weight:700;font-size:13.5px;line-height:1;padding:10px 18px;border-radius:9px;text-decoration:none;transition:.14s;white-space:nowrap}
+.nav-visit:hover,.nav-visit:focus-visible{background:#fff;color:var(--ink)}
+.nav-visit svg{width:15px;height:15px;display:block;flex:none}
 header.top{padding:56px 0 32px;border-bottom:1px solid var(--line)}
-.brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);
-  border-radius:11px;padding:12px 18px;margin-bottom:28px;box-shadow:var(--shadow)}
-.brandmark{height:32px;width:auto;display:block}
 h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.02em}
 .lede{margin:0;max-width:62ch;color:var(--muted);font-size:17px}
 .panel{margin:28px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);
@@ -477,8 +481,11 @@ footer a:hover,footer a:focus-visible{color:var(--anchor);text-decoration-color:
 </style>
 </head>
 <body>
+<nav class="topnav"><div class="wrap topnav-inner">
+  <a class="nav-logo" href="/" aria-label="WPAnchorBay home"><img src="/brand/wpanchorbay/logo-dark.svg" alt="WPAnchorBay" height="28"></a>
+  <a class="nav-visit" href="https://wpanchorbay.com" target="_blank" rel="noopener" title="Visit wpanchorbay.com">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</div></nav>
 <header class="top"><div class="wrap">
-  ${brand?.assets.logo ? `<div class="brandplate"><img class="brandmark" src="${esc((brand.assets.logo.formats.svg ?? brand.assets.logo.formats.png).path)}" alt="${esc(src.organization.name)}" height="32"></div>` : ''}
   <h1>Brand assets</h1>
   <p class="lede">Official logos, icons and colours for ${esc(src.organization.name)} and its WooCommerce plugins. Every URL below is permanent: we update the file behind it, never the address, so you can hotlink these directly and always get the current mark.</p>
   <div class="panel">
@@ -496,6 +503,11 @@ footer a:hover,footer a:focus-visible{color:var(--anchor);text-decoration-color:
       <pre>${esc(ORIGIN)}/brand.json</pre>
       <button type="button" class="act js-copy" data-copy="${esc(ORIGIN + '/brand.json')}" title="Copy URL" aria-label="Copy URL">${ICONS.copy}</button>
     </div>
+  </div>
+  <div class="panel" style="margin-top:16px;">
+    <h2>Marketing assets</h2>
+    <p>Trust badges, stickers and promotional badges for product pages and landing pages.</p>
+    <a class="badge" href="/marketing-assets.html" title="View marketing assets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M4 14h16M12 14v4"/></svg><span>Marketing Assets</span></a>
   </div>
 </div></header>
 
