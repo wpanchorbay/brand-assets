@@ -298,6 +298,19 @@
               "height": 120
             }
           }
+        },
+        "og-halloween26": {
+          "label": "Social image (halloween26)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/og-halloween26.png",
+              "path": "/brand/notifybay/og-halloween26.png",
+              "type": "image/png",
+              "bytes": 389099,
+              "width": 900,
+              "height": 473
+            }
+          }
         }
       }
     },
