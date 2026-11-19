@@ -56,8 +56,8 @@
       "color": "#F02A74",
       "onColor": "#FFFFFF",
       "links": {
-        "wordpress": "https://wordpress.org/plugins/campaignbay-automated-discount-campaigns-flash-sales-for-woocommerce/",
-        "site": "https://wpanchorbay.com/plugins/campaignbay/",
+        "wordpress": "https://wordpress.org/plugins/campaignbay/",
+        "site": "https://wpanchorbay.com/campaignbay/",
         "docs": "https://docs.wpanchorbay.com/campaignbay/"
       }
     },
