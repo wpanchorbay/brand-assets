@@ -110,6 +110,14 @@
       "icon-inner": {
         "label": "Icon (inner)",
         "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-inner.png",
+            "path": "/brand/spacebay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 22661,
+            "width": 480,
+            "height": 480
+          },
           "svg": {
             "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-inner.svg",
             "path": "/brand/spacebay/icon-inner.svg",
