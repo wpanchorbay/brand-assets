@@ -24,16 +24,16 @@
           "url": "https://assets.wpanchorbay.com/images/money-back-guarantee-large.png",
           "path": "/images/money-back-guarantee-large.png",
           "type": "image/png",
-          "width": 1200,
-          "height": 600
+          "width": 1254,
+          "height": 1254
         },
         {
           "name": "Small (web-optimized)",
           "url": "https://assets.wpanchorbay.com/images/money-back-guarantee-small.png",
           "path": "/images/money-back-guarantee-small.png",
           "type": "image/png",
-          "width": 600,
-          "height": 300
+          "width": 720,
+          "height": 480
         },
         {
           "name": "SVG (vector, any size)",
@@ -57,16 +57,16 @@
           "url": "https://assets.wpanchorbay.com/images/5-star-rating-large.png",
           "path": "/images/5-star-rating-large.png",
           "type": "image/png",
-          "width": 1200,
-          "height": 600
+          "width": 1536,
+          "height": 1024
         },
         {
           "name": "Small (web-optimized)",
           "url": "https://assets.wpanchorbay.com/images/5-star-rating-small.png",
           "path": "/images/5-star-rating-small.png",
           "type": "image/png",
-          "width": 600,
-          "height": 300
+          "width": 720,
+          "height": 480
         },
         {
           "name": "SVG (vector, any size)",
@@ -90,16 +90,16 @@
           "url": "https://assets.wpanchorbay.com/images/free-versions-large.png",
           "path": "/images/free-versions-large.png",
           "type": "image/png",
-          "width": 1200,
-          "height": 600
+          "width": 1536,
+          "height": 1024
         },
         {
           "name": "Small (web-optimized)",
           "url": "https://assets.wpanchorbay.com/images/free-versions-small.png",
           "path": "/images/free-versions-small.png",
           "type": "image/png",
-          "width": 600,
-          "height": 300
+          "width": 720,
+          "height": 480
         },
         {
           "name": "SVG (vector, any size)",
@@ -123,16 +123,16 @@
           "url": "https://assets.wpanchorbay.com/images/support-replies-large.png",
           "path": "/images/support-replies-large.png",
           "type": "image/png",
-          "width": 1200,
-          "height": 600
+          "width": 1536,
+          "height": 1024
         },
         {
           "name": "Small (web-optimized)",
           "url": "https://assets.wpanchorbay.com/images/support-replies-small.png",
           "path": "/images/support-replies-small.png",
           "type": "image/png",
-          "width": 600,
-          "height": 300
+          "width": 720,
+          "height": 480
         },
         {
           "name": "SVG (vector, any size)",

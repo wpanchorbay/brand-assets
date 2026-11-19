@@ -26,3 +26,13 @@
   Cache-Control: public, max-age=600, stale-while-revalidate=86400
   Access-Control-Allow-Origin: *
   X-Content-Type-Options: nosniff
+
+/images/*
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+/marketing-assets.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
