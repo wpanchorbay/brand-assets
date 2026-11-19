@@ -526,8 +526,8 @@
       "color": "#0000F2",
       "onColor": "#FFFFFF",
       "links": {
-        "wordpress": "https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/",
-        "site": "https://wpanchorbay.com/plugins/notifybay/",
+        "wordpress": "https://wordpress.org/plugins/notifybay-waitlist-and-stock-alert-woo/",
+        "site": "https://wpanchorbay.com/plugins/notifybay-waitlist-and-stock-alert-for-woocommerce/",
         "docs": "https://docs.wpanchorbay.com/notifybay/"
       },
       "assets": {
