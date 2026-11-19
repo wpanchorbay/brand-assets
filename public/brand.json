@@ -1151,8 +1151,8 @@
       "color": "#DD0000",
       "onColor": "#FFFFFF",
       "links": {
-        "wordpress": "https://wordpress.org/plugins/tubebay-youtube-product-videos-for-woocommerce/",
-        "site": "https://wpanchorbay.com/plugins/tubebay/",
+        "wordpress": "https://wordpress.org/plugins/tubebay/",
+        "site": "https://wpanchorbay.com/plugins/tubebay-youtube-product-videos-for-woocommerce/",
         "docs": "https://docs.wpanchorbay.com/tubebay/"
       },
       "assets": {
