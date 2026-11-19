@@ -3,182 +3,319 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Marketing Assets: WPAnchorBay</title>
 <meta name="description" content="Marketing stickers and badges for WPAnchorBay. Stickers, trust badges, stable URLs, safe to hotlink.">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#EBEFF4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050D16" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/brand/wpanchorbay/icon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" href="/brand/wpanchorbay/icon.png">
+<link rel="apple-touch-icon" href="/brand/wpanchorbay/icon.png">
 <meta property="og:title" content="Marketing Assets: WPAnchorBay">
 <meta property="og:description" content="Marketing stickers and badges. Stable URLs, safe to hotlink.">
 <meta property="og:url" content="https://assets.wpanchorbay.com/marketing-assets.html">
 <link rel="canonical" href="https://assets.wpanchorbay.com/marketing-assets.html">
 <style>
+/* Tokens, topbar, buttons and footer are copied from the home page (scripts/index.template.html).
+   Surface steps instead of borders: page (--bg) < card (--card) < inner (--inner) < hover (--hover) */
 :root{
-  --ink:#001F3F; --anchor:#39CCCC;
-  --bg:#f5f7fa; --surface:#ffffff; --surface-2:#fbfcfe;
-  --line:#e2e7ee; --line-strong:#cdd5e0;
-  --text:#101828; --muted:#5b6472;
-  --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16);
-  color-scheme:light;
+  --navy:#001F3F; --teal:#39CCCC;
+  --bg:#EBEFF4; --card:#FFFFFF; --inner:#F3F5F8; --hover:#E6EBF1;
+  --ink:#001F3F; --muted:#4A5D73; --sep:rgba(0,31,63,.08);
+  --link:#0A6B6B; --focus:#0A6B6B; --good:#116B3A; --bad:#A31D2B;
+  --paper:#F3F5F8;
+  --grid-line:rgba(0,31,63,.14);
+  --shadow:0 1px 3px rgba(0,31,63,.04),0 12px 32px -12px rgba(0,31,63,.10);
+  --r:24px; --r-md:16px; --r-sm:12px;
+  --hh:64px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
-*{box-sizing:border-box}
-button{font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;border:0;background:none;color:inherit;padding:0;margin:0}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--anchor);outline-offset:2px}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-.topnav{background:var(--ink);color:#fff}
-.topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:13px;padding-bottom:13px}
-.nav-logo{display:inline-flex;align-items:center;text-decoration:none}
-.nav-logo img{height:28px;width:auto;display:block}
-.nav-visit{display:inline-flex;align-items:center;gap:8px;background:var(--anchor);color:var(--ink);font-weight:700;font-size:13.5px;line-height:1;padding:10px 18px;border-radius:9px;text-decoration:none;transition:.14s;white-space:nowrap}
-.nav-visit:hover,.nav-visit:focus-visible{background:#fff;color:var(--ink)}
-.nav-visit svg{width:15px;height:15px;display:block;flex:none}
-header.top{padding:32px 0 32px;border-bottom:1px solid var(--line)}
-.brandplate{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 18px;margin-bottom:28px;box-shadow:var(--shadow)}
-.brandmark{height:32px;width:auto;display:block}
-h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.02em}
-.lede{margin:0;max-width:62ch;color:var(--muted);font-size:17px}
-.panel{margin:28px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
-.panel p{margin:0 0 12px;color:var(--muted)}
-.code-row{display:flex;align-items:stretch;gap:8px}
-pre{flex:1;margin:0;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;overflow-x:auto;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text);scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-pre::-webkit-scrollbar{height:6px}
-pre::-webkit-scrollbar-track{background:transparent}
-pre::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
-pre::-webkit-scrollbar-thumb:hover{background:var(--muted)}
-.code-row .act{width:36px;height:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);color:var(--muted)}
-.code-row .act:hover,.code-row .act:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
-.back-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:.14s}
-.back-link:hover,.back-link:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
-.back-link svg{width:16px;height:16px;flex:none}
-section{padding:44px 0}
-h2.section{margin:0 0 4px;font-size:20px;letter-spacing:-.01em}
-.sub{margin:0 0 18px;color:var(--muted);font-size:14px}
-/* toolbar */
-.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:0 0 18px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.toolbar-left{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.toolbar-right{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.view-switch{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--surface-2)}
-.view-switch button{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--muted);border-right:1px solid var(--line);transition:.14s}
-.view-switch button:last-child{border-right:0}
-.view-switch button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-.view-switch button:not(.active):hover{background:#fff;color:var(--text)}
-.view-switch svg{width:15px;height:15px;display:block}
-.select{appearance:auto;-webkit-appearance:auto;border:1px solid var(--line);background:var(--surface-2);color:var(--text);border-radius:8px;padding:7px 10px;font-size:13px;font-weight:600}
-.count{font-size:13px;color:var(--muted)}
-/* grid */
-.grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
-@media (max-width:720px){.grid{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
-.preview{position:relative;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(0deg,color-mix(in srgb,var(--anchor) 7%,transparent),color-mix(in srgb,var(--anchor) 7%,transparent)),#fff;border-bottom:1px solid var(--line);min-height:200px;aspect-ratio: 16/10;overflow:hidden}
-.preview img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 6px 18px rgba(16,24,40,.12))}
-.card-body{padding:14px 14px 12px;display:flex;flex-direction:column;gap:12px;flex:1}
-.card-title{margin:0;font-size:14px;font-weight:700;line-height:1.35;letter-spacing:-.01em}
-.card-desc{margin:0;font-size:12.5px;color:var(--muted);line-height:1.4}
-.size-switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface-2);align-self:flex-start}
-.size-switch button{padding:6px 12px;font:700 11px/1 ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--line);transition:.14s;white-space:nowrap}
-.size-switch button:last-child{border-right:0}
-.size-switch button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-.size-switch button:not(.active):hover{background:#fff;color:var(--text)}
-.meta-row{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:600 11px/1 ui-monospace,monospace;letter-spacing:.04em;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);padding:4px 7px;border-radius:999px}
-.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:600;transition:.14s;text-decoration:none}
-.btn:hover,.btn:focus-visible{border-color:var(--anchor);color:var(--anchor);background:#fff}
-.btn svg{width:14px;height:14px;display:block;flex:none}
-.btn.done{border-color:#0d8a5f;color:#0d8a5f;background:#eafbf3}
-/* table */
-.table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:820px}
-thead th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:left;padding:12px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap}
-tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:13.5px}
-tbody tr:last-child td{border-bottom:0}
-tbody tr:hover{background:color-mix(in srgb,var(--anchor) 4%,var(--surface))}
-.thumb{width:96px;height:64px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px}
-.thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
-.name{font-weight:700;font-size:13.5px;line-height:1.3}
-.subname{font-size:12px;color:var(--muted)}
-.size-switch--sm button{padding:5px 9px;font-size:10px}
-.actions-cell{display:flex;gap:6px;flex-wrap:nowrap}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--line);border-radius:7px;background:var(--surface-2);color:var(--muted);transition:.14s}
-.icon-btn:hover{border-color:var(--anchor);color:var(--anchor);background:#fff}
-.icon-btn.done{border-color:#0d8a5f;color:#0d8a5f;background:#eafbf3}
-.icon-btn svg{width:14px;height:14px;display:block}
-/* pagination */
-.pagination{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:18px}
-.pager{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
-.pager button{padding:7px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--muted);font-size:13px;font-weight:600;min-width:36px}
-.pager button.active{background:var(--ink);border-color:var(--ink);color:#fff}
-.pager button:disabled{opacity:.45;cursor:not-allowed}
-.pager button:not(:disabled):hover{border-color:var(--anchor);color:var(--anchor);background:#fff}
-.pager button.active:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:9}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-footer{border-top:1px solid var(--line);padding:28px 0 56px;color:var(--muted);font-size:14.5px;line-height:1.7}
-footer a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:2px}
-footer a:hover,footer a:focus-visible{color:var(--anchor);text-decoration-color:var(--anchor)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#050D16; --card:#0D1A28; --inner:#14253A; --hover:#1C3250;
+    --ink:#EAF1F8; --muted:#9DB1C6; --sep:rgba(255,255,255,.08); --grid-line:rgba(255,255,255,.14);
+    --link:#5FE0E0; --focus:#5FE0E0; --good:#5BD58F; --bad:#FF8A95;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#050D16; --card:#0D1A28; --inner:#14253A; --hover:#1C3250;
+  --ink:#EAF1F8; --muted:#9DB1C6; --sep:rgba(255,255,255,.08); --grid-line:rgba(255,255,255,.14);
+  --link:#5FE0E0; --focus:#5FE0E0; --good:#5BD58F; --bad:#FF8A95;
+  --shadow:none;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font);overflow-x:hidden}
+img,svg{max-width:100%}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--link)}
+code,.mono{font-family:var(--mono);font-size:.875em;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 32px}}
+#stickers{scroll-margin-top:calc(var(--hh) + 16px)}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sec{padding:64px 0 0}
+@media (min-width:900px){.sec{padding-top:80px}}
+.sec-head{margin-bottom:32px;max-width:640px}
+.sec-head h2{font-size:clamp(1.75rem,1.3rem + 1.6vw,2.25rem);line-height:1.15;letter-spacing:-.02em;margin:8px 0 16px}
+.sec-head p{color:var(--muted);font-size:1.0625rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 24px;border-radius:999px;background:var(--card);color:var(--ink);font-weight:600;text-decoration:none;line-height:1.2;transition:background .15s}
+.btn:hover{background:var(--hover)}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.primary:hover{background:#0B3358}
+:root[data-theme="dark"] .btn.primary{background:var(--teal);color:var(--navy)}
+:root[data-theme="dark"] .btn.primary:hover{background:#6BDCDC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{background:var(--teal);color:var(--navy)}:root:not([data-theme="light"]) .btn.primary:hover{background:#6BDCDC}}
+.btn svg,.ibtn svg{width:16px;height:16px;flex:none}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:4px 16px;border-radius:999px;background:var(--inner);color:var(--ink);font-size:.875rem;font-weight:600;text-decoration:none;transition:background .15s}
+.ibtn:hover{background:var(--hover)}
+.ibtn.done{color:var(--good)}
+
+/* ---------- header ---------- */
+.topbar{position:sticky;top:0;z-index:40;height:var(--hh);background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;height:100%}
+.logo-link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;flex:none}
+.hdr-logo{height:32px;width:auto;display:block}
+.hdr-logo.d{display:none}
+:root[data-theme="dark"] .hdr-logo.l{display:none}
+:root[data-theme="dark"] .hdr-logo.d{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hdr-logo.l{display:none}:root:not([data-theme="light"]) .hdr-logo.d{display:block}}
+.nav{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);padding-right:24px}
+.nav::-webkit-scrollbar{display:none}
+@media (min-width:720px){.nav{-webkit-mask-image:none;mask-image:none;padding-right:0}}
+.nav a{white-space:nowrap;padding:8px 16px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.9375rem;font-weight:500;transition:background .15s}
+.nav a:hover{background:var(--hover);color:var(--ink)}
+.nav a[aria-current]{color:var(--ink);background:var(--inner)}
+.theme-btn{flex:none;width:40px;height:40px;border-radius:999px;background:var(--inner);display:grid;place-items:center;transition:background .15s}
+.theme-btn:hover{background:var(--hover)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .moon{display:none}
+:root[data-theme="dark"] .theme-btn .sun{display:none}
+:root[data-theme="dark"] .theme-btn .moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-btn .sun{display:none}:root:not([data-theme="light"]) .theme-btn .moon{display:block}}
+.menu-btn{display:none;flex:none;width:44px;height:44px;border-radius:999px;background:var(--inner);place-items:center;transition:background .15s}
+.menu-btn:hover{background:var(--hover)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn .x,.menu-btn[aria-expanded="true"] .bars{display:none}
+.menu-btn[aria-expanded="true"] .x{display:block}
+/* Under 900px six links no longer fit beside the logo: the section menu folds into a button. */
+@media (max-width:899px){
+  .topbar .wrap{gap:8px}
+  .theme-btn{margin-left:auto}
+  .menu-btn{display:grid}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:2px;padding:8px 16px 16px;
+    overflow:visible;-webkit-mask-image:none;mask-image:none;background:var(--card);box-shadow:0 18px 32px -16px rgba(0,31,63,.28)}
+  .topbar.open .nav{display:flex}
+  .nav a{padding:14px 16px;font-size:1rem}
+}
+@media (max-width:719px){
+  :root{--hh:56px}
+  .hdr-logo{height:28px}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 0}
+@media (min-width:900px){.hero{padding-top:88px}}
+.hero .wrap{display:grid;gap:40px;align-items:start;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.hero .wrap{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}}
+.hero h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,3.5rem);line-height:1.06;letter-spacing:-.03em;margin:16px 0 24px}
+.hero p.lead{font-size:1.1875rem;color:var(--muted);max-width:32em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.box{background:var(--card);border-radius:var(--r);padding:32px;box-shadow:var(--shadow);min-width:0}
+@media (max-width:520px){.box{padding:24px 16px}}
+.box h3{font-size:1.1875rem;letter-spacing:-.01em;margin-bottom:8px}
+.box p.sub{color:var(--muted);font-size:.9375rem;margin-bottom:24px}
+.cf-box{display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px;border-radius:var(--r-sm);background:var(--inner)}
+.cf-url{flex:1;min-width:0;font-family:var(--mono);font-size:.8125rem;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;padding:6px 0}
+.cf-box .ib{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px;min-width:40px;border-radius:999px;background:var(--card);color:var(--ink);transition:background .15s}
+.cf-box .ib:hover{background:var(--hover)}
+.cf-box .ib svg{width:16px;height:16px}
+.cf-box .ib.done{color:var(--good)}
+
+/* ---------- tools ---------- */
+.tools{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:32px}
+.tools-right{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.count{color:var(--muted);font-size:.875rem}
+.perpage{display:flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;color:var(--muted)}
+.sel{position:relative;display:block}
+.sel select{appearance:none;-webkit-appearance:none;min-height:44px;padding:8px 40px 8px 16px;border:0;border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:600 .9375rem/1.2 var(--font);cursor:pointer;box-shadow:var(--shadow);transition:background .15s}
+.sel select:hover,.sel select:focus-visible{background:var(--hover);outline:none}
+.sel svg{position:absolute;right:14px;top:50%;width:16px;height:16px;margin-top:-8px;pointer-events:none;color:var(--muted)}
+.fseg{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--inner)}
+.fseg button{appearance:none;min-height:36px;padding:4px 16px;border-radius:999px;background:transparent;color:var(--muted);font:600 .875rem/1 var(--font);display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:background .15s,color .15s}
+.fseg button:hover{background:var(--hover);color:var(--ink)}
+.fseg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.fseg button svg{width:16px;height:16px;flex:none}
+.tools .fseg{background:var(--card);box-shadow:var(--shadow)}
+.tools .fseg button[aria-pressed="true"]{background:var(--inner);box-shadow:none}
+
+/* ---------- sticker cards ---------- */
+.grid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:clip;display:flex;flex-direction:column;min-width:0}
+.card .stage{padding:16px 16px 0}
+.panel{position:relative;aspect-ratio:3/2;border-radius:var(--r-md);background:var(--paper);overflow:hidden}
+.panel img{position:absolute;inset:12px;display:block;width:calc(100% - 24px);height:calc(100% - 24px);object-fit:contain}
+.card-body{display:flex;flex-direction:column;gap:16px;padding:24px;flex:1}
+@media (max-width:520px){.card-body{padding:20px 16px 16px}}
+.card-title{font-size:1.25rem;line-height:1.2;letter-spacing:-.02em}
+.card-desc{color:var(--muted);font-size:.9375rem;margin-top:4px}
+.fseg.size{align-self:flex-start;max-width:100%}
+.fseg.size button small{font-size:.75rem;font-weight:500;opacity:.75}
+@media (max-width:380px){.fseg.size button{padding:4px 10px}.fseg.size button small{display:none}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--inner);color:var(--muted);overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+@media (max-width:520px){.actions{display:grid;grid-template-columns:1fr 1fr}.actions .ibtn{padding:4px 12px;font-size:.8125rem;gap:6px}}
+
+/* ---------- table ---------- */
+.table-wrap{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:clip}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:16px;background:var(--inner);white-space:nowrap}
+tbody td{padding:16px;border-top:1px solid var(--sep);vertical-align:middle;font-size:.9375rem}
+tbody tr:first-child td{border-top:0}
+.thumb{width:112px;aspect-ratio:3/2;border-radius:var(--r-sm);background:var(--paper);display:grid;place-items:center;padding:6px;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.name{font-weight:700;line-height:1.3}
+.subname{font-size:.8125rem;color:var(--muted)}
+.dim{display:block;color:var(--muted);font-size:.8125rem}
+.actions-cell{display:flex;gap:8px}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:var(--inner);color:var(--ink);transition:background .15s}
+.icon-btn:hover{background:var(--hover)}
+.icon-btn.done{color:var(--good)}
+.icon-btn svg{width:16px;height:16px;display:block}
+@media (max-width:899px){
+  .table-wrap{background:transparent;box-shadow:none;border-radius:0;overflow:visible}
+  table,tbody,tr,td{display:block}
+  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  tbody tr{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;margin-bottom:16px;display:grid;gap:12px}
+  tbody td{border:0;padding:0}
+  .thumb{width:100%}
+}
+
+/* ---------- pagination ---------- */
+.pagination{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:32px}
+.pager{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pager button{min-height:44px;min-width:44px;padding:4px 16px;border-radius:999px;background:var(--card);color:var(--ink);font-weight:600;font-size:.9375rem;box-shadow:var(--shadow);transition:background .15s}
+.pager button:not(:disabled):hover{background:var(--hover)}
+.pager button.active{background:var(--navy);color:#fff;box-shadow:none}
+:root[data-theme="dark"] .pager button.active{background:var(--teal);color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pager button.active{background:var(--teal);color:var(--navy)}}
+.pager button:disabled{opacity:.4;cursor:not-allowed}
+
+footer{margin-top:112px;padding:0 0 64px;color:var(--muted);font-size:.875rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+
+/* ---------- toast + back to top ---------- */
+#toast{position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,16px);opacity:0;pointer-events:none;max-width:calc(100vw - 32px);padding:12px 24px;border-radius:999px;background:#001F3F;color:#fff;font-size:.9375rem;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.3);transition:opacity .2s,transform .2s}
+:root[data-theme="dark"] #toast{background:#EAF1F8;color:#001F3F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #toast{background:#EAF1F8;color:#001F3F}}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:44px;height:44px;border:0;border-radius:999px;
+  display:grid;place-items:center;padding:0;cursor:pointer;background:var(--card);color:var(--ink);
+  box-shadow:0 0 0 1px var(--grid-line),0 8px 24px -6px rgba(0,31,63,.28);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s,transform .18s,visibility 0s .18s,background .14s}
+#to-top.show{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s,background .14s}
+#to-top:hover{background:var(--inner)}
+#to-top svg{width:20px;height:20px;display:block}
+@media (max-width:600px){#to-top{right:16px;bottom:16px}}
+@media (pointer:coarse){
+  .ibtn,.fseg button{min-height:44px}
+  .logo-link{min-width:44px;min-height:44px;justify-content:center}
+  .theme-btn{width:44px;height:44px}
+  .nav a{padding:12px 16px}
+  .cf-box .ib{min-height:44px;min-width:44px}
+  .foot-links a{display:inline-block;padding:13px 6px}
+  footer .wrap{gap:0 16px}
+}
 </style>
 </head>
 <body>
-<nav class="topnav"><div class="wrap topnav-inner">
-  <a class="nav-logo" href="/" aria-label="WPAnchorBay home"><img src="/brand/wpanchorbay/logo-dark.svg" alt="WPAnchorBay" height="28"></a>
-  <a class="nav-visit" href="https://wpanchorbay.com" target="_blank" rel="noopener" title="Visit wpanchorbay.com">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-</div></nav>
-<header class="top"><div class="wrap">
-  <a href="/" class="back-link" title="Back to brand assets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Brand Assets</a>
-  <h1>Marketing assets</h1>
-  <p class="lede">Official marketing stickers and trust badges for WPAnchorBay. Every URL is permanent — hotlink directly and always get the current file. One preview per sticker, pick the size you need.</p>
-  <div class="panel">
-    <h2>Machine-readable</h2>
-    <p>All marketing assets as JSON at <code>/marketing-assets.json</code>.</p>
-    <div class="code-row">
-      <pre>https://assets.wpanchorbay.com/marketing-assets.json</pre>
-      <button type="button" class="act js-copy" data-copy="https://assets.wpanchorbay.com/marketing-assets.json" title="Copy URL" aria-label="Copy URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-    </div>
+<a class="sr" href="#stickers">Skip to stickers</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo-link" href="/" aria-label="WPAnchorBay brand assets, home"><img class="hdr-logo l" src="/brand/wpanchorbay/logo.svg" alt="WPAnchorBay" width="165" height="32"><img class="hdr-logo d" src="/brand/wpanchorbay/logo-dark.svg" alt="" width="165" height="32"></a>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="/#overview">Overview</a><a href="/#plugins">Plugins</a><a href="/#colours">Colours</a><a href="/#usage">Usage</a><a href="/#developers">For developers</a><a href="/marketing-assets.html" aria-current="page">Marketing</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
   </div>
-</div></header>
+</header>
 
-<section><div class="wrap">
-  <h2 class="section">Stickers &amp; badges</h2>
-  <p class="sub">4 stickers — each available in Large (high-res) and Small (web-optimized). Switch size on the card to update preview and actions.</p>
-
-  <div class="toolbar" role="toolbar" aria-label="View options">
-    <div class="toolbar-left">
-      <span class="count" id="count"></span>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Marketing assets</p>
+      <h1>Stickers and trust badges, ready to hotlink.</h1>
+      <p class="lead">Official marketing stickers for WPAnchorBay. Every URL is permanent, so link directly and always get the current file. One preview per sticker, pick the size you need.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#stickers">Browse the stickers</a>
+        <a class="btn" href="/">Brand assets</a>
+      </div>
     </div>
-    <div class="toolbar-right">
-      <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted)">Per page
-        <select id="perPage" class="select" aria-label="Items per page">
-          <option value="2">2</option>
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="12" selected>12</option>
-        </select>
-      </label>
-      <div class="view-switch" role="group" aria-label="View switch">
-        <button type="button" id="btnGrid" class="active" aria-pressed="true" title="Grid view">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Grid
-        </button>
-        <button type="button" id="btnTable" aria-pressed="false" title="Table view">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg> Table
-        </button>
+    <div class="box">
+      <h3>Machine-readable</h3>
+      <p class="sub">All marketing assets as JSON at <code>/marketing-assets.json</code>.</p>
+      <div class="cf-box">
+        <span class="cf-url">https://assets.wpanchorbay.com/marketing-assets.json</span>
+        <button type="button" class="ib js-copy" data-copy="https://assets.wpanchorbay.com/marketing-assets.json" title="Copy URL" aria-label="Copy URL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
       </div>
     </div>
   </div>
+</section>
 
-  <div id="assets-root"></div>
-  <div class="pagination" id="pagination"></div>
+<section class="sec" id="stickers">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Stickers &amp; badges</p>
+      <h2>Pick a sticker, take the size you need.</h2>
+      <p>4 stickers, each in Large (high-res) and Small (web-optimized). Switch size on the card to update the preview and actions.</p>
+    </div>
+    <div class="tools" role="toolbar" aria-label="View options">
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="tools-right">
+        <label class="perpage">Per page
+          <span class="sel"><select id="perPage" aria-label="Items per page">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12" selected>12</option>
+          </select><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+        </label>
+        <div class="fseg" role="group" aria-label="View switch">
+          <button type="button" id="btnGrid" aria-pressed="true" title="Grid view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Grid</button>
+          <button type="button" id="btnTable" aria-pressed="false" title="Table view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>Table</button>
+        </div>
+      </div>
+    </div>
 
-</div></section>
+    <div id="assets-root"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</section>
+</main>
 
-<footer><div class="wrap">
-  Trademarks and logos are the property of WPAnchorBay.
-  Questions: <a href="https://wpanchorbay.com">wpanchorbay.com</a> · <a href="/">Brand assets</a> · <a href="/brand.json">brand.json</a> · <a href="/marketing-assets.json">marketing-assets.json</a>
-</div></footer>
+<footer><div class="wrap"><span>© WPAnchorBay. Trademarks and logos are the property of WPAnchorBay.</span><span class="foot-links"><a href="https://wpanchorbay.com">wpanchorbay.com</a> · <a href="/">Brand assets</a> · <a href="/brand.json">brand.json</a> · <a href="/marketing-assets.json">marketing-assets.json</a></span></div></footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<button type="button" id="to-top" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
 <script>
 const ORIGIN = location.origin;
 const GROUPS = [
@@ -199,8 +336,8 @@ const GROUPS = [
   {
     slug:'free-versions', name:'Free Versions on WordPress.org', desc:'Free plugin version availability badge',
     variants:[
-      { key:'large', label:'Large', hint:'high-res', path:'/images/free-versions-large.png', w:1536, h:1024, bytes:171982 },
-      { key:'small', label:'Small', hint:'web-optimized', path:'/images/free-versions-small.png', w:720, h:480, bytes:42932 },
+      { key:'large', label:'Large', hint:'high-res', path:'/images/free-versions-large.png', w:1536, h:1024, bytes:73194 },
+      { key:'small', label:'Small', hint:'web-optimized', path:'/images/free-versions-small.png', w:720, h:480, bytes:34076 },
     ]
   },
   {
@@ -240,8 +377,6 @@ function getVariant(group){ return group.variants.find(v=>v.key===selected[group
 function setView(v){
   view = v;
   localStorage.setItem('mkt-view', v);
-  btnGrid.classList.toggle('active', v==='grid');
-  btnTable.classList.toggle('active', v==='table');
   btnGrid.setAttribute('aria-pressed', v==='grid');
   btnTable.setAttribute('aria-pressed', v==='table');
   render();
@@ -252,8 +387,8 @@ selPerPage.addEventListener('change', e=>{ perPage = parseInt(e.target.value,10)
 
 function sizeSwitchHTML(group){
   const cur = selected[group.slug];
-  return `<div class="size-switch ${view==='table'?'size-switch--sm':''}" role="group" aria-label="Size">
-    ${group.variants.map(v=>`<button type="button" class="${v.key===cur?'active':''}" data-size="${v.key}" data-slug="${group.slug}" title="${v.w}×${v.h} · ${kb(v.bytes)}">${v.label} <span style="opacity:.6;font-weight:400">· ${v.hint}</span></button>`).join('')}
+  return `<div class="fseg size" role="group" aria-label="Size">
+    ${group.variants.map(v=>`<button type="button" aria-pressed="${v.key===cur}" data-size="${v.key}" data-slug="${group.slug}" title="${v.w}×${v.h} · ${kb(v.bytes)}">${v.label} <small>${v.hint}</small></button>`).join('')}
   </div>`;
 }
 
@@ -261,22 +396,21 @@ function cardHTML(group){
   const v = getVariant(group);
   const url = abs(v.path);
   return `<article class="card" data-slug="${group.slug}">
-    <div class="preview">
-      <img src="${esc(v.path)}" alt="${esc(group.name)} — ${esc(v.label)}" loading="lazy" decoding="async">
-    </div>
+    <div class="stage"><div class="panel">
+      <img src="${esc(v.path)}" alt="${esc(group.name)} — ${esc(v.label)}" width="${v.w}" height="${v.h}" loading="lazy" decoding="async">
+    </div></div>
     <div class="card-body">
-      <h3 class="card-title">${esc(group.name)}</h3>
-      <p class="card-desc">${esc(group.desc)}</p>
+      <div><h3 class="card-title">${esc(group.name)}</h3><p class="card-desc">${esc(group.desc)}</p></div>
       ${sizeSwitchHTML(group)}
-      <div class="meta-row">
+      <div class="chips">
         <span class="chip">${v.w}×${v.h}</span>
         <span class="chip">${esc(kb(v.bytes))}</span>
         <span class="chip">${esc(v.path.split('/').pop())}</span>
       </div>
       <div class="actions">
-        <button type="button" class="btn js-copy-img" data-path="${esc(v.path)}" title="Copy image">${ICONS.image} Copy image</button>
-        <button type="button" class="btn js-copy" data-copy="${esc(url)}" title="Copy direct link">${ICONS.link} Copy link</button>
-        <a class="btn" href="${esc(url)}" target="_blank" rel="noopener" title="Open in new tab">${ICONS.open} Open</a>
+        <button type="button" class="ibtn js-copy-img" data-path="${esc(v.path)}" title="Copy image">${ICONS.image} Copy image</button>
+        <button type="button" class="ibtn js-copy" data-copy="${esc(url)}" title="Copy direct link">${ICONS.link} Copy link</button>
+        <a class="ibtn" href="${esc(url)}" target="_blank" rel="noopener" title="Open in new tab">${ICONS.open} Open</a>
       </div>
     </div>
   </article>`;
@@ -293,13 +427,13 @@ function tableHTML(groups){
         <td><div class="thumb"><img src="${esc(v.path)}" alt="" loading="lazy"></div></td>
         <td><div class="name">${esc(g.name)}</div><div class="subname">${esc(g.desc)}</div></td>
         <td>${sizeSwitchHTML(g)}</td>
-        <td>${v.w}×${v.h}<br><span style="color:var(--muted);font-size:12px">${esc(kb(v.bytes))}</span></td>
-        <td><code style="font:12px ui-monospace,monospace">${esc(v.path.split('/').pop())}</code></td>
+        <td>${v.w}×${v.h}<span class="dim">${esc(kb(v.bytes))}</span></td>
+        <td><code>${esc(v.path.split('/').pop())}</code></td>
         <td>
           <div class="actions-cell">
-            <button type="button" class="icon-btn js-copy-img" data-path="${esc(v.path)}" title="Copy image">${ICONS.image}</button>
-            <button type="button" class="icon-btn js-copy" data-copy="${esc(url)}" title="Copy direct link">${ICONS.link}</button>
-            <a class="icon-btn" href="${esc(url)}" target="_blank" rel="noopener" title="Open in new tab">${ICONS.open}</a>
+            <button type="button" class="icon-btn js-copy-img" data-path="${esc(v.path)}" title="Copy image" aria-label="Copy image">${ICONS.image}</button>
+            <button type="button" class="icon-btn js-copy" data-copy="${esc(url)}" title="Copy direct link" aria-label="Copy direct link">${ICONS.link}</button>
+            <a class="icon-btn" href="${esc(url)}" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open in new tab">${ICONS.open}</a>
           </div>
         </td>
       </tr>`;
@@ -322,14 +456,14 @@ function render(){
   }
   let html = `<span class="count">${start+1}–${Math.min(start+perPage,total)} of ${total}</span><div class="pager">`;
   html += `<button type="button" ${page===1?'disabled':''} data-page="${page-1}">‹ Prev</button>`;
-  for(let i=1;i<=totalPages;i++) html += `<button type="button" class="${i===page?'active':''}" data-page="${i}">${i}</button>`;
+  for(let i=1;i<=totalPages;i++) html += `<button type="button" class="${i===page?'active':''}" ${i===page?'aria-current="page"':''} data-page="${i}">${i}</button>`;
   html += `<button type="button" ${page===totalPages?'disabled':''} data-page="${page+1}">Next ›</button></div>`;
   pagEl.innerHTML = html;
   if(totalPages<=1) pagEl.style.display='none'; else pagEl.style.display='flex';
   pagEl.querySelectorAll('button[data-page]').forEach(b=>{
     b.addEventListener('click', ()=>{
       const p = parseInt(b.dataset.page,10);
-      if(!isNaN(p)){ page=p; render(); window.scrollTo({top: document.querySelector('section').offsetTop - 12, behavior:'smooth'}); }
+      if(!isNaN(p)){ page=p; render(); document.getElementById('stickers').scrollIntoView({behavior:'smooth'}); }
     });
   });
 }
@@ -388,9 +522,37 @@ document.addEventListener('click', async e=>{
   if(c){ await copyText(c.dataset.copy, c); return; }
   const ci = e.target.closest('.js-copy-img');
   if(ci){ await copyImage(ci.dataset.path, ci); return; }
-  const info = e.target.closest('.act.js-copy');
-  if(info && info.dataset.copy){ await copyText(info.dataset.copy, info); }
 });
+
+// theme: same stored choice as the home page (localStorage "brand-theme")
+(function(){
+  const root = document.documentElement;
+  try{ const saved = localStorage.getItem('brand-theme'); if(saved) root.setAttribute('data-theme', saved); }catch(e){}
+  document.getElementById('theme').addEventListener('click', ()=>{
+    const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur==='dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('brand-theme', next); }catch(e){}
+  });
+})();
+// phone menu: toggle, close on pick, Escape, outside tap or a wider screen
+(function(){
+  const bar = document.querySelector('.topbar'), btn = document.getElementById('menu-btn');
+  const set = open => { bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); };
+  btn.addEventListener('click', e=>{ e.stopPropagation(); set(!bar.classList.contains('open')); });
+  document.getElementById('nav').addEventListener('click', e=>{ if(e.target.closest('a')) set(false); });
+  document.addEventListener('click', e=>{ if(!e.target.closest('.topbar')) set(false); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && bar.classList.contains('open')){ set(false); btn.focus(); } });
+  matchMedia('(min-width:900px)').addEventListener('change', m=>{ if(m.matches) set(false); });
+})();
+// back to top: show after ~one screen of scrolling
+(function(){
+  const b = document.getElementById('to-top'); let ticking = false;
+  const upd = ()=>{ ticking = false; b.classList.toggle('show', window.scrollY > 600); };
+  addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive:true});
+  b.addEventListener('click', ()=> window.scrollTo({top:0}));
+  upd();
+})();
 </script>
 </body>
 </html>
