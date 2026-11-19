@@ -118,7 +118,7 @@ for (const [slug, meta] of Object.entries(src.products)) {
 
 // Warn about asset folders with no metadata — they would be silently dropped.
 const orphans = readdirSync(BRAND_DIR)
-  .filter((d) => statSync(join(BRAND_DIR, d)).isDirectory() && !src.products[d] && !(src.hostedOnly ?? []).includes(d));
+  .filter((d) => statSync(join(BRAND_DIR, d)).isDirectory() && !src.products[d]);
 
 // Deliberately no build timestamp: the output must be a pure function of the
 // inputs, or `npm run check` would report a stale manifest on every new day.

@@ -1,7 +1,6 @@
 {
   "$comment": "Single source of truth for WPAnchorBay brand assets. Edit this file, then run `npm run build` to regenerate public/brand.json and public/index.html. Asset FILES are discovered from public/brand/<slug>/ — never list them here, or the manifest can lie.",
   "origin": "https://assets.wpanchorbay.com",
-  "hostedOnly": ["halloween26"],
   "organization": {
     "name": "WPAnchorBay",
     "url": "https://wpanchorbay.com",
