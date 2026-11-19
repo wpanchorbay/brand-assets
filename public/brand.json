@@ -766,8 +766,8 @@
       "color": "#22CF95",
       "onColor": "#001F3F",
       "links": {
-        "wordpress": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-for-woocommerce/",
-        "site": "https://wpanchorbay.com/plugins/pointbay/",
+        "wordpress": "https://wordpress.org/plugins/pointbay-loyalty-points-referral-rewards-woo/",
+        "site": "https://wpanchorbay.com/plugins/pointbay-loyalty-points-referral-rewards-woo/",
         "docs": "https://docs.wpanchorbay.com/pointbay/"
       },
       "assets": {
