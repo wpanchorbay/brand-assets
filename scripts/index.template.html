@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Brand assets · WPAnchorBay</title>
+<meta name="description" content="Logos, icons and colours for WPAnchorBay and its WooCommerce plugins.">
+<style>
+/* ---------- tokens: no borders anywhere; hierarchy is built from surface steps ----------
+   page (--bg) < card (--card) < inner panel (--inner) < hover (--hover) */
+:root{
+  --navy:#001F3F; --teal:#39CCCC;
+  --bg:#EBEFF4; --card:#FFFFFF; --inner:#F3F5F8; --hover:#E6EBF1;
+  --ink:#001F3F; --muted:#4A5D73; --sep:rgba(0,31,63,.08);
+  --link:#0A6B6B; --focus:#0A6B6B; --good:#116B3A; --bad:#A31D2B;
+  --paper:#F3F5F8;            /* fixed light stage for marks that need a light ground */
+  --grid-line:rgba(0,31,63,.14);
+  --shadow:0 1px 3px rgba(0,31,63,.04),0 12px 32px -12px rgba(0,31,63,.10);
+  --tint:10%;
+  --r:24px; --r-md:16px; --r-sm:12px;
+  --hh:64px; --sh:72px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#050D16; --card:#0D1A28; --inner:#14253A; --hover:#1C3250;
+    --ink:#EAF1F8; --muted:#9DB1C6; --sep:rgba(255,255,255,.08); --grid-line:rgba(255,255,255,.14);
+    --link:#5FE0E0; --focus:#5FE0E0; --good:#5BD58F; --bad:#FF8A95;
+    --shadow:none; --tint:18%;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#050D16; --card:#0D1A28; --inner:#14253A; --hover:#1C3250;
+  --ink:#EAF1F8; --muted:#9DB1C6; --sep:rgba(255,255,255,.08); --grid-line:rgba(255,255,255,.14);
+  --link:#5FE0E0; --focus:#5FE0E0; --good:#5BD58F; --bad:#FF8A95;
+  --shadow:none; --tint:18%;
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font);overflow-x:hidden}
+img,svg{max-width:100%}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--link)}
+code,.mono{font-family:var(--mono);font-size:.875em;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;cursor:pointer;border:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 32px}}
+section[id],.card{scroll-margin-top:calc(var(--hh) + var(--sh) + 16px)}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sec{padding:80px 0 0}
+@media (min-width:900px){.sec{padding-top:112px}}
+.sec-head{margin-bottom:40px;max-width:640px}
+.sec-head h2{font-size:clamp(1.75rem,1.3rem + 1.6vw,2.25rem);line-height:1.15;letter-spacing:-.02em;margin:8px 0 16px}
+.sec-head p{color:var(--muted);font-size:1.0625rem}
+
+/* ---------- buttons (surface fills, no outlines) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 24px;border-radius:999px;background:var(--card);color:var(--ink);font-weight:600;text-decoration:none;line-height:1.2;transition:background .15s}
+.btn:hover{background:var(--hover)}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.primary:hover{background:#0B3358}
+:root[data-theme="dark"] .btn.primary{background:var(--teal);color:var(--navy)}
+:root[data-theme="dark"] .btn.primary:hover{background:#6BDCDC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{background:var(--teal);color:var(--navy)}:root:not([data-theme="light"]) .btn.primary:hover{background:#6BDCDC}}
+.btn.brand{background:var(--brand);color:var(--on-brand)}
+.btn.brand:hover{background:color-mix(in srgb,var(--brand) 88%,#000)}
+.btn svg,.ibtn svg{width:16px;height:16px;flex:none}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:4px 16px;border-radius:999px;background:var(--inner);color:var(--ink);font-size:.875rem;font-weight:600;text-decoration:none;transition:background .15s}
+.ibtn:hover{background:var(--hover)}
+
+/* ---------- header + strip ---------- */
+.topbar{position:sticky;top:0;z-index:40;height:var(--hh);background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;height:100%}
+.logo-link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;flex:none}
+.logo-link img{width:32px;height:32px;display:block}
+.logo-link span{display:none}
+@media (min-width:900px){.logo-link span{display:inline}}
+.nav{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);padding-right:24px}
+.nav::-webkit-scrollbar{display:none}
+@media (min-width:720px){.nav{-webkit-mask-image:none;mask-image:none;padding-right:0}}
+.nav a{white-space:nowrap;padding:8px 16px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.9375rem;font-weight:500;transition:background .15s}
+.nav a:hover{background:var(--hover);color:var(--ink)}
+.nav a[aria-current="true"]{color:var(--ink);background:var(--inner)}
+.theme-btn{flex:none;width:40px;height:40px;border-radius:999px;background:var(--inner);display:grid;place-items:center;transition:background .15s}
+.theme-btn:hover{background:var(--hover)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .moon{display:none}
+:root[data-theme="dark"] .theme-btn .sun{display:none}
+:root[data-theme="dark"] .theme-btn .moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-btn .sun{display:none}:root:not([data-theme="light"]) .theme-btn .moon{display:block}}
+
+.strip{position:sticky;top:var(--hh);z-index:30;height:var(--sh);background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px)}
+.strip .wrap{height:100%;display:flex;align-items:center}
+.strip-list{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:8px;margin:0 -8px;width:calc(100% + 16px)}
+.strip-list::-webkit-scrollbar{display:none}
+@media (min-width:720px){.strip-list{justify-content:center}}
+.strip a{flex:none;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;transition:opacity .15s,background .15s}
+.strip a img{width:32px;height:32px;display:block}
+.strip a:hover{background:var(--hover)}
+.strip a[aria-current="true"]{background:var(--card);box-shadow:var(--shadow)}
+.strip a.dim{opacity:.22}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 0}
+@media (min-width:900px){.hero{padding-top:88px}}
+.hero .wrap{display:grid;gap:48px;align-items:center;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.hero .wrap{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.hero h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,3.5rem);line-height:1.06;letter-spacing:-.03em;margin:16px 0 24px}
+.hero p.lead{font-size:1.1875rem;color:var(--muted);max-width:32em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.hero-meta{margin-top:24px;font-size:.875rem;color:var(--muted)}
+/* One grid, not 12 floating tiles. The dividers are drawn per cell and fade out toward the
+   edges (no outer border), so the card edge is only its soft shadow. */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);
+  border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.mosaic > :not(:nth-child(4n))::before{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--grid-line) 22%,var(--grid-line) 78%,transparent)}
+.mosaic > :nth-last-child(n+5)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;pointer-events:none;
+  background:linear-gradient(to right,transparent,var(--grid-line) 22%,var(--grid-line) 78%,transparent)}
+.mosaic > span,.mosaic > a{position:relative;aspect-ratio:1;background:var(--card);display:grid;place-items:center}
+/* Each plugin cell links to its card. The tile stays as it is; hover or keyboard focus only
+   adds the plugin's name, so the full mark is always what people see first. */
+.mosaic a{color:var(--ink);text-decoration:none;transition:background .14s}
+.mosaic a:hover,.mosaic a:focus-visible{background:var(--inner)}
+.mosaic a:focus-visible{outline-offset:-3px;border-radius:0}
+.mosaic .cap{position:absolute;left:0;right:0;bottom:0;padding:0 6px 10px;text-align:center;font-size:.75rem;
+  font-weight:700;letter-spacing:.01em;opacity:0;transform:translateY(4px);transition:opacity .14s,transform .14s}
+.mosaic a:hover .cap,.mosaic a:focus-visible .cap{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.mosaic .cap{transition:none;transform:none}}
+.mosaic img{width:54%;height:54%;display:block}
+.mosaic .count-tile{background:var(--navy);color:#fff;text-align:center;line-height:1.1}
+.mosaic .count-tile b{display:block;font-size:2rem;letter-spacing:-.02em}
+.mosaic .count-tile small{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#9DB1C6}
+
+/* ---------- search ---------- */
+.tools{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:32px}
+.search{position:relative;flex:1 1 280px;max-width:440px}
+.search input{width:100%;min-height:48px;padding:8px 24px 8px 48px;border-radius:999px;border:0;background:var(--card);color:var(--ink);font:inherit;box-shadow:var(--shadow)}
+.search input::placeholder{color:var(--muted)}
+.search svg{position:absolute;left:20px;top:50%;width:16px;height:16px;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.count{color:var(--muted);font-size:.875rem}
+.empty{padding:64px 16px;text-align:center;color:var(--muted);background:var(--card);border-radius:var(--r)}
+
+/* ---------- product card ---------- */
+.cards{display:grid;gap:40px}
+.card{--brand:#39CCCC;--on-brand:#001F3F;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:clip}
+.card[hidden]{display:none}
+.card-head{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:32px 32px 24px;background:color-mix(in srgb,var(--brand) var(--tint),var(--card))}
+@media (max-width:520px){.card-head{padding:24px 16px 16px}}
+.ident{display:flex;gap:16px;align-items:center;min-width:0}
+.ident>img{width:56px;height:56px;flex:none;display:block}
+.ident h3{font-size:1.5rem;line-height:1.15;letter-spacing:-.02em}
+.ident p{color:var(--muted);margin-top:4px;font-size:.9375rem;max-width:44ch}
+.kind{display:block;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.card-body{display:grid;gap:32px;padding:32px;grid-template-columns:minmax(0,1fr)}
+@media (max-width:520px){.card-body{padding:16px;gap:24px}}
+@media (min-width:900px){.card-body{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px}}
+.stage{position:relative;display:flex}
+.panel{flex:1;position:relative;min-height:260px;border-radius:var(--r-md);display:grid;place-items:center;padding:56px 32px 40px;transition:background .2s}
+@media (min-width:900px){.panel{min-height:360px}}
+.panel.light{background:var(--paper)}
+.panel.dark{background:#001F3F}
+.panel img{display:block;max-width:100%;height:auto}
+.panel img.wide{width:min(100%,400px)}
+.panel img.sq{width:min(44%,168px)}
+.panel .note{position:absolute;left:16px;right:16px;bottom:16px;font-size:.75rem;text-align:center;color:#5b6b7e}
+.panel.dark .note{color:#9db1c6}
+.seg{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:rgba(0,31,63,.07)}
+.panel.dark~.seg,.stage.is-dark .seg{background:rgba(255,255,255,.12)}
+.seg button{min-height:32px;padding:4px 16px;border-radius:999px;background:transparent;color:#4A5D73;font-size:.8125rem;font-weight:600}
+.stage.is-dark .seg button{color:#B6C6D8}
+.seg button[aria-pressed="true"]{background:#fff;color:#001F3F;box-shadow:0 1px 2px rgba(0,31,63,.12)}
+.stage.is-dark .seg button[aria-pressed="true"]{background:#fff;color:#001F3F}
+.side{display:flex;flex-direction:column;gap:32px;min-width:0}
+.side h4,.files summary{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.side h4{margin-bottom:16px}
+.variants{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.variant{display:flex;flex-direction:column;gap:8px;padding:8px 8px 16px;border-radius:var(--r-md);background:var(--inner);text-align:left;transition:background .15s}
+.variant:hover{background:var(--hover)}
+.variant[aria-pressed="true"]{background:color-mix(in srgb,var(--brand) 22%,var(--card))}
+.variant .thumb{height:72px;border-radius:var(--r-sm);background:var(--paper);display:grid;place-items:center}
+.variant .thumb img{max-width:78%;max-height:48px;display:block}
+.variant .vname{font-weight:600;font-size:.9375rem;padding:0 8px}
+.variant .vdesc{font-size:.8125rem;line-height:1.45;color:var(--muted);padding:0 8px;margin-top:-4px}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:8px 24px 8px 8px;border-radius:999px;background:var(--inner);transition:background .15s}
+.chip:hover{background:var(--hover)}
+.chip i{width:32px;height:32px;border-radius:999px;display:block;flex:none;box-shadow:inset 0 0 0 1px rgba(128,128,128,.28)}
+.chip span{font-family:var(--mono);font-size:.875rem}
+.linklist{display:flex;flex-wrap:wrap;gap:8px}
+.files{background:var(--inner)}
+.files summary{list-style:none;cursor:pointer;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+@media (max-width:520px){.files summary{padding:16px}}
+.files summary:hover{background:var(--hover)}
+.files summary::-webkit-details-marker{display:none}
+.files summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .15s;margin-right:4px}
+.files[open] summary::after{transform:rotate(-135deg)}
+.rows{padding:0 32px 16px}
+@media (max-width:520px){.rows{padding:0 16px 8px}}
+.row{display:grid;gap:8px;padding:16px 0;border-top:1px solid var(--sep)} /* hairline kept: list separator */
+.row .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.row .meta b{font-size:.9375rem}
+.row .meta small{color:var(--muted);font-size:.8125rem}
+.row .url{font-family:var(--mono);font-size:.8125rem;overflow-wrap:anywhere;color:var(--muted)}
+.row .acts{display:flex;flex-wrap:wrap;gap:8px}
+.row .ibtn{background:var(--card)}
+.row .ibtn:hover{background:var(--hover)}
+@media (max-width:520px){.row .acts{gap:4px}.row .ibtn{padding:4px 12px;font-size:.8125rem;gap:4px}}
+@media (min-width:720px){.row{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}}
+
+/* download menu */
+.dl{position:relative}
+.menu{position:absolute;right:0;top:calc(100% + 8px);z-index:20;min-width:260px;padding:8px;border-radius:var(--r-md);background:var(--card);box-shadow:0 16px 48px -8px rgba(0,31,63,.28);display:grid;gap:2px}
+:root[data-theme="dark"] .menu{background:var(--inner);box-shadow:0 16px 48px -8px rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .menu{background:var(--inner);box-shadow:0 16px 48px -8px rgba(0,0,0,.6)}}
+.menu[hidden]{display:none}
+.menu a,.menu button{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:8px 16px;border-radius:var(--r-sm);background:transparent;color:var(--ink);text-decoration:none;text-align:left;font-size:.9375rem;font-weight:500}
+.menu a:hover,.menu button:hover{background:var(--hover)}
+.menu small{color:var(--muted);font-size:.75rem}
+.menu hr{border:0;height:1px;background:var(--sep);margin:4px 8px}
+@media (max-width:520px){.dl{width:100%}.dl>.btn{width:100%}.menu{left:0;right:0}}
+
+/* ---------- colours ---------- */
+.colours{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(248px,1fr))}
+.cswatch{display:flex;flex-direction:column;border-radius:var(--r);overflow:clip;background:var(--card);box-shadow:var(--shadow)}
+.cswatch .big{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;min-height:168px;padding:24px;text-align:left;width:100%;transition:filter .15s}
+.cswatch .big:hover{filter:brightness(.93)}
+.cswatch .big .aa{font-size:2.5rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+.cswatch .big .pair{font-size:.8125rem;font-weight:600;padding:2px 12px;border-radius:999px;background:color-mix(in srgb,currentColor 18%,transparent)}
+.cswatch .info{padding:24px;display:grid;gap:16px}
+.cswatch h3{font-size:1.0625rem;letter-spacing:-.01em}
+.cswatch .vals{display:flex;flex-wrap:wrap;gap:8px}
+.cswatch .vals button{font-family:var(--mono);font-size:.8125rem;padding:4px 16px;min-height:32px;border-radius:999px;background:var(--inner);transition:background .15s}
+.cswatch .vals button:hover{background:var(--hover)}
+.cswatch .pairtxt{font-size:.8125rem;color:var(--muted)}
+
+/* ---------- usage ---------- */
+.usage-grid{display:grid;gap:16px;align-items:start;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.usage-grid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.box{background:var(--card);border-radius:var(--r);padding:32px;box-shadow:var(--shadow)}
+@media (max-width:520px){.box{padding:24px 16px}}
+.box h3{font-size:1.1875rem;letter-spacing:-.01em;margin-bottom:8px}
+.box p.sub{color:var(--muted);font-size:.9375rem;margin-bottom:24px}
+.cs-svg{width:100%;height:auto;display:block;border-radius:var(--r-md);background:var(--paper)}
+.cs-svg text{font-family:var(--font);fill:#001F3F}
+.minsizes{display:grid;gap:8px}
+.ms{display:flex;align-items:center;gap:24px;padding:16px 24px;border-radius:var(--r-md);background:var(--paper);color:#001F3F}
+.ms .sample{display:flex;align-items:center;justify-content:center;min-width:128px}
+.ms b{display:block}
+.ms span{font-size:.875rem;color:#4A5D73}
+.guide-list{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.9375rem}
+.guide-list li{display:flex;gap:8px}
+.guide-list svg{width:18px;height:18px;flex:none;margin-top:3px}
+.h-sub{margin:64px 0 24px;font-size:1.375rem;letter-spacing:-.01em}
+.dd{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.dd figure{margin:0;display:flex;flex-direction:column;background:var(--card);border-radius:var(--r);padding:8px 8px 16px;gap:16px;box-shadow:var(--shadow)}
+.dd .stagebox{height:144px;border-radius:var(--r-md);display:grid;place-items:center;overflow:hidden;position:relative;background:#F3F5F8}
+.dd .stagebox img{display:block;width:140px;height:auto}
+.dd figcaption{display:flex;gap:8px;font-size:.875rem;align-items:flex-start;padding:0 8px}
+.tag{flex:none;font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;margin-top:2px}
+.tag.do{background:#116B3A}.tag.dont{background:#A31D2B}
+.dd .x{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:999px;background:#A31D2B;color:#fff;display:grid;place-items:center}
+.dd .x svg{width:14px;height:14px}
+.dd .ok{background:#116B3A}
+.busy{background:repeating-conic-gradient(#f5c000 0 25%,#F02A74 0 50%,#0000F2 0 75%,#22CF95 0 100%) 0 0/28px 28px!important}
+.rules{margin-top:40px}
+
+/* ---------- developers ---------- */
+.dev{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.dev>*{min-width:0}
+@media (min-width:900px){.dev{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.dev .wide{grid-column:1/-1}
+/* code block: fixed dark surface in both themes, bar is one surface step lighter, no scrollbars (long lines wrap) */
+.cb{align-self:start;--cb-bg:#0A1626;--cb-bar:#112238;--cb-hover:#1B3354;--cb-ink:#DCE8F5;--cb-dim:#8AA2BC;--cb-tag:#7FD6FF;--cb-attr:#FFD479;--cb-str:#8DE3A5;--cb-key:#C9A8FF;
+  border-radius:var(--r-md);background:var(--cb-bg);color:var(--cb-ink);overflow:hidden}
+.cb-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 8px 8px 16px;background:var(--cb-bar)}
+.cb-tabs{display:flex;gap:4px;flex-wrap:wrap}
+.cb-tab{appearance:none;border:0;background:transparent;color:var(--cb-dim);font:600 .8125rem/1 var(--font);padding:8px 12px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.cb-tab:hover{background:var(--cb-hover);color:var(--cb-ink)}
+.cb-tab[aria-selected="true"]{background:var(--cb-bg);color:var(--cb-ink)}
+.cb-copy{appearance:none;border:0;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:4px 14px;border-radius:999px;background:var(--cb-bg);color:var(--cb-ink);font:600 .8125rem/1 var(--font);cursor:pointer;transition:background .15s;flex:none}
+.cb-copy:hover{background:var(--cb-hover)}
+.cb-copy svg{width:16px;height:16px;flex:none}
+.cb-copy[data-done="true"]{color:#8DE3A5}
+.cb-pre{margin:0;padding:20px 24px;font-family:var(--mono);font-size:.875rem;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;min-height:4.5em}
+.cb-pre .ln{display:block}.cb-pre .in{padding-left:2ch}
+.cb-pre .t{color:var(--cb-tag)}.cb-pre .a{color:var(--cb-attr)}.cb-pre .s{color:var(--cb-str)}.cb-pre .k{color:var(--cb-key)}.cb-pre .d{color:var(--cb-dim)}
+@media (max-width:520px){.cb-pre{padding:16px;font-size:.8125rem}.cb-copy span{display:none}.cb-copy{padding:4px 12px}}
+/* snippet builder */
+.builder{display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}
+.builder>*{min-width:0}
+@media (min-width:900px){.builder{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:32px}}
+.ctrls{display:grid;gap:16px;align-content:start}
+.ctrls label,.ctrls .lbl{display:block;font-size:.8125rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+.sel{position:relative}
+.sel select{appearance:none;width:100%;min-height:44px;padding:8px 40px 8px 16px;border:0;border-radius:var(--r-sm);background:var(--inner);color:var(--ink);font:600 .9375rem/1.2 var(--font);cursor:pointer;transition:background .15s}
+.sel select:hover{background:var(--hover)}
+.sel svg{position:absolute;right:14px;top:50%;width:16px;height:16px;margin-top:-8px;pointer-events:none;color:var(--muted)}
+.fseg{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--inner)}
+.fseg button{flex:1;appearance:none;border:0;min-height:36px;border-radius:999px;background:transparent;color:var(--muted);font:600 .875rem/1 var(--font);cursor:pointer;transition:background .15s,color .15s}
+.fseg button:hover{background:var(--hover);color:var(--ink)}
+.fseg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.fseg button:disabled{opacity:.4;cursor:not-allowed}
+.preview{display:flex;align-items:center;justify-content:center;min-height:96px;padding:16px;border-radius:var(--r-sm);background:var(--paper)}
+.preview img{max-width:100%;max-height:56px;display:block}
+.kv{display:grid;gap:24px}
+.cf b{display:block;font-size:.875rem;margin-bottom:8px}
+.cf-box{display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px;border-radius:var(--r-sm);background:var(--inner)}
+.cf-url{flex:1;min-width:0;font-family:var(--mono);font-size:.8125rem;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;padding:6px 0}
+.cf-box .ib{appearance:none;border:0;flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;min-width:36px;padding:4px 12px;border-radius:999px;background:var(--card);color:var(--ink);font:600 .8125rem/1 var(--font);text-decoration:none;cursor:pointer;transition:background .15s}
+.cf-box .ib:hover{background:var(--hover)}
+.cf-box .ib svg{width:16px;height:16px}
+.cf-box .ib[data-done="true"]{color:var(--good)}
+@media (max-width:520px){.cf-box{flex-wrap:wrap;padding:12px}.cf-url{flex-basis:100%}}
+
+footer{margin-top:112px;padding:0 0 64px;color:var(--muted);font-size:.875rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,16px);opacity:0;pointer-events:none;max-width:calc(100vw - 32px);padding:12px 24px;border-radius:999px;background:#001F3F;color:#fff;font-size:.9375rem;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.3);transition:opacity .2s,transform .2s}
+:root[data-theme="dark"] #toast{background:#EAF1F8;color:#001F3F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #toast{background:#EAF1F8;color:#001F3F}}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+/* Back to top: appears after the first screen of scrolling, bottom right. */
+#to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:44px;height:44px;border:0;border-radius:999px;
+  display:grid;place-items:center;padding:0;cursor:pointer;background:var(--card);color:var(--ink);
+  box-shadow:0 0 0 1px var(--grid-line),0 8px 24px -6px rgba(0,31,63,.28);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s,transform .18s,visibility 0s .18s,background .14s}
+#to-top.show{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s,background .14s}
+#to-top:hover{background:var(--inner)}
+#to-top svg{width:20px;height:20px;display:block}
+@media (max-width:600px){#to-top{right:16px;bottom:16px}}
+</style>
+</head>
+<body>
+<a class="sr" href="#plugins">Skip to plugins</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo-link" href="#overview" aria-label="WPAnchorBay brand assets, top"><img id="hdr-icon" alt="" width="32" height="32"><span>Brand</span></a>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#overview">Overview</a><a href="#plugins">Plugins</a><a href="#colours">Colours</a><a href="#usage">Usage</a><a href="#developers">For developers</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="strip" aria-label="Jump to a product"><div class="wrap"><div class="strip-list" id="strip"></div></div></div>
+
+<main>
+<section class="hero" id="overview">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Brand assets</p>
+      <h1>Everything you need to show WPAnchorBay correctly.</h1>
+      <p class="lead">Logos, icons and colours for WPAnchorBay and its ten WooCommerce and WordPress plugins. Download the whole kit, or open a plugin and take just what you need.</p>
+      <div class="hero-actions">
+        <!-- MOCK: the zip does not exist yet; this only shows a toast. The real build produces the archive. -->
+        <button class="btn primary" type="button" id="kit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Download brand kit (.zip)</button>
+        <a class="btn" href="#usage">Usage guidelines</a>
+      </div>
+      <p class="hero-meta" id="hero-meta"></p>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+  </div>
+</section>
+
+<section class="sec" id="plugins">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Plugins</p>
+      <h2>Pick a brand, take what you need.</h2>
+      <p>Each card has the logo, its variants, its colours and links. Use the preview toggle to check a mark on light and dark.</p>
+    </div>
+    <div class="tools">
+      <div class="search"><label class="sr" for="q">Filter brands</label>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Filter by name or what it does" autocomplete="off"></div>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="empty" id="empty" hidden>No brand matches that search.</div>
+  </div>
+</section>
+
+<section class="sec" id="colours">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Colours</p>
+      <h2>One colour per product.</h2>
+      <p>Select a swatch to copy its HEX. Each colour is paired with the text colour that stays readable on it; the ratio is the WCAG contrast of that pair.</p>
+    </div>
+    <div class="colours" id="colour-grid"></div>
+  </div>
+</section>
+
+<section class="sec" id="usage">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Usage</p>
+      <h2>Use the marks as they are.</h2>
+      <p>A few rules keep the brand recognisable everywhere it appears.</p>
+    </div>
+    <div class="usage-grid">
+      <div class="box">
+        <h3>Clear space</h3>
+        <p class="sub">Keep a margin of <b>x</b> around the logo, where x is a quarter of the icon tile's height (the tile's corner radius). Nothing else enters that area.</p>
+        <div id="clearspace"></div>
+      </div>
+      <div class="box">
+        <h3>Minimum size</h3>
+        <p class="sub">Below these sizes the mark loses detail.</p>
+        <div class="minsizes" id="minsizes"></div>
+        <h3 style="margin-top:32px">Placement</h3>
+        <ul class="guide-list" id="allowed"></ul>
+      </div>
+    </div>
+    <h3 class="h-sub">Do and don't</h3>
+    <div class="dd" id="dd"></div>
+    <ul class="guide-list rules" id="notallowed"></ul>
+  </div>
+</section>
+
+<section class="sec" id="developers">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">For developers</p>
+      <h2>Hotlink it, or read it as data.</h2>
+      <p>Every file has a permanent, versionless URL. The whole catalogue is also published as JSON.</p>
+    </div>
+    <div class="dev">
+      <div class="box wide">
+        <h3>Hotlink a logo</h3>
+        <p class="sub">Pick a file, copy the snippet. Use SVG where the surface supports it and PNG where it does not. URLs never change.</p>
+        <div class="builder">
+          <div class="ctrls">
+            <div><label for="hb-brand">Brand</label><div class="sel"><select id="hb-brand"></select></div></div>
+            <div><label for="hb-asset">File</label><div class="sel"><select id="hb-asset"></select></div></div>
+            <div><span class="lbl" id="hb-fmt-l">Format</span><div class="fseg" role="group" aria-labelledby="hb-fmt-l" id="hb-fmt"></div></div>
+            <div class="preview" id="hb-prev" aria-hidden="true"></div>
+          </div>
+          <div class="cb" id="hb-code"></div>
+        </div>
+      </div>
+      <div class="box">
+        <h3>Machine-readable</h3>
+        <p class="sub">Names, taglines, colours, links and every asset URL, as JSON.</p>
+        <div class="kv" id="json-urls"></div>
+      </div>
+      <div class="box">
+        <h3>Marketing assets</h3>
+        <p class="sub">Social banners and campaign artwork live on their own page.</p>
+        <!-- target kept from the current page -->
+        <a class="btn" style="background:var(--inner)" href="/marketing-assets.html">Open marketing assets</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© WPAnchorBay</span><span id="foot-links"></span></div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<button type="button" id="to-top" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script id="data" type="application/json">__BRAND_DATA__</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("data").textContent);
+var P = D.products, BY = {};
+P.forEach(function(p){BY[p.slug]=p;});
+var $ = function(s,r){return (r||document).querySelector(s);};
+var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+
+function h(tag, attrs, kids){
+  var e = document.createElement(tag);
+  if(attrs){ Object.keys(attrs).forEach(function(k){
+    var v = attrs[k]; if(v===false||v==null) return;
+    if(k==="class") e.className=v; else if(k==="text") e.textContent=v;
+    else if(k.slice(0,2)==="on") e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v===true?"":v);
+  });}
+  (kids||[]).forEach(function(c){ if(c==null) return; e.appendChild(typeof c==="string"?document.createTextNode(c):c); });
+  return e;
+}
+function svgIcon(path){
+  var s = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("viewBox","0 0 24 24"); s.setAttribute("fill","none"); s.setAttribute("stroke","currentColor");
+  s.setAttribute("stroke-width","2"); s.setAttribute("stroke-linecap","round"); s.setAttribute("stroke-linejoin","round");
+  s.setAttribute("aria-hidden","true");
+  var p = document.createElementNS("http://www.w3.org/2000/svg","path"); p.setAttribute("d",path); s.appendChild(p); return s;
+}
+var ICON = {link:"M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1", copy:"M9 9h11v11H9zM5 15V4h11", dl:"M12 3v12M7 10l5 5 5-5M4 20h16", open:"M14 4h6v6M20 4l-9 9M18 14v6H4V6h6", chev:"M6 9l6 6 6-6", check:"M5 13l4 4L19 7", x:"M6 6l12 12M18 6L6 18"};
+function withIcon(name,label){ return [svgIcon(ICON[name]), label]; }
+
+var toastEl = $("#toast"), toastT;
+function toast(msg){ toastEl.textContent = msg; toastEl.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(function(){toastEl.classList.remove("show");}, 2200); }
+function copy(text, what, msg){
+  function done(){ toast(msg || ("Copied " + what)); }
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(done, fallback); } else fallback();
+  function fallback(){
+    var t = h("textarea",{"aria-hidden":"true",readonly:true,style:"position:fixed;opacity:0;top:0"}); t.value=text; document.body.appendChild(t); t.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ toast("Press Ctrl+C to copy: " + text.slice(0,40)); } t.remove();
+  }
+}
+
+function copyFile(F, asset){
+  if(F.url.slice(-4)===".svg" && asset.data){
+    var svg = atob(asset.data.split(",")[1]);
+    copy(svg, "", "SVG file copied (paste into Figma, Illustrator or an editor)");
+    return;
+  }
+  if(!(navigator.clipboard && window.ClipboardItem && window.isSecureContext)){ toast("Copying images needs a secure page; use Download"); return; }
+  fetch(F.url).then(function(r){ return r.blob(); }).then(function(b){
+    return navigator.clipboard.write([new ClipboardItem({"image/png": b})]);
+  }).then(function(){ toast("PNG file copied (paste into a doc or design tool)"); }, function(){ toast("Could not copy the file; use Download"); });
+}
+
+function hex2rgb(x){ x=x.replace("#",""); return [0,2,4].map(function(i){return parseInt(x.substr(i,2),16);}); }
+function lum(rgb){ var c = rgb.map(function(v){v/=255; return v<=0.03928? v/12.92 : Math.pow((v+0.055)/1.055,2.4);}); return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]; }
+function ratio(a,b){ var l1=lum(hex2rgb(a)), l2=lum(hex2rgb(b)); var hi=Math.max(l1,l2), lo=Math.min(l1,l2); return (hi+0.05)/(lo+0.05); }
+function grade(r){ return r>=7?"AAA":r>=4.5?"AA":r>=3?"AA large":"Fails"; }
+function fmt(n){ return n<1024? n+" B" : (n/1024).toFixed(1)+" KB"; }
+function img(src, alt, cls){ return h("img",{src:src, alt:alt, "class":cls, decoding:"async"}); }
+function dataOf(p,k){ return p.assets[k] && p.assets[k].data; }
+function iconOf(p){ return dataOf(p,"icon") || dataOf(p,"logo"); }
+var WP = BY.wpanchorbay;
+
+$("#hdr-icon").src = iconOf(WP);
+var NP = P.filter(function(p){return p.kind!=="brand";}).length;
+$("#hero-meta").textContent = NP + " plugins · SVG and PNG · permanent URLs";
+$("#foot-links").appendChild(h("a",{href:D.org.url,text:"wpanchorbay.com"}));
+$("#foot-links").appendChild(document.createTextNode(" · "));
+$("#foot-links").appendChild(h("a",{href:D.org.docs,text:"Documentation"}));
+
+var root = document.documentElement;
+$("#theme").addEventListener("click", function(){
+  var cur = root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  var next = cur==="dark" ? "light" : "dark"; root.setAttribute("data-theme", next);
+  try{ localStorage.setItem("brand-theme", next); }catch(e){}
+});
+try{ var saved = localStorage.getItem("brand-theme"); if(saved) root.setAttribute("data-theme", saved); }catch(e){}
+
+$("#kit").addEventListener("click", function(){ toast("Zip builds are part of the real build"); });
+
+/* hero mosaic: all 11 icons plus a count tile = 4 x 3 */
+(function(){
+  var m = $("#mosaic");
+  P.forEach(function(p){ m.appendChild(h("a",{href:"#p-"+p.slug,"aria-label":p.name+": jump to its assets"},[img(iconOf(p),""),h("span",{"class":"cap",text:p.name,"aria-hidden":"true"})])); });
+  m.appendChild(h("span",{"class":"count-tile"},[h("div",null,[h("b",{text:String(NP)}),h("small",{text:"plugins"})])]));
+})();
+
+P.forEach(function(p){
+  $("#strip").appendChild(h("a",{href:"#p-"+p.slug,"data-slug":p.slug,title:p.name,"aria-label":p.name},[img(iconOf(p),"")]));
+});
+
+/* ---------- cards ---------- */
+var VARIANTS = [
+  ["logo","Logo","Tile and wordmark, the default"],
+  ["icon","Icon","The rounded tile, for avatars and app icons"],
+  ["icon-inner","Inner","Glyph only, no tile"],
+  ["icon-mono","Mono","One colour, for admin menus"],
+  ["anchor","Anchor","The bare anchor glyph"]
+];
+var LINKS = [["site","Website"],["docs","Documentation"],["wordpress","WordPress.org"]];
+
+/* Dark panel source: the real logo-dark file of every brand (icon tile as a safety fallback). */
+function darkSrc(p, key){
+  if(key==="logo") return [dataOf(p,"logo-dark") || dataOf(p,"icon"), ""];
+  if(key==="icon-inner" && p.slug==="wpanchorbay") return [dataOf(p,key),"Navy glyph: use on light backgrounds"];
+  return [dataOf(p,key),""];
+}
+
+function buildCard(p){
+  var A = p.assets;
+  var card = h("article",{"class":"card",id:"p-"+p.slug,"data-slug":p.slug,"aria-labelledby":"h-"+p.slug});
+  card.style.setProperty("--brand",p.color); card.style.setProperty("--on-brand",p.onColor);
+  var state = {variant: A.logo ? "logo" : "icon", dark:false};
+
+  var menu = h("div",{"class":"menu",hidden:true,id:"m-"+p.slug,role:"group","aria-label":"Download "+p.name});
+  var mbtn = h("button",{"class":"btn brand",type:"button","aria-expanded":"false","aria-controls":"m-"+p.slug},withIcon("dl","Download").concat([svgIcon(ICON.chev)]));
+  function closeMenu(){ menu.hidden = true; mbtn.setAttribute("aria-expanded","false"); }
+  var m0 = A.logo || A.icon, slug = p.slug;
+  if(m0.formats.svg) menu.appendChild(h("a",{href:m0.data,download:slug+(A.logo?"-logo":"-icon")+".svg",onclick:closeMenu},[h("span",{text:"SVG"}),h("small",{text:"vector, "+fmt(m0.formats.svg.bytes)})]));
+  if(m0.formats.png) menu.appendChild(h("a",{href:m0.formats.png.url,download:slug+".png",target:"_blank",rel:"noopener",onclick:closeMenu},[h("span",{text:"PNG"}),h("small",{text:m0.formats.png.w+" × "+m0.formats.png.h})]));
+  menu.appendChild(h("button",{type:"button",onclick:function(){closeMenu();toast("Zip builds are part of the real build");}},[h("span",{text:"All variants (.zip)"}),h("small",{text:"soon"})]));
+  menu.appendChild(h("hr"));
+  menu.appendChild(h("button",{type:"button",onclick:function(){closeMenu();copy((m0.formats.svg||m0.formats.png).url,"","Link copied");}},[h("span",{text:"Copy link"}),h("small",{text:(m0.formats.svg?"SVG":"PNG")})]));
+  menu.appendChild(h("button",{type:"button",onclick:function(){closeMenu();var f0=m0.formats.svg||m0.formats.png;copyFile(f0,m0);}},[h("span",{text:"Copy file"}),h("small",{text:(m0.formats.svg?"SVG":"PNG")})]));
+  mbtn.addEventListener("click",function(e){ e.stopPropagation(); var open = menu.hidden; $$(".menu").forEach(function(x){x.hidden=true;}); $$(".dl > .btn").forEach(function(b){b.setAttribute("aria-expanded","false");}); menu.hidden = !open; mbtn.setAttribute("aria-expanded",String(open)); });
+  menu.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeMenu(); mbtn.focus(); } });
+  mbtn.addEventListener("keydown",function(e){ if(e.key==="Escape") closeMenu(); });
+
+  card.appendChild(h("header",{"class":"card-head"},[
+    h("div",{"class":"ident"},[img(iconOf(p),""),h("div",null,[h("span",{"class":"kind",text:p.kind==="brand"?"Company brand":"Plugin"}),h("h3",{id:"h-"+p.slug,text:p.name}),h("p",{text:p.tagline})])]),
+    h("div",{"class":"dl"},[mbtn,menu])
+  ]));
+
+  var stage = h("div",{"class":"stage"});
+  var panel = h("div",{"class":"panel light"});
+  var segL = h("button",{type:"button","aria-pressed":"true",text:"Light"});
+  var segD = h("button",{type:"button","aria-pressed":"false",text:"Dark"});
+  var seg = h("div",{"class":"seg",role:"group","aria-label":"Preview background"},[segL,segD]);
+  stage.appendChild(panel); stage.appendChild(seg);
+  function paint(){
+    panel.className = "panel " + (state.dark?"dark":"light");
+    stage.classList.toggle("is-dark",state.dark);
+    panel.textContent = "";
+    var key = state.variant, src = dataOf(p,key), note = "", vlabel = (A[key]||{}).label || key;
+    if(state.dark){ var r = darkSrc(p,key); src = r[0]; note = r[1]; }
+    var cls = key==="logo" ? "wide" : "sq";
+    panel.appendChild(img(src, p.name+" "+vlabel.toLowerCase()+(state.dark?" on a dark background":" on a light background"), cls));
+    if(note) panel.appendChild(h("p",{"class":"note",text:note}));
+    segL.setAttribute("aria-pressed",String(!state.dark)); segD.setAttribute("aria-pressed",String(state.dark));
+    $$(".variant",card).forEach(function(b){ b.setAttribute("aria-pressed",String(b.dataset.v===state.variant)); });
+  }
+  segL.addEventListener("click",function(){state.dark=false;paint();});
+  segD.addEventListener("click",function(){state.dark=true;paint();});
+
+  var vgrid = h("div",{"class":"variants"});
+  VARIANTS.forEach(function(v){
+    if(!A[v[0]] || !A[v[0]].data) return;
+    vgrid.appendChild(h("button",{type:"button","class":"variant","data-v":v[0],"aria-pressed":"false","aria-label":v[1]+": "+v[2],onclick:function(){state.variant=v[0];paint();}},[
+      h("span",{"class":"thumb"},[img(A[v[0]].data,"")]),
+      h("span",{"class":"vname",text:v[1]}),
+      h("span",{"class":"vdesc",text:v[2]})
+    ]));
+  });
+
+  var sw = h("div",{"class":"swatches"});
+  [[p.color,"brand colour"],[p.onColor,"text colour on it"]].forEach(function(c){
+    sw.appendChild(h("button",{"class":"chip",type:"button","aria-label":"Copy "+c[1]+" "+c[0],onclick:function(){copy(c[0],c[0]);}},[
+      h("i",{style:"background:"+c[0]}),h("span",{text:c[0]})]));
+  });
+
+  var links = h("div",{"class":"linklist"});
+  LINKS.forEach(function(l){ if(p.links[l[0]]) links.appendChild(h("a",{"class":"ibtn",href:p.links[l[0]],target:"_blank",rel:"noopener"},withIcon("open",l[1]))); });
+
+  var side = h("div",{"class":"side"},[
+    h("div",null,[h("h4",{text:"Variants"}),vgrid]),
+    h("div",null,[h("h4",{text:"Colour"}),sw]),
+    Object.keys(p.links).length ? h("div",null,[h("h4",{text:"Links"}),links]) : null
+  ]);
+  card.appendChild(h("div",{"class":"card-body"},[stage,side]));
+
+  var rows = h("div",{"class":"rows"}), n = 0;
+  Object.keys(A).forEach(function(k){
+    Object.keys(A[k].formats).forEach(function(f){
+      var F = A[k].formats[f]; n++;
+      var fname = F.url.split("/").pop();
+      var dl = f==="svg" && A[k].data ? h("a",{"class":"ibtn",href:A[k].data,download:fname},withIcon("dl","Download")) : h("a",{"class":"ibtn",href:F.url,download:fname,target:"_blank",rel:"noopener"},withIcon("dl","Download"));
+      rows.appendChild(h("div",{"class":"row"},[
+        h("div",{"class":"meta"},[h("b",{text:A[k].label+", "+f.toUpperCase()}),h("small",{text:F.w+" × "+F.h+" · "+fmt(F.bytes)})]),
+        h("div",{"class":"acts"},[
+          h("button",{"class":"ibtn",type:"button",onclick:function(){copy(F.url,"","Link copied");}},withIcon("link","Copy link")),
+          h("button",{"class":"ibtn",type:"button",onclick:function(){copyFile(F,A[k]);}},withIcon("copy","Copy file")),
+          dl,
+          h("a",{"class":"ibtn",href:F.url,target:"_blank",rel:"noopener"},withIcon("open","Open"))
+        ])
+      ]));
+    });
+  });
+  card.appendChild(h("details",{"class":"files"},[h("summary",{text:"All files ("+n+")"}),rows]));
+  paint();
+  return card;
+}
+var cardsEl = $("#cards");
+P.forEach(function(p){ cardsEl.appendChild(buildCard(p)); });
+document.addEventListener("click",function(e){ if(!e.target.closest(".dl")){ $$(".menu").forEach(function(m){m.hidden=true;}); $$(".dl > .btn").forEach(function(b){b.setAttribute("aria-expanded","false");}); } });
+
+var q = $("#q");
+function filter(){
+  var t = q.value.trim().toLowerCase(), shown = 0;
+  $$(".card",cardsEl).forEach(function(c){
+    var p = BY[c.dataset.slug], hit = !t || (p.name+" "+p.slug+" "+p.tagline).toLowerCase().indexOf(t)>-1;
+    c.hidden = !hit; if(hit && p.kind!=="brand") shown++;
+    $('#strip a[data-slug="'+p.slug+'"]').classList.toggle("dim",!hit);
+  });
+  $("#empty").hidden = $$(".card",cardsEl).some(function(c){return !c.hidden;});
+  $("#count").textContent = t ? shown+" of "+NP+" plugins" : NP+" plugins";
+}
+q.addEventListener("input",filter); filter();
+
+/* ---------- colours ---------- */
+(function(){
+  var g = $("#colour-grid");
+  var list = P.map(function(p){return {name:p.name,hex:p.color,on:p.onColor};});
+  list.splice(1,0,{name:"WPAnchorBay Navy",hex:D.palette.ink,on:"#FFFFFF"});
+  list.forEach(function(c){
+    var r = ratio(c.hex,c.on), rgb = hex2rgb(c.hex);
+    var rgbs = "rgb("+rgb.join(", ")+")";
+    g.appendChild(h("div",{"class":"cswatch"},[
+      h("button",{"class":"big",type:"button",style:"background:"+c.hex+";color:"+c.on,"aria-label":"Copy "+c.name+" "+c.hex,onclick:function(){copy(c.hex,c.hex);}},[
+        h("span",{"class":"aa",text:"Aa"}),
+        h("span",{"class":"pair",text:r.toFixed(1)+":1 · "+grade(r)})
+      ]),
+      h("div",{"class":"info"},[
+        h("h3",{text:c.name}),
+        h("div",{"class":"vals"},[
+          h("button",{type:"button","aria-label":"Copy HEX "+c.hex,onclick:function(){copy(c.hex,c.hex);},text:c.hex}),
+          h("button",{type:"button","aria-label":"Copy RGB "+rgbs,onclick:function(){copy(rgbs,rgbs);},text:rgbs})
+        ]),
+        h("p",{"class":"pairtxt",text:"Text on it: "+c.on.toUpperCase()+" (contrast "+r.toFixed(2)+":1)"})
+      ])
+    ]));
+  });
+})();
+
+/* ---------- usage ---------- */
+(function(){
+  var logo = dataOf(WP,"logo");
+  var W=739, H=240, x=30, lx=60, ly=60, lw=619, lh=120;
+  var svg = '<svg class="cs-svg" viewBox="0 0 '+W+' '+(H+40)+'" role="img" aria-labelledby="cs-t cs-d">'+
+   '<title id="cs-t">Clear space around the WPAnchorBay logo</title><desc id="cs-d">The logo with a margin on every side equal to x, a quarter of the icon tile height.</desc>'+
+   '<path fill="#39CCCC" fill-opacity=".22" fill-rule="evenodd" d="M'+(lx-x)+' '+(ly-x)+'h'+(lw+2*x)+'v'+(lh+2*x)+'h-'+(lw+2*x)+'zM'+lx+' '+ly+'v'+lh+'h'+lw+'v-'+lh+'z"/>'+
+   '<image href="'+logo+'" x="'+lx+'" y="'+ly+'" width="'+lw+'" height="'+lh+'"/>'+
+   '<g fill="#001F3F"><rect x="'+(lx-x)+'" y="'+(ly-x)+'" width="'+x+'" height="'+x+'" fill-opacity=".16"/><text x="'+(lx-x/2)+'" y="'+(ly-x/2+7)+'" text-anchor="middle" font-size="20" font-weight="700">x</text>'+
+   '<rect x="'+(lx-x)+'" y="'+(ly+lh/2-x/2)+'" width="'+x+'" height="'+x+'" fill-opacity=".16"/><text x="'+(lx-x/2)+'" y="'+(ly+lh/2+7)+'" text-anchor="middle" font-size="20" font-weight="700">x</text>'+
+   '<rect x="'+(lx+lw)+'" y="'+(ly+lh)+'" width="'+x+'" height="'+x+'" fill-opacity=".16"/><text x="'+(lx+lw+x/2)+'" y="'+(ly+lh+x/2+7)+'" text-anchor="middle" font-size="20" font-weight="700">x</text></g>'+
+   '<path d="M'+lx+' '+(ly+lh+x+14)+'h120M'+lx+' '+(ly+lh+x+8)+'v12M'+(lx+120)+' '+(ly+lh+x+8)+'v12" stroke="#001F3F" stroke-width="1.5" fill="none"/>'+
+   '<text x="'+(lx+132)+'" y="'+(ly+lh+x+20)+'" font-size="16">Icon tile height = 4x</text>'+
+   '</svg>';
+  $("#clearspace").innerHTML = svg;
+
+  var ms = $("#minsizes");
+  ms.appendChild(h("div",{"class":"ms"},[h("div",{"class":"sample"},[h("img",{src:dataOf(WP,"icon"),alt:"",width:24,height:24})]),h("div",null,[h("b",{text:"Icon: 24 px"}),h("span",{text:"Smallest size for the tile on screen."})])]));
+  ms.appendChild(h("div",{"class":"ms"},[h("div",{"class":"sample"},[h("img",{src:logo,alt:"",width:120})]),h("div",null,[h("b",{text:"Logo: 120 px wide"}),h("span",{text:"Smallest width for tile and wordmark."})])]));
+
+  function li(t,ok){ var c = svgIcon(ok?ICON.check:ICON.x); c.style.color = ok?"var(--good)":"var(--bad)"; return h("li",null,[c,h("span",{text:t})]); }
+  D.usage.allowed.forEach(function(t){ $("#allowed").appendChild(li(t,true)); });
+  D.usage.notAllowed.forEach(function(t){ $("#notallowed").appendChild(li(t,false)); });
+
+  var dd = $("#dd"), dark = dataOf(WP,"logo-dark");
+  function fig(ok, cap, bg, imgSrc, style, cls){
+    var box = h("div",{"class":"stagebox"+(cls?" "+cls:""),style:bg?"background:"+bg:null},[h("img",{src:imgSrc,alt:ok?"WPAnchorBay logo, correct use":"WPAnchorBay logo, incorrect use: "+cap,style:style})]);
+    box.appendChild(h("span",{"class":"x"+(ok?" ok":"")},[svgIcon(ok?ICON.check:ICON.x)]));
+    dd.appendChild(h("figure",null,[box,h("figcaption",null,[h("span",{"class":"tag "+(ok?"do":"dont"),text:ok?"Do":"Don't"}),h("span",{text:cap})])]));
+  }
+  fig(true,"Place it on white or a plain light colour.","#ffffff",logo,"");
+  fig(true,"Use the dark logo on navy.","#001F3F",dark,"");
+  fig(true,"Scale proportionally.","#ffffff",logo,"width:96px");
+  fig(false,"Don't stretch or squash it.","#ffffff",logo,"transform:scaleX(1.45) scaleY(.8)");
+  fig(false,"Don't recolour it.","#ffffff",logo,"filter:hue-rotate(150deg) saturate(2.2)");
+  fig(false,"Don't place it on a busy background.",null,logo,"","busy");
+  fig(false,"Don't add shadows, outlines or rotation.","#ffffff",logo,"transform:rotate(-8deg);filter:drop-shadow(6px 8px 3px rgba(0,0,0,.5))");
+})();
+
+/* ---------- developers ---------- */
+(function(){
+  var o = D.origin;
+  function sp(cls,t){ return h("span",{"class":cls,text:t}); }
+  function ln(cls,kids){ return h("span",{"class":"ln"+(cls?" "+cls:"")},kids.map(function(k){return typeof k==="string"?document.createTextNode(k):k;})); }
+  function flash(btn, label){
+    var l = btn.querySelector("span"), old = l ? l.textContent : "";
+    btn.setAttribute("data-done","true"); if(l) l.textContent = label;
+    setTimeout(function(){ btn.removeAttribute("data-done"); if(l) l.textContent = old; }, 1800);
+  }
+
+  /* code block with tabs and one Copy button */
+  function codeBlock(root, tabs, getCode){
+    var cur = 0, pre = h("pre",{"class":"cb-pre"},[h("code")]), code = pre.firstChild;
+    var tabsEl = h("div",{"class":"cb-tabs",role:"tablist","aria-label":"Snippet format"});
+    var copyBtn = h("button",{"class":"cb-copy",type:"button"},[svgIcon(ICON.copy),h("span",{text:"Copy"})]);
+    var btns = tabs.map(function(t,i){
+      var b = h("button",{"class":"cb-tab",type:"button",role:"tab",text:t.name,"aria-selected":String(i===0),tabindex:i===0?"0":"-1"});
+      b.addEventListener("click",function(){ cur=i; render(); });
+      b.addEventListener("keydown",function(e){
+        var n = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(!n) return;
+        cur=(cur+n+tabs.length)%tabs.length; render(); btns[cur].focus(); e.preventDefault();
+      });
+      tabsEl.appendChild(b); return b;
+    });
+    copyBtn.addEventListener("click",function(){ copy(getCode(cur).text,"","Copied"); flash(copyBtn,"Copied"); });
+    root.appendChild(h("div",{"class":"cb-bar"},[tabsEl,copyBtn]));
+    root.appendChild(pre);
+    function render(){
+      btns.forEach(function(b,i){ b.setAttribute("aria-selected",String(i===cur)); b.tabIndex = i===cur?0:-1; });
+      var c = getCode(cur); code.textContent = ""; c.nodes.forEach(function(n){ code.appendChild(typeof n==="string" ? document.createTextNode(n) : n); });
+    }
+    render();
+    return {render:render};
+  }
+
+  /* hotlink builder */
+  var bSel = $("#hb-brand"), aSel = $("#hb-asset"), fmtEl = $("#hb-fmt"), prev = $("#hb-prev");
+  var chev = function(){ return svgIcon(ICON.chev); };
+  bSel.parentNode.appendChild(chev()); aSel.parentNode.appendChild(chev());
+  P.forEach(function(p){ bSel.appendChild(h("option",{value:p.slug,text:p.name})); });
+  var st = {slug:"wpanchorbay", key:"logo", fmt:"svg"};
+  bSel.value = st.slug;
+  function prod(){ return P.filter(function(p){return p.slug===st.slug;})[0]; }
+  function cur(){ return prod().assets[st.key]; }
+  function url(){ return cur().formats[st.fmt].url; }
+  function fillAssets(){
+    var A = prod().assets; aSel.textContent = "";
+    Object.keys(A).forEach(function(k){ aSel.appendChild(h("option",{value:k,text:A[k].label})); });
+    if(!A[st.key]) st.key = A.logo ? "logo" : Object.keys(A)[0];
+    aSel.value = st.key;
+  }
+  function fillFmt(){
+    var F = cur().formats; fmtEl.textContent = "";
+    if(!F[st.fmt]) st.fmt = F.svg ? "svg" : "png";
+    ["svg","png"].forEach(function(f){
+      var b = h("button",{type:"button","aria-pressed":String(st.fmt===f),text:f.toUpperCase(),disabled:!F[f]});
+      b.addEventListener("click",function(){ st.fmt=f; refresh(); });
+      fmtEl.appendChild(b);
+    });
+  }
+  function fillPrev(){
+    prev.textContent = "";
+    var A = cur(); prev.appendChild(h("img",{src:A.data || url(),alt:""}));
+    /* dark logos need a dark stage */
+    prev.style.background = st.key==="logo-dark" ? "#001F3F" : "";
+  }
+  function isLogo(){ return st.key.indexOf("logo")===0; }
+  var block = codeBlock($("#hb-code"),[{name:"HTML"},{name:"Markdown"},{name:"CSS"},{name:"URL"}],function(i){
+    var u = url(), name = prod().name, hh = isLogo()?40:48, nodes, text;
+    if(i===0){
+      text = '<img\n  src="'+u+'"\n  alt="'+name+'"\n  height="'+hh+'">';
+      nodes = [ln("",[sp("t","<img")]),ln("in",[sp("a","src"),sp("d","="),sp("s",'"'+u+'"')]),ln("in",[sp("a","alt"),sp("d","="),sp("s",'"'+name+'"')]),ln("in",[sp("a","height"),sp("d","="),sp("s",'"'+hh+'"'),sp("t",">")])];
+    } else if(i===1){
+      text = '!['+name+']('+u+')';
+      nodes = [sp("d","!["),sp("a",name),sp("d","]("),sp("s",u),sp("d",")")];
+    } else if(i===2){
+      text = '.brand-logo {\n  background: url("'+u+'") no-repeat center / contain;\n  height: '+hh+'px;\n}';
+      nodes = [ln("",[sp("k",".brand-logo"),sp("d"," {")]),ln("in",[sp("a","background"),sp("d",": "),sp("s",'url("'+u+'")'),sp("d"," no-repeat center / contain;")]),ln("in",[sp("a","height"),sp("d",": "),hh+"px;"]),ln("",[sp("d","}")])];
+    } else {
+      text = u; nodes = [sp("s",u)];
+    }
+    return {text:text,nodes:nodes};
+  });
+  function refresh(){ fillAssets(); fillFmt(); fillPrev(); block.render(); }
+  bSel.addEventListener("change",function(){ st.slug = bSel.value; refresh(); });
+  aSel.addEventListener("change",function(){ st.key = aSel.value; refresh(); });
+  refresh();
+
+  /* machine-readable: a labelled field with copy and open */
+  var j = $("#json-urls");
+  [[D.self,"All brands",true],[o+"/brand/<slug>/brand.json","One brand",false]].forEach(function(r){
+    var cb = h("button",{"class":"ib",type:"button","aria-label":"Copy link to "+r[1]},[svgIcon(ICON.copy),h("span",{text:"Copy"})]);
+    cb.addEventListener("click",function(){ copy(r[0],"","Copied"); flash(cb,"Copied"); });
+    var kids = [h("div",{"class":"cf-url",text:r[0]}),cb];
+    if(r[2]) kids.push(h("a",{"class":"ib",href:r[0],target:"_blank",rel:"noopener","aria-label":"Open "+r[1]},[svgIcon(ICON.open),h("span",{text:"Open"})]));
+    var f = h("div",{"class":"cf"},[h("b",{text:r[1]}),h("div",{"class":"cf-box"},kids)]);
+    if(!r[2]) f.appendChild(h("p",{"class":"sub",style:"margin:8px 0 0;font-size:.8125rem",text:"Replace <slug> with the folder name, for example upsellbay."}));
+    j.appendChild(f);
+  });
+})();
+
+/* ---------- scroll spy ---------- */
+(function(){
+  if(!("IntersectionObserver" in window)) return;
+  var navLinks = $$("#nav a"), stripLinks = $$("#strip a");
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){
+      var id = e.target.id;
+      navLinks.forEach(function(a){ a.setAttribute("aria-current", String(a.getAttribute("href")==="#"+id)); });
+    }});
+  },{rootMargin:"-30% 0px -60% 0px"});
+  $$("main > section").forEach(function(s){io.observe(s);});
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){
+      stripLinks.forEach(function(a){ a.setAttribute("aria-current", String(a.dataset.slug===e.target.dataset.slug)); });
+    }});
+  },{rootMargin:"-30% 0px -60% 0px"});
+  $$(".card").forEach(function(c){io2.observe(c);});
+})();
+/* back to top: show after ~one screen of scrolling */
+(function(){
+  var b = $("#to-top"), ticking = false;
+  function upd(){ ticking = false; b.classList.toggle("show", window.scrollY > 600); }
+  window.addEventListener("scroll", function(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive:true});
+  b.addEventListener("click", function(){ window.scrollTo({top:0}); });
+  upd();
+})();
+})();
+</script>
+</body>
+</html>
