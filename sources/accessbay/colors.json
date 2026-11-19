@@ -1,0 +1,295 @@
+{
+  "brand": "AccessBay",
+  "colors": {
+    "blue": {
+      "hex": "#37A8FF",
+      "rgb": [
+        55,
+        168,
+        255
+      ],
+      "use": "icon tile (primary)"
+    },
+    "navy": {
+      "hex": "#001F3F",
+      "rgb": [
+        0,
+        31,
+        63
+      ],
+      "use": "wordmark on light, dark tile, dark backgrounds"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "use": "shield and key, wordmark on dark, light tile"
+    }
+  },
+  "icon_color_variants": [
+    {
+      "name": "blue tile",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "status": "made",
+      "files": [
+        "accessbay-icon.svg",
+        "accessbay-icon.png"
+      ],
+      "glyph_contrast": 2.56
+    },
+    {
+      "name": "navy tile",
+      "tile": "#001F3F",
+      "glyph": "#FFFFFF",
+      "status": "made (png only)",
+      "files": [
+        "accessbay-icon-tile-navy.png"
+      ],
+      "glyph_contrast": 16.56
+    },
+    {
+      "name": "white tile",
+      "tile": "#FFFFFF",
+      "glyph": "#001F3F",
+      "status": "made (png only)",
+      "files": [
+        "accessbay-icon-tile-white.png"
+      ],
+      "glyph_contrast": 16.56
+    },
+    {
+      "name": "mono navy (no tile)",
+      "tile": null,
+      "glyph": "#001F3F",
+      "status": "suggested, not made",
+      "files": [],
+      "use": "single-colour print, light backgrounds"
+    },
+    {
+      "name": "mono white (no tile)",
+      "tile": null,
+      "glyph": "#FFFFFF",
+      "status": "suggested, not made",
+      "files": [
+        "accessbay-key.svg"
+      ],
+      "use": "single-colour on dark or blue; the key svg already is this"
+    },
+    {
+      "name": "mono black (no tile)",
+      "tile": null,
+      "glyph": "#000000",
+      "status": "suggested, not made",
+      "files": [],
+      "use": "fax, stamps, one-colour print"
+    }
+  ],
+  "assets": [
+    {
+      "file": "accessbay-icon.svg",
+      "format": "svg",
+      "kind": "icon",
+      "size_px": [
+        240,
+        240
+      ],
+      "aspect_ratio": 1.0,
+      "ratio_label": "1:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": null,
+      "best_on": "light and dark"
+    },
+    {
+      "file": "accessbay-key.svg",
+      "format": "svg",
+      "kind": "key (shield and key only, no tile)",
+      "size_px": [
+        237,
+        287
+      ],
+      "aspect_ratio": 0.8258,
+      "ratio_label": "0.83:1",
+      "tile": null,
+      "glyph": "#FFFFFF",
+      "wordmark": null,
+      "best_on": "blue or dark backgrounds"
+    },
+    {
+      "file": "accessbay-logo.svg",
+      "format": "svg",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": "#001F3F",
+      "best_on": "light backgrounds"
+    },
+    {
+      "file": "accessbay-logo-dark.svg",
+      "format": "svg",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": "#FFFFFF",
+      "best_on": "dark backgrounds"
+    },
+    {
+      "file": "accessbay-icon.png",
+      "format": "png",
+      "kind": "icon",
+      "size_px": [
+        240,
+        240
+      ],
+      "aspect_ratio": 1.0,
+      "ratio_label": "1:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": null,
+      "best_on": "light and dark"
+    },
+    {
+      "file": "accessbay-icon-tile-navy.png",
+      "format": "png",
+      "kind": "icon",
+      "size_px": [
+        240,
+        240
+      ],
+      "aspect_ratio": 1.0,
+      "ratio_label": "1:1",
+      "tile": "#001F3F",
+      "glyph": "#FFFFFF",
+      "wordmark": null,
+      "best_on": "light backgrounds (and blue)"
+    },
+    {
+      "file": "accessbay-icon-tile-white.png",
+      "format": "png",
+      "kind": "icon",
+      "size_px": [
+        240,
+        240
+      ],
+      "aspect_ratio": 1.0,
+      "ratio_label": "1:1",
+      "tile": "#FFFFFF",
+      "glyph": "#001F3F",
+      "wordmark": null,
+      "best_on": "dark or blue backgrounds"
+    },
+    {
+      "file": "accessbay-logo.png",
+      "format": "png",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": "#001F3F",
+      "best_on": "light backgrounds"
+    },
+    {
+      "file": "accessbay-logo-dark.png",
+      "format": "png",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#37A8FF",
+      "glyph": "#FFFFFF",
+      "wordmark": "#FFFFFF",
+      "best_on": "dark backgrounds"
+    },
+    {
+      "file": "accessbay-logo-tile-white.png",
+      "format": "png",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#FFFFFF",
+      "glyph": "#001F3F",
+      "wordmark": "#FFFFFF",
+      "best_on": "dark or blue backgrounds"
+    },
+    {
+      "file": "accessbay-logo-tile-navy.png",
+      "format": "png",
+      "kind": "logo",
+      "size_px": [
+        1041,
+        240
+      ],
+      "aspect_ratio": 4.3375,
+      "ratio_label": "4.34:1",
+      "tile": "#001F3F",
+      "glyph": "#FFFFFF",
+      "wordmark": "#001F3F",
+      "best_on": "light backgrounds"
+    }
+  ],
+  "layout": {
+    "icon_tile": "240x240 px, rounded square, 1:1",
+    "logo": "1041x240 px, 4.34:1; icon tile on the left, wordmark on the right",
+    "wordmark": "'Access' bold + 'Bay' light, same size",
+    "svg_note": "logo and icon svgs use a 4x viewBox (4164x960, 960x960) with width/height set to the png size"
+  },
+  "pairings": [
+    {
+      "background": "#FFFFFF",
+      "foreground": "#001F3F",
+      "contrast": 16.56,
+      "ok_for": "all text"
+    },
+    {
+      "background": "#001F3F",
+      "foreground": "#FFFFFF",
+      "contrast": 16.56,
+      "ok_for": "all text"
+    },
+    {
+      "background": "#001F3F",
+      "foreground": "#37A8FF",
+      "contrast": 6.47,
+      "ok_for": "all text"
+    },
+    {
+      "background": "#FFFFFF",
+      "foreground": "#37A8FF",
+      "contrast": 2.56,
+      "ok_for": "graphics only, not text (fails WCAG AA)"
+    }
+  ],
+  "css": {
+    "--ab-blue": "#37A8FF",
+    "--ab-navy": "#001F3F",
+    "--ab-white": "#FFFFFF"
+  }
+}

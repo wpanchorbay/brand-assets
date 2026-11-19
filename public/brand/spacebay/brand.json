@@ -1,0 +1,146 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/spacebay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "spacebay",
+    "name": "SpaceBay",
+    "kind": "plugin",
+    "tagline": "The community plugin for WordPress.",
+    "color": "#3F22FF",
+    "onColor": "#FFFFFF",
+    "links": {
+      "site": "https://wpanchorbay.com/plugins/spacebay/",
+      "docs": "https://docs.wpanchorbay.com/spacebay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/logo.png",
+            "path": "/brand/spacebay/logo.png",
+            "type": "image/png",
+            "bytes": 27477,
+            "width": 970,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/logo.svg",
+            "path": "/brand/spacebay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 11549,
+            "width": 485,
+            "height": 120
+          }
+        }
+      },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/logo-dark.png",
+            "path": "/brand/spacebay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 24703,
+            "width": 970,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/logo-dark.svg",
+            "path": "/brand/spacebay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 11549,
+            "width": 485,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon.png",
+            "path": "/brand/spacebay/icon.png",
+            "type": "image/png",
+            "bytes": 9345,
+            "width": 256,
+            "height": 256
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon.svg",
+            "path": "/brand/spacebay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 2523,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-animated": {
+        "label": "Icon (animated)",
+        "formats": {
+          "gif": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.gif",
+            "path": "/brand/spacebay/icon-animated.gif",
+            "type": "application/octet-stream",
+            "bytes": 1117442
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.svg",
+            "path": "/brand/spacebay/icon-animated.svg",
+            "type": "image/svg+xml",
+            "bytes": 32459,
+            "width": 120,
+            "height": 120
+          },
+          "webp": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.webp",
+            "path": "/brand/spacebay/icon-animated.webp",
+            "type": "image/webp",
+            "bytes": 1045798
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-inner.svg",
+            "path": "/brand/spacebay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 2472,
+            "width": 74,
+            "height": 74
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-mono.png",
+            "path": "/brand/spacebay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 19273,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-mono.svg",
+            "path": "/brand/spacebay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 2599,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}

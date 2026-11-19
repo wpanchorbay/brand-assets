@@ -38,6 +38,17 @@
         "docs": "https://docs.wpanchorbay.com/"
       }
     },
+    "accessbay": {
+      "name": "AccessBay",
+      "kind": "plugin",
+      "tagline": "Software licensing and update delivery for WooCommerce.",
+      "color": "#37A8FF",
+      "onColor": "#001F3F",
+      "links": {
+        "site": "https://wpanchorbay.com/plugins/accessbay/",
+        "docs": "https://docs.wpanchorbay.com/accessbay/"
+      }
+    },
     "campaignbay": {
       "name": "CampaignBay",
       "kind": "plugin",
@@ -108,6 +119,17 @@
         "wordpress": "https://wordpress.org/plugins/productbay-high-performance-product-table-for-woocommerce/",
         "site": "https://wpanchorbay.com/plugins/productbay/",
         "docs": "https://docs.wpanchorbay.com/productbay/"
+      }
+    },
+    "spacebay": {
+      "name": "SpaceBay",
+      "kind": "plugin",
+      "tagline": "The community plugin for WordPress.",
+      "color": "#3F22FF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "site": "https://wpanchorbay.com/plugins/spacebay/",
+        "docs": "https://docs.wpanchorbay.com/spacebay/"
       }
     },
     "tubebay": {

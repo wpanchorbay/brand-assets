@@ -1,0 +1,129 @@
+{
+  "self": "https://assets.wpanchorbay.com/brand/accessbay/brand.json",
+  "origin": "https://assets.wpanchorbay.com",
+  "organization": {
+    "name": "WPAnchorBay",
+    "url": "https://wpanchorbay.com",
+    "docs": "https://docs.wpanchorbay.com",
+    "wordpressAuthor": "https://profiles.wordpress.org/wpanchorbay/"
+  },
+  "product": {
+    "slug": "accessbay",
+    "name": "AccessBay",
+    "kind": "plugin",
+    "tagline": "Software licensing and update delivery for WooCommerce.",
+    "color": "#37A8FF",
+    "onColor": "#001F3F",
+    "links": {
+      "site": "https://wpanchorbay.com/plugins/accessbay/",
+      "docs": "https://docs.wpanchorbay.com/accessbay/"
+    },
+    "assets": {
+      "logo": {
+        "label": "Logo",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/logo.png",
+            "path": "/brand/accessbay/logo.png",
+            "type": "image/png",
+            "bytes": 30173,
+            "width": 1041,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/logo.svg",
+            "path": "/brand/accessbay/logo.svg",
+            "type": "image/svg+xml",
+            "bytes": 22471,
+            "width": 521,
+            "height": 120
+          }
+        }
+      },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/logo-dark.png",
+            "path": "/brand/accessbay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 26571,
+            "width": 1041,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/logo-dark.svg",
+            "path": "/brand/accessbay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 22471,
+            "width": 521,
+            "height": 120
+          }
+        }
+      },
+      "icon": {
+        "label": "Icon",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon.png",
+            "path": "/brand/accessbay/icon.png",
+            "type": "image/png",
+            "bytes": 3871,
+            "width": 120,
+            "height": 120
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon.svg",
+            "path": "/brand/accessbay/icon.svg",
+            "type": "image/svg+xml",
+            "bytes": 6508,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-inner.png",
+            "path": "/brand/accessbay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 19740,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-inner.svg",
+            "path": "/brand/accessbay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 4144,
+            "width": 75.21,
+            "height": 75.21
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-mono.png",
+            "path": "/brand/accessbay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 18640,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-mono.svg",
+            "path": "/brand/accessbay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 6684,
+            "width": 120,
+            "height": 120
+          }
+        }
+      }
+    }
+  }
+}
