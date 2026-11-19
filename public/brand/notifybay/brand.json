@@ -41,6 +41,27 @@
           }
         }
       },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/logo-dark.png",
+            "path": "/brand/notifybay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 20310,
+            "width": 952,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/logo-dark.svg",
+            "path": "/brand/notifybay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 8970,
+            "width": 476,
+            "height": 120
+          }
+        }
+      },
       "icon": {
         "label": "Icon",
         "formats": {
@@ -57,6 +78,48 @@
             "path": "/brand/notifybay/icon.svg",
             "type": "image/svg+xml",
             "bytes": 1079,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-inner.png",
+            "path": "/brand/notifybay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 11434,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-inner.svg",
+            "path": "/brand/notifybay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 1033,
+            "width": 74,
+            "height": 74
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-mono.png",
+            "path": "/brand/notifybay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 12228,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-mono.svg",
+            "path": "/brand/notifybay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 1225,
             "width": 120,
             "height": 120
           }

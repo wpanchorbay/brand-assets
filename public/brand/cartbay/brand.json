@@ -41,6 +41,27 @@
           }
         }
       },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/logo-dark.png",
+            "path": "/brand/cartbay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 16565,
+            "width": 844,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/logo-dark.svg",
+            "path": "/brand/cartbay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 7551,
+            "width": 422,
+            "height": 120
+          }
+        }
+      },
       "icon": {
         "label": "Icon",
         "formats": {
@@ -57,6 +78,48 @@
             "path": "/brand/cartbay/icon.svg",
             "type": "image/svg+xml",
             "bytes": 799,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-inner.png",
+            "path": "/brand/cartbay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 8763,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-inner.svg",
+            "path": "/brand/cartbay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 757,
+            "width": 74.1,
+            "height": 74.1
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-mono.png",
+            "path": "/brand/cartbay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 11096,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-mono.svg",
+            "path": "/brand/cartbay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 958,
             "width": 120,
             "height": 120
           }

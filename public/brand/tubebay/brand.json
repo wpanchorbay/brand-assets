@@ -41,6 +41,27 @@
           }
         }
       },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/logo-dark.png",
+            "path": "/brand/tubebay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 18970,
+            "width": 888,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/logo-dark.svg",
+            "path": "/brand/tubebay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 7637,
+            "width": 444,
+            "height": 120
+          }
+        }
+      },
       "icon": {
         "label": "Icon",
         "formats": {
@@ -57,6 +78,48 @@
             "path": "/brand/tubebay/icon.svg",
             "type": "image/svg+xml",
             "bytes": 596,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-inner.png",
+            "path": "/brand/tubebay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 14246,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-inner.svg",
+            "path": "/brand/tubebay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 546,
+            "width": 73,
+            "height": 73
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-mono.png",
+            "path": "/brand/tubebay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 14061,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-mono.svg",
+            "path": "/brand/tubebay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 770,
             "width": 120,
             "height": 120
           }

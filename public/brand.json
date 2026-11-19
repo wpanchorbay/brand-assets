@@ -101,6 +101,180 @@
               "height": 120
             }
           }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon-inner.png",
+              "path": "/brand/wpanchorbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 11465,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon-inner.svg",
+              "path": "/brand/wpanchorbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 687,
+              "width": 74.1,
+              "height": 74.1
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon-mono.png",
+              "path": "/brand/wpanchorbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 12725,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/icon-mono.svg",
+              "path": "/brand/wpanchorbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 962,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "anchor": {
+          "label": "anchor",
+          "formats": {
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/wpanchorbay/anchor.svg",
+              "path": "/brand/wpanchorbay/anchor.svg",
+              "type": "image/svg+xml",
+              "bytes": 797,
+              "width": 70,
+              "height": 70
+            }
+          }
+        }
+      }
+    },
+    "accessbay": {
+      "slug": "accessbay",
+      "name": "AccessBay",
+      "kind": "plugin",
+      "tagline": "Software licensing and update delivery for WooCommerce.",
+      "color": "#37A8FF",
+      "onColor": "#001F3F",
+      "links": {
+        "site": "https://wpanchorbay.com/plugins/accessbay/",
+        "docs": "https://docs.wpanchorbay.com/accessbay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/logo.png",
+              "path": "/brand/accessbay/logo.png",
+              "type": "image/png",
+              "bytes": 30173,
+              "width": 1041,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/logo.svg",
+              "path": "/brand/accessbay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 22471,
+              "width": 521,
+              "height": 120
+            }
+          }
+        },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/logo-dark.png",
+              "path": "/brand/accessbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 26571,
+              "width": 1041,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/logo-dark.svg",
+              "path": "/brand/accessbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 22471,
+              "width": 521,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon.png",
+              "path": "/brand/accessbay/icon.png",
+              "type": "image/png",
+              "bytes": 3871,
+              "width": 120,
+              "height": 120
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon.svg",
+              "path": "/brand/accessbay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 6508,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-inner.png",
+              "path": "/brand/accessbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 19740,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-inner.svg",
+              "path": "/brand/accessbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 4144,
+              "width": 75.21,
+              "height": 75.21
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-mono.png",
+              "path": "/brand/accessbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 18640,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/accessbay/icon-mono.svg",
+              "path": "/brand/accessbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 6684,
+              "width": 120,
+              "height": 120
+            }
+          }
         }
       }
     },
@@ -138,6 +312,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo-dark.png",
+              "path": "/brand/campaignbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 27657,
+              "width": 1290,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo-dark.svg",
+              "path": "/brand/campaignbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 13529,
+              "width": 645,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -154,6 +349,48 @@
               "path": "/brand/campaignbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 1163,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-inner.png",
+              "path": "/brand/campaignbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 18079,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-inner.svg",
+              "path": "/brand/campaignbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 1121,
+              "width": 74.5,
+              "height": 74.5
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-mono.png",
+              "path": "/brand/campaignbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 17577,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-mono.svg",
+              "path": "/brand/campaignbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 1330,
               "width": 120,
               "height": 120
             }
@@ -195,6 +432,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/logo-dark.png",
+              "path": "/brand/cartbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 16565,
+              "width": 844,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/logo-dark.svg",
+              "path": "/brand/cartbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 7551,
+              "width": 422,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -211,6 +469,48 @@
               "path": "/brand/cartbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 799,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-inner.png",
+              "path": "/brand/cartbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 8763,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-inner.svg",
+              "path": "/brand/cartbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 757,
+              "width": 74.1,
+              "height": 74.1
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-mono.png",
+              "path": "/brand/cartbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 11096,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/cartbay/icon-mono.svg",
+              "path": "/brand/cartbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 958,
               "width": 120,
               "height": 120
             }
@@ -252,6 +552,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/logo-dark.png",
+              "path": "/brand/notifybay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 20310,
+              "width": 952,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/logo-dark.svg",
+              "path": "/brand/notifybay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 8970,
+              "width": 476,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -268,6 +589,48 @@
               "path": "/brand/notifybay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 1079,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-inner.png",
+              "path": "/brand/notifybay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 11434,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-inner.svg",
+              "path": "/brand/notifybay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 1033,
+              "width": 74,
+              "height": 74
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-mono.png",
+              "path": "/brand/notifybay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 12228,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/notifybay/icon-mono.svg",
+              "path": "/brand/notifybay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 1225,
               "width": 120,
               "height": 120
             }
@@ -309,6 +672,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/logo-dark.png",
+              "path": "/brand/optionbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 20644,
+              "width": 1010,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/logo-dark.svg",
+              "path": "/brand/optionbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 8984,
+              "width": 505,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -325,6 +709,48 @@
               "path": "/brand/optionbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 341,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon-inner.png",
+              "path": "/brand/optionbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 10998,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon-inner.svg",
+              "path": "/brand/optionbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 291,
+              "width": 74,
+              "height": 74
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon-mono.png",
+              "path": "/brand/optionbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 12611,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/optionbay/icon-mono.svg",
+              "path": "/brand/optionbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 519,
               "width": 120,
               "height": 120
             }
@@ -366,6 +792,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/logo-dark.png",
+              "path": "/brand/pointbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 20617,
+              "width": 890,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/logo-dark.svg",
+              "path": "/brand/pointbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 7879,
+              "width": 445,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -382,6 +829,48 @@
               "path": "/brand/pointbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 698,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon-inner.png",
+              "path": "/brand/pointbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 12378,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon-inner.svg",
+              "path": "/brand/pointbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 498,
+              "width": 86,
+              "height": 86
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon-mono.png",
+              "path": "/brand/pointbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 14715,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/pointbay/icon-mono.svg",
+              "path": "/brand/pointbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 715,
               "width": 120,
               "height": 120
             }
@@ -423,6 +912,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/logo-dark.png",
+              "path": "/brand/productbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 21091,
+              "width": 1090,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/logo-dark.svg",
+              "path": "/brand/productbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 10495,
+              "width": 545,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -439,6 +949,184 @@
               "path": "/brand/productbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 840,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon-inner.png",
+              "path": "/brand/productbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 9438,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon-inner.svg",
+              "path": "/brand/productbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 798,
+              "width": 74.1,
+              "height": 74.1
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon-mono.png",
+              "path": "/brand/productbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 12159,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/productbay/icon-mono.svg",
+              "path": "/brand/productbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 1020,
+              "width": 120,
+              "height": 120
+            }
+          }
+        }
+      }
+    },
+    "spacebay": {
+      "slug": "spacebay",
+      "name": "SpaceBay",
+      "kind": "plugin",
+      "tagline": "The community plugin for WordPress.",
+      "color": "#3F22FF",
+      "onColor": "#FFFFFF",
+      "links": {
+        "site": "https://wpanchorbay.com/plugins/spacebay/",
+        "docs": "https://docs.wpanchorbay.com/spacebay/"
+      },
+      "assets": {
+        "logo": {
+          "label": "Logo",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/logo.png",
+              "path": "/brand/spacebay/logo.png",
+              "type": "image/png",
+              "bytes": 27477,
+              "width": 970,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/logo.svg",
+              "path": "/brand/spacebay/logo.svg",
+              "type": "image/svg+xml",
+              "bytes": 11549,
+              "width": 485,
+              "height": 120
+            }
+          }
+        },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/logo-dark.png",
+              "path": "/brand/spacebay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 24703,
+              "width": 970,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/logo-dark.svg",
+              "path": "/brand/spacebay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 11549,
+              "width": 485,
+              "height": 120
+            }
+          }
+        },
+        "icon": {
+          "label": "Icon",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon.png",
+              "path": "/brand/spacebay/icon.png",
+              "type": "image/png",
+              "bytes": 9345,
+              "width": 256,
+              "height": 256
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon.svg",
+              "path": "/brand/spacebay/icon.svg",
+              "type": "image/svg+xml",
+              "bytes": 2523,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-animated": {
+          "label": "Icon (animated)",
+          "formats": {
+            "gif": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.gif",
+              "path": "/brand/spacebay/icon-animated.gif",
+              "type": "application/octet-stream",
+              "bytes": 1117442
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.svg",
+              "path": "/brand/spacebay/icon-animated.svg",
+              "type": "image/svg+xml",
+              "bytes": 32459,
+              "width": 120,
+              "height": 120
+            },
+            "webp": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-animated.webp",
+              "path": "/brand/spacebay/icon-animated.webp",
+              "type": "image/webp",
+              "bytes": 1045798
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-inner.svg",
+              "path": "/brand/spacebay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 2472,
+              "width": 74,
+              "height": 74
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-mono.png",
+              "path": "/brand/spacebay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 19273,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/spacebay/icon-mono.svg",
+              "path": "/brand/spacebay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 2599,
               "width": 120,
               "height": 120
             }
@@ -480,6 +1168,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/logo-dark.png",
+              "path": "/brand/tubebay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 18970,
+              "width": 888,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/logo-dark.svg",
+              "path": "/brand/tubebay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 7637,
+              "width": 444,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -496,6 +1205,48 @@
               "path": "/brand/tubebay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 596,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-inner.png",
+              "path": "/brand/tubebay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 14246,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-inner.svg",
+              "path": "/brand/tubebay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 546,
+              "width": 73,
+              "height": 73
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-mono.png",
+              "path": "/brand/tubebay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 14061,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/tubebay/icon-mono.svg",
+              "path": "/brand/tubebay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 770,
               "width": 120,
               "height": 120
             }
@@ -537,6 +1288,27 @@
             }
           }
         },
+        "logo-dark": {
+          "label": "Logo (dark)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo-dark.png",
+              "path": "/brand/upsellbay/logo-dark.png",
+              "type": "image/png",
+              "bytes": 18759,
+              "width": 960,
+              "height": 240
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/logo-dark.svg",
+              "path": "/brand/upsellbay/logo-dark.svg",
+              "type": "image/svg+xml",
+              "bytes": 9071,
+              "width": 480,
+              "height": 120
+            }
+          }
+        },
         "icon": {
           "label": "Icon",
           "formats": {
@@ -553,6 +1325,48 @@
               "path": "/brand/upsellbay/icon.svg",
               "type": "image/svg+xml",
               "bytes": 583,
+              "width": 120,
+              "height": 120
+            }
+          }
+        },
+        "icon-inner": {
+          "label": "Icon (inner)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon-inner.png",
+              "path": "/brand/upsellbay/icon-inner.png",
+              "type": "image/png",
+              "bytes": 8129,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon-inner.svg",
+              "path": "/brand/upsellbay/icon-inner.svg",
+              "type": "image/svg+xml",
+              "bytes": 533,
+              "width": 74,
+              "height": 74
+            }
+          }
+        },
+        "icon-mono": {
+          "label": "Icon (mono)",
+          "formats": {
+            "png": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon-mono.png",
+              "path": "/brand/upsellbay/icon-mono.png",
+              "type": "image/png",
+              "bytes": 10780,
+              "width": 480,
+              "height": 480
+            },
+            "svg": {
+              "url": "https://assets.wpanchorbay.com/brand/upsellbay/icon-mono.svg",
+              "path": "/brand/upsellbay/icon-mono.svg",
+              "type": "image/svg+xml",
+              "bytes": 761,
               "width": 120,
               "height": 120
             }

@@ -41,6 +41,27 @@
           }
         }
       },
+      "logo-dark": {
+        "label": "Logo (dark)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo-dark.png",
+            "path": "/brand/campaignbay/logo-dark.png",
+            "type": "image/png",
+            "bytes": 27657,
+            "width": 1290,
+            "height": 240
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/logo-dark.svg",
+            "path": "/brand/campaignbay/logo-dark.svg",
+            "type": "image/svg+xml",
+            "bytes": 13529,
+            "width": 645,
+            "height": 120
+          }
+        }
+      },
       "icon": {
         "label": "Icon",
         "formats": {
@@ -57,6 +78,48 @@
             "path": "/brand/campaignbay/icon.svg",
             "type": "image/svg+xml",
             "bytes": 1163,
+            "width": 120,
+            "height": 120
+          }
+        }
+      },
+      "icon-inner": {
+        "label": "Icon (inner)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-inner.png",
+            "path": "/brand/campaignbay/icon-inner.png",
+            "type": "image/png",
+            "bytes": 18079,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-inner.svg",
+            "path": "/brand/campaignbay/icon-inner.svg",
+            "type": "image/svg+xml",
+            "bytes": 1121,
+            "width": 74.5,
+            "height": 74.5
+          }
+        }
+      },
+      "icon-mono": {
+        "label": "Icon (mono)",
+        "formats": {
+          "png": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-mono.png",
+            "path": "/brand/campaignbay/icon-mono.png",
+            "type": "image/png",
+            "bytes": 17577,
+            "width": 480,
+            "height": 480
+          },
+          "svg": {
+            "url": "https://assets.wpanchorbay.com/brand/campaignbay/icon-mono.svg",
+            "path": "/brand/campaignbay/icon-mono.svg",
+            "type": "image/svg+xml",
+            "bytes": 1330,
             "width": 120,
             "height": 120
           }
