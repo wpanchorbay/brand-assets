@@ -291,13 +291,13 @@ writeFileSync(join(ROOT, 'public', '404.html'), `<!doctype html>
 <title>Not found: ${esc(src.organization.name)} brand assets</title>
 <meta name="robots" content="noindex">
 <meta property="og:site_name" content="WPAnchorBay">
-<meta property="og:image" content="https://assets.wpanchorbay.com/og.jpg">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="https://assets.wpanchorbay.com/og.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="WPAnchorBay brand assets: logos, icons, colours and stickers for the WooCommerce plugins">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://assets.wpanchorbay.com/og.jpg">
+<meta name="twitter:image" content="https://assets.wpanchorbay.com/og.png">
 <meta name="twitter:image:alt" content="WPAnchorBay brand assets: logos, icons, colours and stickers for the WooCommerce plugins">
 <style>
 :root{--ink:${esc(src.palette.ink)};--anchor:${esc(src.palette.anchor)};
