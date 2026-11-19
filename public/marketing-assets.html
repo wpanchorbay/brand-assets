@@ -285,7 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
     <div class="sec-head">
       <p class="eyebrow">Stickers &amp; badges</p>
       <h2>Pick a sticker, take the size you need.</h2>
-      <p>4 stickers, each in Large (high-res) and Small (web-optimized). Switch size on the card to update the preview and actions.</p>
+      <p>4 stickers, each in Large (high-res), Small (web-optimized) and SVG (vector, any size). Switch the format on the card to update the preview and actions.</p>
     </div>
     <div class="tools" role="toolbar" aria-label="View options">
       <p class="count" id="count" aria-live="polite"></p>
@@ -324,6 +324,7 @@ const GROUPS = [
     variants:[
       { key:'large', label:'Large', hint:'high-res', path:'/images/money-back-guarantee-large.png', w:1254, h:1254, bytes:248349 },
       { key:'small', label:'Small', hint:'web-optimized', path:'/images/money-back-guarantee-small.png', w:720, h:480, bytes:45948 },
+      { key:'svg', label:'SVG', hint:'any size', path:'/images/money-back-guarantee.svg', w:1254, h:1254, bytes:14890, vector:true },
     ]
   },
   {
@@ -331,6 +332,7 @@ const GROUPS = [
     variants:[
       { key:'large', label:'Large', hint:'high-res', path:'/images/5-star-rating-large.png', w:1536, h:1024, bytes:156692 },
       { key:'small', label:'Small', hint:'web-optimized', path:'/images/5-star-rating-small.png', w:720, h:480, bytes:44765 },
+      { key:'svg', label:'SVG', hint:'any size', path:'/images/5-star-rating.svg', w:1536, h:1024, bytes:13448, vector:true },
     ]
   },
   {
@@ -338,6 +340,7 @@ const GROUPS = [
     variants:[
       { key:'large', label:'Large', hint:'high-res', path:'/images/free-versions-large.png', w:1536, h:1024, bytes:73194 },
       { key:'small', label:'Small', hint:'web-optimized', path:'/images/free-versions-small.png', w:720, h:480, bytes:34076 },
+      { key:'svg', label:'SVG', hint:'any size', path:'/images/free-versions.svg', w:1536, h:1024, bytes:16280, vector:true },
     ]
   },
   {
@@ -345,6 +348,7 @@ const GROUPS = [
     variants:[
       { key:'large', label:'Large', hint:'high-res', path:'/images/support-replies-large.png', w:1536, h:1024, bytes:178890 },
       { key:'small', label:'Small', hint:'web-optimized', path:'/images/support-replies-small.png', w:720, h:480, bytes:43721 },
+      { key:'svg', label:'SVG', hint:'any size', path:'/images/support-replies.svg', w:1536, h:1024, bytes:18937, vector:true },
     ]
   },
 ];
@@ -357,6 +361,7 @@ const ICONS = {
 const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const kb = n => n < 1024 ? `${n} B` : `${(n/1024).toFixed(n<10240?1:0)} KB`;
 const abs = p => ORIGIN + p;
+const dim = v => v.vector ? 'Vector' : `${v.w}×${v.h}`;
 
 // selected variant per slug
 const selected = Object.fromEntries(GROUPS.map(g=>[g.slug, g.variants[0].key]));
@@ -388,7 +393,7 @@ selPerPage.addEventListener('change', e=>{ perPage = parseInt(e.target.value,10)
 function sizeSwitchHTML(group){
   const cur = selected[group.slug];
   return `<div class="fseg size" role="group" aria-label="Size">
-    ${group.variants.map(v=>`<button type="button" aria-pressed="${v.key===cur}" data-size="${v.key}" data-slug="${group.slug}" title="${v.w}×${v.h} · ${kb(v.bytes)}">${v.label} <small>${v.hint}</small></button>`).join('')}
+    ${group.variants.map(v=>`<button type="button" aria-pressed="${v.key===cur}" data-size="${v.key}" data-slug="${group.slug}" title="${dim(v)} · ${kb(v.bytes)}">${v.label} <small>${v.hint}</small></button>`).join('')}
   </div>`;
 }
 
@@ -403,7 +408,7 @@ function cardHTML(group){
       <div><h3 class="card-title">${esc(group.name)}</h3><p class="card-desc">${esc(group.desc)}</p></div>
       ${sizeSwitchHTML(group)}
       <div class="chips">
-        <span class="chip">${v.w}×${v.h}</span>
+        <span class="chip">${dim(v)}</span>
         <span class="chip">${esc(kb(v.bytes))}</span>
         <span class="chip">${esc(v.path.split('/').pop())}</span>
       </div>
@@ -427,7 +432,7 @@ function tableHTML(groups){
         <td><div class="thumb"><img src="${esc(v.path)}" alt="" loading="lazy"></div></td>
         <td><div class="name">${esc(g.name)}</div><div class="subname">${esc(g.desc)}</div></td>
         <td>${sizeSwitchHTML(g)}</td>
-        <td>${v.w}×${v.h}<span class="dim">${esc(kb(v.bytes))}</span></td>
+        <td>${dim(v)}<span class="dim">${esc(kb(v.bytes))}</span></td>
         <td><code>${esc(v.path.split('/').pop())}</code></td>
         <td>
           <div class="actions-cell">
@@ -501,11 +506,27 @@ async function copyText(text, btn){
   flash('Copied to clipboard');
   return true;
 }
+// clipboards reject SVG images, so an SVG is drawn to a PNG at its own size first
+function svgToPng(blob){
+  return new Promise((ok, fail)=>{
+    const u = URL.createObjectURL(blob), im = new Image();
+    im.onload = ()=>{
+      const c = document.createElement('canvas');
+      c.width = im.naturalWidth; c.height = im.naturalHeight;
+      c.getContext('2d').drawImage(im, 0, 0);
+      URL.revokeObjectURL(u);
+      c.toBlob(b => b ? ok(b) : fail(new Error('png')), 'image/png');
+    };
+    im.onerror = ()=>{ URL.revokeObjectURL(u); fail(new Error('svg')); };
+    im.src = u;
+  });
+}
 async function copyImage(path, btn){
   const url = abs(path);
   try{
     const res = await fetch(url);
-    const blob = await res.blob();
+    let blob = await res.blob();
+    if(blob.type === 'image/svg+xml'){ blob = await svgToPng(blob); }
     if(navigator.clipboard && window.ClipboardItem){
       const type = blob.type || 'image/png';
       await navigator.clipboard.write([new ClipboardItem({[type]: blob})]);

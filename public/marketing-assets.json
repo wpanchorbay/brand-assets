@@ -34,6 +34,14 @@
           "type": "image/png",
           "width": 600,
           "height": 300
+        },
+        {
+          "name": "SVG (vector, any size)",
+          "url": "https://assets.wpanchorbay.com/images/money-back-guarantee.svg",
+          "path": "/images/money-back-guarantee.svg",
+          "type": "image/svg+xml",
+          "width": 1254,
+          "height": 1254
         }
       ]
     },
@@ -59,6 +67,14 @@
           "type": "image/png",
           "width": 600,
           "height": 300
+        },
+        {
+          "name": "SVG (vector, any size)",
+          "url": "https://assets.wpanchorbay.com/images/5-star-rating.svg",
+          "path": "/images/5-star-rating.svg",
+          "type": "image/svg+xml",
+          "width": 1536,
+          "height": 1024
         }
       ]
     },
@@ -84,6 +100,14 @@
           "type": "image/png",
           "width": 600,
           "height": 300
+        },
+        {
+          "name": "SVG (vector, any size)",
+          "url": "https://assets.wpanchorbay.com/images/free-versions.svg",
+          "path": "/images/free-versions.svg",
+          "type": "image/svg+xml",
+          "width": 1536,
+          "height": 1024
         }
       ]
     },
@@ -109,6 +133,14 @@
           "type": "image/png",
           "width": 600,
           "height": 300
+        },
+        {
+          "name": "SVG (vector, any size)",
+          "url": "https://assets.wpanchorbay.com/images/support-replies.svg",
+          "path": "/images/support-replies.svg",
+          "type": "image/svg+xml",
+          "width": 1536,
+          "height": 1024
         }
       ]
     }
