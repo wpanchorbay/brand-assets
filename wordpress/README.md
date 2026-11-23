@@ -26,11 +26,15 @@ Anything else you add around them — a press contact, extra copy — is just no
 
 ## Shortcodes
 
-**`[wpanchorbay_brand_hero]`** — brand mark, "Brand assets" heading, lede paragraph, and the
-"Hotlink it" / "Machine-readable" panels (with copy buttons). No attributes; the hotlink example
-always uses the brand's own logo.
+**`[wpanchorbay_brand_hero]`** — the page's only `h1`, a lede, the "Download all brands (.zip)"
+button, a mosaic of every product icon (each links to its card), and the "Hotlink it" /
+"Machine-readable" panels (with copy buttons). No attributes; the hotlink example always uses the
+brand's own logo.
 
-**`[wpanchorbay_brand_assets]`** — the product grid. Attributes:
+**`[wpanchorbay_brand_assets]`** — the product cards, each with a "Download the kit" button
+(`/kits/<slug>.zip`), a light/dark preview with a variant picker, colour chips, links and an
+"All files" list (copy link, download, open). With no attributes it also adds the Plugins heading,
+a name filter and the Colours grid. Attributes:
 
 | Attribute | Values | Default | Effect |
 |---|---|---|---|
@@ -45,9 +49,10 @@ always uses the brand's own logo.
 
 Useful on a product page: `[wpanchorbay_brand_assets products="cartbay"]`.
 
-**`[wpanchorbay_brand_usage]`** — the "Please do / Please don't" guidelines. No attributes; pulled
-straight from the manifest's own `usage` field, so editing `brand.source.json` and redeploying the
-asset origin updates this section too, with no plugin change needed.
+**`[wpanchorbay_brand_usage]`** — clear space, minimum sizes, placement, and do / don't examples.
+No attributes; the rule lists are pulled straight from the manifest's own `usage` field, so editing
+`brand.source.json` and redeploying the asset origin updates this section too, with no plugin
+change needed.
 
 ## How it behaves
 
@@ -68,15 +73,42 @@ asset origin updates this section too, with no plugin change needed.
   only honour HTML's `download` attribute for same-origin URLs. Clicking it opens the file instead;
   visitors can still right-click it and choose Save As. Fixing this for real needs a same-origin
   proxy endpoint, which is out of scope for a plugin this small.
-- The layout grids (product cards, Logo/Icon split, do's/don'ts columns) all use
-  `minmax(min(Npx,100%),1fr)` rather than a fixed pixel floor or a viewport `@media` query. This
-  plugin can end up in a narrow sidebar widget just as easily as a full-width page, and a viewport
-  breakpoint reacts to the *browser window*, not the actual space the shortcode has to work with —
-  the `min()` guard keeps every grid from overflowing or triggering a two-column layout it doesn't
-  have room for, regardless of where it's embedded.
+- Every layout switch uses a container query on the plugin's own wrapper (`.wpab-ba`) rather than a
+  viewport `@media` query, and grids use `minmax(min(Npx,100%),1fr)`. This plugin can end up in a
+  narrow sidebar widget just as easily as a full-width page, and a viewport breakpoint reacts to
+  the *browser window*, not the space the shortcode actually has.
+- Colours and fonts come from the active theme's palette (`--wp--preset--color--*`,
+  `--wp--preset--font-family--*`) with ThemeBay One's values as fallbacks. The design is light only;
+  the dark mode and the browser-side "copy file" of assets.wpanchorbay.com are not carried over.
+- Kit zips are linked at `<manifest origin>/kits/<slug>.zip` and `/kits/wpanchorbay-all-brands.zip`.
+  Like the per-file Download button, the browser decides whether `download` saves or opens them.
 
 ## Pointing at a different origin
 
 ```php
 add_filter( 'wpab_brand_assets_manifest_url', fn() => 'https://assets-staging.wpanchorbay.com/brand.json' );
 ```
+
+## Changelog
+
+### 1.5.0
+
+- Files list: Download saves the file in one click, the Open chevron sits after the text, and the list uses the
+  same #edf3f9 background as the card with a top border.
+- Link buttons (WordPress.org, Product page, Docs, JSON, Copy info) show a short hint on hover and focus.
+- New shortcodes `[wpanchorbay_brand_typography]` (Inter Tight and Inter) and `[wpanchorbay_brand_closing]`
+  (Hotlink it and Machine-readable panels moved here, trademark note with the contact address, last download button).
+  Place typography before and closing after `[wpanchorbay_brand_usage]`.
+
+### 1.4.0
+
+- Rebuilt the page UI to match assets.wpanchorbay.com, in the theme's colours and fonts: hero with a
+  product mosaic, product cards with a light/dark preview and variant picker, colours grid with
+  WCAG contrast, and a usage section (clear space, minimum sizes, do and don't).
+- Added a "Download the kit" button on every card and "Download all brands (.zip)" in the hero.
+- Added a name filter for the cards.
+- All CSS is scoped under `.wpab-ba` and uses container queries.
+
+### 1.3.2 and earlier
+
+- See the git history.
